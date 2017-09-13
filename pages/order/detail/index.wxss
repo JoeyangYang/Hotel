@@ -1,0 +1,21 @@
+/* pages/order/detail/index.wxss */
+.order_detail{font-family: "微软雅黑";background: #f2f2f2;margin-bottom: 50px;}
+.order_detail .bg{height: 200rpx;position: relative;margin-bottom: 20rpx;}
+.order_detail .bg image{width:100%;height:200rpx;}
+.order_detail .bg .abs{position: absolute;top:0;left:0;text-align: center;width:100%;height:200rpx;line-height: 84rpx;}
+.order_detail .bg text{color:#fff;display: block;text-align: center;}
+.order_detail .bg text.wait{font-size:36rpx;position:relative;top:16%;}
+.order_detail .bg text.ok{margin-top:0;font-size:24rpx;}
+.order_detail .info{padding:15rpx 76rpx;border-bottom: 2px solid #f2f2f2;background: #fff;}
+.order_detail .info text{display: inline-block;}
+.order_detail .info text.book{color:#000;font-size:24rpx;font-weight: bold;}
+.order_detail .info .del_info{color:#cdcdcd;font-size:24rpx;}
+.order_detail .info .del_info text.lt{width:30%}
+.order_detail .info .del_info text.rt{width:70%;}
+.order_detail .info .box{margin-top:25rpx;}
+.order_detail .info .box text{white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+.order_detail .tips{padding:15rpx 76rpx;color:#cdcdcd;font-size:24rpx;}
+.foot{height:80rpx;border-top:3px solid #d7d7d7;line-height:  80rpx;font-size: 28rpx;position: fixed;bottom: 0;width:100%;}
+.foot navigator{display: inline-block;text-align: center;}
+.foot navigator:first-child{width:30%;background: #fff;}
+.foot navigator:last-child{width:70%;background:#ff8300;color:#fff;}

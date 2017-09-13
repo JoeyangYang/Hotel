@@ -1,0 +1,7 @@
+/* pages/me/score_rule/index.wxss */
+.score_rule{font-family: "微软雅黑";font-size:24rpx;color:#999999;}
+.score_rule .top{background: #fff;padding-top:10px;border-bottom: 1px solid #f2f2f2;height:70rpx;line-height: 55rpx;margin:0 20px;}
+.score_rule .content{padding:20rpx 55rpx;}
+.score_rule .content text{display: block;line-height: 40rpx;}
+.score_rule .tips{height:50px;background: #f2f2f2;padding:20rpx 55rpx;margin-bottom: 86rpx;}
+.score_rule .foot{width:100%;color:#fff;text-align: center;position: fixed;bottom: 0;height:80rpx;line-height: 80rpx;box-shadow: 0 -2px 0 #d7d7d7; }

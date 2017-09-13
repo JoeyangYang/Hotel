@@ -1,0 +1,280 @@
+/* pages/hotel/index/index.wxss */
+/*整个页面*/
+.all{
+  width: 100%;
+  height: auto;
+  font-family: 微软雅黑;
+  background-color: white;
+}
+.relative{
+  position: relative;}
+.center{
+  margin: 0px auto;}
+/*头部*/
+.header{
+  width: 100%;
+  display: block;
+}
+.header image{
+  width: 100%;}
+/*时间计算*/  
+.head{
+  width: 80%;
+  background-color: white;
+  box-shadow: gray 0rpx 0rpx 10rpx;
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  border-radius: 12rpx;}
+/*上*/  
+.head .top{
+  width: 90%;
+  line-height: 50rpx;
+  margin-top: 15rpx;
+  margin-bottom: 15rpx;}
+/*地址*/  
+.head .top .left{
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 5rpx;
+  width: 70%;
+  font-size: 33rpx;}
+/*位置*/  
+.head .top .right{
+  display: none;
+  box-sizing: border-box;
+  width: 30%;
+  text-align: center;
+  border-left: 1px gainsboro solid;
+  padding: 5rpx;
+  font-size: 34rpx;}
+/*下*/  
+.head .bottom{ 
+  border-top: 1px solid gainsboro;
+  margin-bottom: 40rpx;
+  width: 90%;
+  text-align: center;
+  display:table;}
+/*入住时间*/
+.head .bottom .section{align-items: center;justify-content: center;display: table-cell;vertical-align: middle;}
+.head .bottom .section .picker .date{font-size:24rpx;color:gray;}
+.head .bottom .section .picker .dateTime{font-size:26rpx;}
+/*统计入住期限*/  
+.head .bottom .night{
+  width: 20%;
+  display: inline-block;
+  line-height: 180rpx;
+  position: relative;
+  text-align: center;
+  font-size: 28rpx;}
+.head .bottom .night .em3{
+  display: block;
+  height: 40rpx;
+  background-color: gainsboro;
+  width: 1px;
+  position: absolute;
+  top: 10%;
+  left: 50%;}
+.head .bottom .night .em4{
+  display: block;
+  height: 40rpx;
+  background-color: gainsboro;
+  width: 1px;
+  position: absolute;
+  top: 68%;
+  left: 50%;}
+
+/*选择条件筛选酒店*/
+.nav{
+  width: 100%;
+  margin-top: 260rpx;
+  line-height: 70rpx;
+  font-size: 34rpx;
+  color: gray;
+  box-shadow: 0rpx 4rpx 3rpx gray; }
+.nav .left{
+  width: 33%;
+  display: inline-block;
+  text-align: center;
+  font-size: 27rpx;}
+.nav image{
+  width: 21rpx;
+  height: 10rpx;
+  margin-left: 5%;
+  transform: rotate(-90deg);
+  margin-bottom: 2%;
+  }
+
+.nav >view:nth-child(1).change1{color: black;}
+.nav >view:nth-child(2).change2{color: black;}
+.nav >view:nth-child(3).change3{color: black;}
+.nav image{transition: all 0.3s ease-in-out;}
+.nav >view:nth-child(1) image.change1{transform: rotate(90deg);}
+.nav >view:nth-child(2) image.change2{transform: rotate(90deg);}
+.nav >view:nth-child(3) image.change3{transform: rotate(90deg);}
+
+.nav .container >view { position: absolute; right: 0; top: 0; transition: all 0.5s ease-in-out; opacity: 0.5; }
+.nav .container >view:nth-child(1).active1 { right: -100%; opacity: 1; }
+.nav .container >view:nth-child(2).active2 { right: -100%; opacity: 1; }
+.nav .container >view:nth-child(3).active3 { right: -100%; opacity: 1; }
+
+
+
+.nav .middle{
+  width: 33%;
+  display: inline-block;
+  text-align: center;
+  font-size: 27rpx;
+  display: none;}
+.nav .right{
+  width: 34%;
+  display: inline-block;
+  text-align: center;
+  font-size: 27rpx;
+  display: none;}
+
+/*城市搜索*/
+.container{
+  width: 100%;
+  background-color: red;
+  position: absolute;
+   z-index: 3;
+   top: 75rpx;
+   left: -100%;
+   padding: 0;}
+.city{
+  width: 100%;
+  height: 600rpx;
+  opacity: 1;}
+   
+
+
+/*内容块*/
+.city .content{
+  width: 100%;
+  height: 86%;
+}
+/*条件选择块*/
+.city .content .condition{
+  width: 35%;
+  height: 100%;
+  float: left;
+  background-color: #F2F2F2;
+  overflow-y:auto;
+  box-shadow:inset -2px 0 0px 0px #E8E7E7;}
+
+.city .content .condition view { transition: all 0.3s ease-in-out; }
+.city .content .condition view:first-child.active { border-top: none; }
+.city .content .condition view.active { background: #fff; border-top: 1px solid #999; border-bottom: 1px solid #E8E7E7; }
+
+.city .content .condition view { transition: all 0.3s ease-in-out; }
+.city .content .condition view:first-child.active { border-top: none; }
+.city .content .condition view.active { background: #fff; border-top: 1px solid #E8E7E7; border-bottom: 1px solid #E8E7E7; }
+.city .content .detailed .area.active { background: #DBEDF5; color: black;}
+
+.city .content .condition .one{
+  width: 100%;
+  line-height: 80rpx;
+  text-align: center;
+  font-size: 26rpx;
+  letter-spacing: 3rpx;} 
+
+.tabChange{
+  background-color: white;}  
+/*区域划分详页*/   
+.city .content .detailed{
+  width: 65%;
+  height: 100%;
+  float: left;
+  background-color: white;
+  overflow-y:auto; }
+.city .content .detailed .area{ 
+  width: 80%;
+  line-height: 80rpx;
+  text-align: left;
+  margin-left: 20%;
+  padding-left: 14%;
+  box-sizing: border-box;
+  border-bottom: 1px gainsboro solid;
+  font-size: 25rpx;}  
+.city .bottom{
+  width: 100%;
+  height: 14%;
+  box-shadow: -0.5rpx 10rpx 5rpx #999;} 
+.city .bottom .empty{
+  width: 35%;
+  height: 100%;
+  background-color: white;
+  display: inline-block;
+  text-align: center;
+  font-size: 26rpx;
+  line-height: 80rpx;
+  letter-spacing: 3rpx;}  
+.city .bottom .yes{
+  width: 65%;
+  height: 100%;
+  display: inline-block;
+  color: white;
+  text-align: center;
+  font-size: 26rpx;
+  line-height: 80rpx;
+  letter-spacing: 3rpx;
+  border-top: 2rpx solid gray;
+   }  
+
+/*主体查询结果*/
+.main{
+  width: 100%;
+  height: 624rpx;
+  overflow-y:auto; 
+  margin-top: 30rpx;}
+/*主体第一块酒店查询结果*/
+.main1{
+  width: 80%;
+  border-bottom: 1px gainsboro solid;
+  height: 120rpx;
+  padding-top:20rpx;
+  padding-bottom:20rpx; }
+/*图片*/
+.main1 .left{
+  width: 20%;
+  height: 120rpx;
+  float: left;}
+.main1 .left image{
+  width: 100rpx;
+  height: 100rpx;
+  margin-top: 10rpx;
+  border-radius: 50%;
+  box-shadow: 1px 1px 2px 1px #999;}
+/*酒店详情*/
+.main1 .middle{
+  width: 50%;
+  height: 120rpx;
+  float: left;}
+/*酒店名称*/  
+.main1 .middle .hotel{
+  width: 100%;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 28rpx;
+  margin-top: 15rpx;}
+/*距离*/
+.main1 .middle .distance{
+  width: 100%;
+  height: 50rpx;
+  line-height: 35rpx;
+  font-size: 24rpx;
+  color: gray;}    
+/*酒店价格*/
+.main1 .right{
+  width: 30%;
+  height: 120rpx;
+  text-align: center;
+  float: right;
+  line-height: 120rpx;}
+.main1 .right .sign{font-size: 25rpx;font-weight: bold;}
+.main1 .right .price{font-size: 39rpx;display: inline-block;text-align: left;margin-right: 12rpx;font-weight: bold;}
+.main1 .right .rise{font-size: 25rpx; color: gray;}  
+
+.active{
+  background-color: white;}

@@ -1,0 +1,55 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/hotel/detail/index",
+    
+    "pages/hotel/order/index",
+    
+    "pages/hotel/order_pay/index",
+    "pages/me/index/index",
+    
+    "pages/hotel/index/index",
+    "pages/me/score/index",
+   
+    
+    "pages/order/index/index",
+    "pages/order/detail/index",
+    "pages/me/refund/index",
+   
+    "pages/me/score_rule/index",
+    "pages/me/phone_update/index"
+    
+    
+  
+  
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "嘉优隆精品酒店",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "color": "#000",
+    "selectedColor": "#000",
+    "backgroundColor": "#fff",
+    "borderStyle": "black",
+    "position": "bottom",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "img/预定.png",
+        "selectedIconPath": "img/预定2.png",
+        "text": "预定"
+      },
+      {
+        "pagePath": "pages/me/index/index",
+        "iconPath": "img/我的.png",
+        "selectedIconPath": "img/我的2.png",
+        "text": "我的"
+      }
+      
+      
+    ]
+  }
+}

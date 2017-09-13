@@ -1,0 +1,41 @@
+<view class="order_index">
+   <view class="top">
+       <text class="{{on}}" data-active="0" bindtap="orderNavClick">全 部</text>
+       <text class="{{on}}" data-active="1" bindtap="orderNavClick">待入住</text>
+       <text class="{{on}}" data-active="2" bindtap="orderNavClick">已完成</text>
+       <text class="{{on}}" data-active="3" bindtap="orderNavClick">退款中</text>
+       <text class="{{on}}" data-active="4" bindtap="orderNavClick">已退款</text>
+        <view class="{{animation}}"></view> 
+   </view>
+   <block wx:key="" wx:for="{{hotelList}}" wx:for-item="item">
+    
+    <view class="detail">
+      <navigator url="../detail/index?id={{item.id}}">
+       <view class='box'>
+          <text class="lt">{{item.hotel_name}}</text>
+          <text class="arrow">></text>
+          <text class="rt">{{item.status}}</text>
+        </view>
+      <view class="content">
+        <view class="lc">
+            <!-- <text>1间欧式大床房jkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</text> -->
+            <text>{{item.check_in}} - {{item.check_out}} 共1晚</text>
+            <text>{{item.address}}</text>
+            <text>{{item.detail}}</text>
+        </view>
+        <view class="rc">￥{{item.price}}</view>
+      </view>
+       </navigator>
+      <view class="btns">
+      <navigator url="../../me/refund/index" class="refund {{show}}">
+            申请退款
+      </navigator>
+      <navigator url="/pages/hotel/detail/index" class="book">
+            立即预定
+      </navigator>
+        
+      </view>
+      </view><!--detail结束-->
+     
+    </block>
+</view><!--order_index结束-->

@@ -1,0 +1,30 @@
+<!--pages/me/score/index.wxml-->
+<view class="score">
+    <view class="bg_box">
+          <view class="bg">
+            <view class="num">
+                <text>2333</text>
+            </view>
+            <image src="../../../img/score_bg.jpg"></image>
+        </view>           
+        <view class="record">
+            积分记录
+        </view>
+    </view><!--bg-box结束-->
+    <view class="scorePub_box">
+      <block wx:key="" wx:for="{{scoreList}}" wx:for-item="item">
+        <view class="scorePub" bind:touchstart="touchStart" bindtouchmove="touchMove" bind:touchend="touchEnd"  data-id="{{item.id}}">
+            <view class="block">
+              <view class="lt entry">
+                  <text>{{item.name}}</text>
+                  <text class="grey">{{item.date}}</text>
+              </view>
+              <view class="rt entry">
+                 <text class="price color-blue">+{{item.score}}</text>
+              </view>
+            </view>
+            <view class="bg-activity {{item.active}}"></view>
+        </view><!--scorePub结束-->
+      </block>
+    </view><!--scorePub_box结束-->
+</view><!--score结束-->

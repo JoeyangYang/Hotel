@@ -1,0 +1,150 @@
+<!--pages/hotel/detail/index.wxml-->
+<!--整个页面-->
+<view class='all'>
+  <!--主体-->
+  <view class='main'>
+    <!--主体第一块-->
+    <view class='main1'>
+      <image src='../../../img/11.png'></image>
+      <view class='main1_1'></view>
+      <view class='hotel'>
+        <text>{{hotel.name}}</text>
+      </view>
+    </view>
+    <!--主体第二块-->
+    <view class='main2'>
+      <view class='address center'>
+        <view class='pic'>
+          <image src='../../../img/dinwei.png'></image>
+        </view>
+        <view class='content' bindtap="clickMap">
+          <text>{{hotel.data.address}}</text>
+        </view>
+        <view class='icon'>
+          <image src='../../../img/13.png'></image>
+        </view> 
+      </view>
+    </view>
+    <!--主体第三块-->
+    <view class='main2'>
+      <view class='address center'>
+        <view class='pic'>
+          <image src='../../../img/phone.png' class='img'></image>
+        </view>
+        <view class='content' bindtap='clickPhone'>
+          <text>{{hotel.data.phone}}</text>
+        </view>
+        <view class='icon'>
+          <image src='../../../img/13.png'></image>
+        </view> 
+      </view>
+    </view>
+    <!--主体第四块-->
+    <view class='main4'>
+      <view class='check center'>
+        <view class='pic'>
+          <image src='../../../img/home.png'></image>
+        </view>
+        <view class='middle'>
+          <view class='one one1'>入住</view>
+          <view class='one2'>{{date}}</view>
+          <view class='one one1'>离店</view>
+          <view class='one2'>{{dateEnd}}</view>
+          <view class='one one3'><text class='common'>共</text><text class='num'>{{nightNum}}</text><text class='common'>晚</text></view>
+        </view>
+        <view class='icon'>
+          <image src='../../../img/13.png'></image>
+        </view>
+      </view>
+    </view>
+    <!--主体第五块-->
+    <view class='main5'>
+      <block wx:key="" wx:for="{{hotel.data.homeStyle}}" wx:for-item="item1" wx:for-index="index">
+        <view class='block'>
+          <view class='main5_1 {{item1.active}}' data-index="{{index}}" bindtap="testClick">
+          <view class='abroad center'>
+            <view class='hotel'>
+              <!--酒店图片-->
+              <view class='left'>
+                <image src='../../../img/16.png'></image>
+              </view>
+              <!--内容-->
+              <view class='middle'>
+                <!--酒店类型-->
+                <view class='type'>
+                  <view class='top'>
+                    <text>{{item1.name}}</text>
+                  </view>
+                  <view class='bottom'>
+                    <block wx:key="" wx:for="{{item1.spec}}" wx:for-item="item2">
+                      <view class='first'><text>{{item2}}</text></view>
+                    </block>
+                  </view>
+                </view>
+                <!--酒店价格-->
+                <view class='price'>
+                  <text class='money color-blue'>￥</text><text class='num color-blue'>{{item1.price}}</text><text class='rise'>起</text>
+                </view>
+              </view>
+              <!--图标-->
+              <view class='right'>
+                <image class='{{item1.active}}' src='../../../img/13.png'></image>
+              </view>
+            </view>
+          </view> 
+        </view>
+        <!--隐藏块-->
+        <view class='main5_2'>
+          <block wx:key="" wx:for="{{item1.member}}" wx:for-item="item3">
+          <view class='test center {{item1.active}}'>
+            <view class='discount'>
+              <text>{{item3.name}}</text>
+            </view>
+            <view class='discount1 discount2'>
+              <text>{{item3.spec}}</text>
+            </view>
+            <view class='discount1'>
+              <text>￥{{item3.price}}</text>
+            </view>
+            <view class='discount1'>
+              <navigator url='/pages/hotel/order/index' data-price='{{item3.price}}' bindtap='clickJump'>
+                <button class='bg-blue'>预定</button>
+              </navigator>
+            </view>
+          </view>
+          </block>
+        </view>
+      </view>
+      </block>
+      <!--酒店配备设施块-->
+      <view class='tips'>
+        <view class='supply center'>
+          <view class='last'>
+            <view class='one'> <image src='../../../img/wifi.png'></image> </view>
+            <view class='two'> <text>免费wifi</text> </view>
+          </view>
+          <view class='last'>
+            <view class='one'> <image src='../../../img/time.png'></image> </view>
+            <view class='two'> <text>全天热水</text> </view>
+          </view>
+          <view class='last'>
+            <view class='one'> <image src='../../../img/kongtiao.png'></image> </view>
+            <view class='two'> <text>空调</text> </view>
+          </view>
+          <view class='last'>
+            <view class='one'> <image src='../../../img/chuifen.png'></image> </view>
+            <view class='two'> <text>吹风机</text> </view>
+          </view>
+          <view class='last'>
+            <view class='one'> <image src='../../../img/xiangzi.png'></image> </view>
+            <view class='two'> <text>行李寄存</text> </view>
+          </view>
+        </view>
+        <!--温馨提示-->
+        <view class='prompt center'>
+          <text>温馨提示：请于入住日下午14：00后办理入住，如提前到店，视酒店空房情况安排。</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

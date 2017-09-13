@@ -1,0 +1,100 @@
+<!--pages/hotel/index/index.wxml-->
+<view class='all'>
+  <view class='header relative'>
+    <image src='../../../img/8.png' mode='widthFix'></image>
+    <view class='head'>
+      <!--上-->
+      <view class='top center'>
+        <view class='left'>昆明</view>
+        <view class='right'>位置</view>
+      </view>
+      <!--下-->
+      <view class='bottom center'>
+        <!--入住日期-->
+        <view class="section" style="display:inline-block;">  
+            <picker mode="date" value="{{date}}" start="{{today}}" bindchange="bindDateChange" >
+              <view class="picker">
+              <view class="date">入住日期</view> 
+              <text class="dateTime">{{date}}</text>
+              </view>
+            </picker>
+          </view>
+        <!--统计入住时间-->
+        <view class="night">
+          <em class="em3"></em>
+          <text class="nightNum">{{nightNum}}晚</text>
+          <em class="em4"></em>  
+        </view>
+        <!--退房时间-->
+        <view class="section" style="display:inline-block;">
+            <picker mode="date" value="{{date}}"  bindchange="bindDateChangeEnd" start="{{date}}" >
+              <view class="picker">
+                <view class="date">离店日期</view> 
+                <text class="dateTime">{{dateEnd}}</text>  
+              </view>
+            </picker>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='nav relative'>
+    <view class='left {{color}}' data-display="{{display}}" data-active="1" bindtap="tabChange">
+      <text>全城</text>
+      <image src="../../../img/10.png" class='{{color}}'></image>
+    </view>
+    <view class='middle {{color}}' data-display="{{display}}" data-active="2" bindtap="tabChange">
+      <text>价格</text>
+      <image src="../../../img/10.png" class='{{color}}'></image>
+    </view>
+    <view class='right {{color}}' data-display="{{display}}" data-active="3" bindtap="tabChange">
+      <text>品牌</text>
+      <image src="../../../img/10.png" class='{{color}}'></image>
+    </view>
+    <!--定位全城搜索-->
+    <view class='container'>
+      <view class="city {{searchStyle}}">
+        <view class="content">
+          <view class="condition">
+            <block wx:key="" wx:for="{{listAreaBelong}}" wx:for-item="item" wx:for-index="index">
+              <view wx:if="{{item.active == 1}}" class="one active" data-id="{{item.id}}" bindtap='clickChange'>{{item.name}}</view>
+              <view wx:else class="one" data-id="{{item.id}}" bindtap='listAreaBelongChange'>{{item.name}}</view>
+            </block>
+          </view>
+          <view class="detailed">
+            <block wx:key="" wx:for="{{listArea}}" wx:for-item="item">
+              <view wx:if="{{item.active == 1}}" class="area active" data-id="{{item.id}}" bindtap="listAreaChange">{{item.name}}</view>
+              <view wx:else class="area" data-id="{{item.id}}" bindtap="listAreaChange">{{item.name}}</view>
+            </block>
+          </view>
+        </view>
+        <view class="bottom">
+          <view class="empty"><text>清空</text></view>
+          <view class="yes bg-blue" bindtap="tabChange" data-ok="true" data-active="{{searchHandle}}"><text>确定</text></view>
+        </view>
+      </view>
+      <view class='price {{searchStyle}}'>PRICE</view>
+      <view class='brand {{searchStyle}}'>BRAND</view>
+    </view>  
+  </view>
+  <!--主体-->
+  <view class='main'>
+    <!--主体第一块-->
+    <block wx:key="" wx:for="{{listAll}}" wx:for-item="item">
+      <navigator data-singlehotel="{{item}}" url='/pages/hotel/detail/index?date={{date}}&nightNum={{nightNum}}&dateEnd={{dateEnd}}' bindtap='addChange'>
+        <view class="main1 center">
+        <!--图片-->
+        <view class="left">
+          <image src="../../../img/11.png"></image>
+        </view>
+        <!--酒店详情-->
+        <view class="middle">
+          <view  class="hotel"><text>{{item.name}}</text></view>
+          <view  class="distance"><text>距你:XXX米→西山区</text></view>
+        </view>
+        <!--价格-->
+        <view class="right"><text class='sign color-blue'>￥</text><text class="price color-blue">{{item.data.price}}</text><text class='rise'>起</text></view>
+        </view>
+      </navigator>
+    </block>
+  </view>
+</view>

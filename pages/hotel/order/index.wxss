@@ -1,0 +1,168 @@
+/* pages/hotel/order/index.wxss */
+/*整个页面*/
+.cus-table { display: table; width: 100%; height: 100%; }
+.cus-table-cell { display: table-cell; vertical-align: middle; }
+.main .block { padding-left: 5%; }
+.all{
+  width: 100%;
+  height: auto;
+  font-family: 微软雅黑;
+  background-color: #F1F1F1;}
+
+.score { height: 0; overflow: hidden; }
+.score.active { height: 38px; }
+/*居中*/
+.center{
+  margin: 0px auto;}  
+/*主体部分*/
+.mian{
+  width: 100%;
+}  
+.main1{
+  width: 100%;
+  height: 200rpx;
+  color: white;
+  position: relative;}  
+.main1 image{
+  width: 100%;
+  height: 100%;}  
+.main1 .main1_1{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;}
+.hotel{
+  font-size: 32rpx;}
+.time{
+  font-size: 26rpx;
+   margin-top: 10rpx;}
+.address{
+  font-size: 26rpx;
+  margin-top: 3rpx;}        
+/*主体第二块*/
+.main2{
+  margin-top: 40rpx;
+  width: 100%;
+  background-color: white;
+  font-size: 28rpx;}
+.main2 .top{
+  width: 95%;
+  margin-left: 5%;
+  line-height: 80rpx;
+  color: #CCCCCC;
+}
+.main2 .top .left{
+  width: 50%;
+  display: inline-block;}    
+.main2 .top .right{
+  width: 15%;
+  color: black;
+  display: inline-block;
+  letter-spacing: 12rpx;}
+.main2 .middle{
+  width: 95%;
+  border-top: 1px solid gainsboro;
+  border-bottom: 1px solid gainsboro;
+  margin-left: 5%;
+  line-height: 80rpx;
+  color: #CCCCCC;
+}
+.main2 .middle .left{
+  width: 50%;
+  display: inline-block;}  
+.main2 .middle .right{
+  width: 15%;
+  color: black;
+  display: inline-block;}
+.main2 .bottom{
+  width: 95%;
+  margin-left: 5%;
+  line-height: 80rpx;
+  color: #CCCCCC;
+}
+.main2 .bottom .left{
+  width: 50%;
+  display: inline-block;}  
+.main2 .bottom .right{
+  width: 15%;
+  color: black;
+  display: inline-block;}
+/*主体第三块*/
+.main3{
+  width: 100%;
+  margin-top: 40rpx;
+  background-color: white;
+  font-size: 28rpx;}
+.main3_1{
+  width: 95%;
+  margin-left: 5%;
+  line-height: 80rpx;}
+.main3_1 .left{
+  width: 70%;
+  display: inline-block;}
+.main3_1 .right{
+  width: 30%;
+  display: inline-block;}
+.main3_1 .right switch{
+  margin-left: 35%;
+  margin-top: -8%;}   
+/*主体第四块*/
+.main4{
+  width: 100%;
+  margin-top: 40rpx;}
+.prompt{
+  width: 90%;
+  color: #CCCCCC;
+  font-size: 26rpx;
+  padding-bottom:40rpx;} 
+/*主体第五块*/
+.main5{
+  width: 100%;
+  background-color: white;}
+.main5 .details{
+  width: 90%;
+  color: #CCCCCC;
+  font-size: 26rpx;}  
+.main5 .details .p{
+  line-height: 80rpx;
+  transition: all 0.5s ease-in-out;}
+/* .active{
+  background-color: aqua;}   */
+.main5 .details .p .left{
+  width: 35%;
+  display: inline-block;}  
+.main5 .details .p .middle{
+  width: 42%;
+  margin-right: 3%;
+  border-top: 1px #CCCCCC dashed;
+  vertical-align: middle;
+  display: inline-block;}  
+.main5 .details .p .right{
+  width: 20%;
+  display: inline-block;
+  color: black;
+  text-align: left;}  
+
+/*主体第六块*/
+.main6{
+  width: 100%;
+  line-height: 85rpx;
+  position: fixed;
+  bottom: 0px;
+  border-top: 2px gainsboro solid;}
+.main6 .price{
+  width: 70%;
+  display: inline-block;
+  background-color: white;}
+.main6 .price text{
+  margin-left: 6%;
+  font-size: 30rpx;}    
+.main6 .submit{
+  width: 30%;
+  float: right;}
+.main6 .submit button{
+  color: white;
+  border-radius: 0px;
+  font-size: 30rpx;
+  line-height: 85rpx;}    

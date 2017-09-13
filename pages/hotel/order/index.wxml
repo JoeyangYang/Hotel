@@ -1,0 +1,115 @@
+<!--pages/hotel/order/index.wxml-->
+<!--整个页面-->
+<view class='all'>
+  <!--主体-->
+  <view class='main'>
+    <!--主体第一块-->
+    <view class='main1'>
+      <image src='../../../img/24.png'></image>
+      <view class='main1_1'>
+        <view class='cus-table'>
+          <view class='cus-table-cell'>
+            <view class='block'>
+              <view class='hotel'>
+              <text>汉庭酒店万达店</text>
+              </view>
+              <view class='time'>
+                <text>8月29日 - 8月30日   共1晚</text>
+              </view>
+              <view class='address'>
+                <text>昆明市西山区前兴路万达广场488号</text>
+              </view>
+          </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!--主体第二块-->
+    <view class='main2'>
+      <view class='top'>
+        <view class='left'>
+          <text>主体大床房</text>
+        </view>
+        <view class='right'>
+          <text class='num'>1</text><text class='between'>间</text>
+        </view>
+      </view>
+      <view class='middle'>
+        <view class='left'>入住人</view>
+        <view class='right'>杨永庆</view>
+      </view>
+      <view class='bottom'>
+        <view class='left'>手机</view>
+        <view class='right'>18787312252</view>
+      </view>
+    </view>
+    <!--主体第三块-->
+    <view class='main3'>
+      <view class='main3_1'>
+        <view class='left'>
+          <text>可用 {{integral}} 积分抵用 {{deductible}} 元</text>
+        </view>
+        <view class='right'>
+          <switch bindchange="switchChange"/>
+        </view>
+      </view>
+    </view>
+    <!--主体第四块-->
+    <view class='main4'>
+      <!--温馨提示-->
+      <view class='prompt center'>
+        <text>温馨提示：请于入住日下午14：00后办理入住，如提前到店，视酒店空房情况安排。</text>
+      </view>
+    </view>
+    <!--主体第五块-->
+    <view class='main5'>
+      <!--积分抵用详情-->
+      <view class='details center'>
+        <view class='p {{active}}'>
+          <view class='left'>
+            <text>2017-9-2  (1间)</text>
+          </view>
+          <view class='middle'>
+            
+          </view>
+          <view class='right'>
+            <text>￥{{price}}</text>
+          </view>
+        </view>
+        <view class='p score {{active}}'>
+          <view class='left'>
+            <text>积分抵用</text>
+          </view>
+          <view class='middle'>
+            
+          </view>
+          <view class='right'>
+            <text>￥{{deductible}}</text>
+          </view>
+        </view>
+        <view class='p'>
+          <view class='left'>
+            <text>总额</text>
+          </view>
+          <view class='middle'>
+            
+          </view>
+          <view class='right'>
+            <text>￥{{result}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!--主体第六块-->
+    <view class='main6'>
+      <view class='price'>
+        <text>￥{{result}}</text>
+      </view>
+      <view class='submit'>
+        <navigator url='/pages/hotel/order_pay/index?result={{result}}'>
+          <button class='bg-blue'>提交订单</button>
+        </navigator>
+      </view>
+    </view>
+  </view>
+</view>

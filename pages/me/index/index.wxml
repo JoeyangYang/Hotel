@@ -1,0 +1,49 @@
+<!--pages/me/index/index.wxml-->
+<view class="me_index">
+    <view class="box">
+        <image src="../../../img/me_index_bg.jpg"></image>
+    </view>
+    <view class="userImg">
+       <image src="{{userImage}}"></image>
+       <view>{{userName}}</view>
+    </view><!--userImg结束-->
+    <view class="order">
+       <view class="myOrder">
+          <navigator url="../../order/index/index?status=0"><text>我的订单</text><text class="rt">全部订单></text></navigator>
+          <!-- <navigator class="rt">全部订单</navigator> -->
+       </view>
+       <view class="orderList">
+                <navigator class="pubOrder" url="../../order/index/index?status=1">
+                    <image src="../../../img/check_in.png"></image>
+                    <text>待入住</text>
+                </navigator>
+                  <navigator class="pubOrder" url="../../order/index/index?status=2">
+                    <image src="../../../img/check_out.png"></image>
+                    <text>已完成</text>
+                </navigator>
+                <navigator class="pubOrder" url="../../order/index/index?status=3">
+                    <image src="../../../img/money.png"></image>
+                    <text>退款中</text>
+                </navigator>
+                <navigator class="pubOrder" url="../../order/index/index?status=4">
+                    <image src="../../../img/money2.png"></image>
+                    <text>已退款</text>
+                </navigator>
+       </view><!--orderList结束-->
+    </view><!--order结束-->
+    <view class="score">
+        <navigator url="../score/index">
+            <text>我的积分</text>
+            <text class="ft">2333</text>
+        </navigator>
+        <navigator url="../score_rule/index">
+            <text class='myScore'>积分规则</text>
+            <text class="ft">1分抵1元</text>
+        </navigator>
+     </view><!--score结束-->
+     <view class="phone">
+         <navigator url="../phone_update/index">
+            <text>更换手机号</text>
+        </navigator>
+     </view><!--phone结束-->   
+</view><!--me_index结束-->

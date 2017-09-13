@@ -1,0 +1,306 @@
+/* pages/hotel/detail/index.wxss */
+/*整个页面*/
+.all{
+  width: 100%;
+  height: auto;
+  background-color: #F8F8F8;
+  font-family: 微软雅黑;}
+/*居中*/
+.center{
+  margin: 0px auto;}
+/*主体*/
+.main{
+  width: 100%;}
+
+/*主体第一块酒店图片*/
+.main1{
+  width: 100%;
+  height: 450rpx;
+  position: relative;}
+.main1 image{
+  width: 100%;
+  height: 100%;}     
+.main1 .main1_1{
+  width: 100%;
+  height: 80rpx;
+  background-color: black;
+  position: absolute;
+  bottom: 0%;
+  z-index: 1;
+  opacity: 0.4;}
+.main1 .hotel{
+  width: 90%;
+  line-height: 80rpx;
+  position: absolute;
+  bottom: 0%;
+  left: 5%;
+  z-index: 2;
+  color: white;
+  font-size: 30rpx;} 
+
+/*主体第二块地址*/ 
+.main2{
+  width: 100%;
+  margin-top: 20rpx;
+  background-color: white;}
+/*酒店地址*/
+.main2 .address{
+  width: 90%;
+  height: 80rpx;
+  line-height: 80rpx;}
+/*图片*/  
+.main2 .address .pic{
+  width: 7%;
+  height: 100%; 
+  float: left;}
+.main2 .address .pic image{
+  width: 80%;
+  height: 45%;
+  margin-top: 28%;}
+.main2 .address .pic .img{
+  width: 50%;
+  height: 38%;
+  margin-left: 15%;}  
+/*内容部分*/    
+.main2 .address .content{
+  float: left;
+  width: 89%;
+  height: 100%;
+  font-size: 26rpx;}
+/*图标*/
+.main2 .address .icon{
+  float: left;
+  width: 4%;
+  height: 100%;}
+.main2 .address .icon image{
+  margin-left: 40%;
+  width: 32%;
+  height: 26%;}
+
+/*主体第四块入住时间详情*/
+.main4{
+  width: 100%;
+  margin-top: 20rpx;
+  background-color: white;}
+/*酒店地址*/
+.main4 .check{
+  width: 90%;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 28rpx;}
+
+
+/*图片*/       
+.main4 .check .pic{
+  width: 7%;
+  height: 100%; 
+  float: left;}
+.main4 .check .pic image{
+  width: 58%;
+  height: 44%;
+  margin-left: 11%;
+  margin-top: 40%;}
+/*中间部分*/
+.main4 .check .middle{
+  width: 89%;
+  height: 100%;
+  float: left;
+  font-size: 26rpx;}
+.main4 .check .middle .one{
+  width: 12%;
+  height: 100%;
+  float: left;
+  line-height: 80rpx;
+  box-sizing: border-box;
+  text-align: center;}
+.main4 .check .middle .one2{
+  width: 28%;
+  height: 100%;
+  float: left;
+  line-height: 80rpx;
+  box-sizing: border-box;}  
+.one1{
+  width: 15%;
+  color: #C1C1C1;
+  text-align: left;} 
+.main4 .check .middle .one3{
+  width: 20%;} 
+.main4 .check .middle .common{
+  font-size: 25rpx;
+  color: #C1C1C1;} 
+.main4 .check .middle .num{
+  font-size: 30rpx;
+  display: inline-block;
+  width: 50rpx;}       
+/*图标*/  
+.main4 .check .icon{
+  float: left;
+  width: 4%;
+  height: 100%;} 
+.main4 .check .icon image{
+  margin-left: 40%;
+  width: 32%;
+  height: 26%;} 
+
+/*主体第五块酒店列表*/
+.main5{
+  width: 100%;
+  margin-top: 40rpx;}
+.main5_1{
+  width: 100%;
+  background-color: white;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0rpx 0rpx 0rpx #ddd;} 
+.main5_1.active{
+  box-shadow: 0rpx 4rpx 12rpx #A8DBFB;
+  border: 0;}  
+.abroad{
+  width: 90%;} 
+.abroad .hotel{
+  width: 100%;
+  padding-top: 20rpx;
+  padding-bottom: 15rpx;}
+/*左边*/    
+.abroad .hotel .left{
+  width: 14%;
+  display: inline-block;}
+.abroad .hotel .left image{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 48rpx;
+  box-shadow: 3rpx 3rpx 6rpx gray;}
+/*中间*/  
+.abroad .hotel .middle{
+  width: 82%;
+  display: inline-block;
+  line-height: 60rpx; 
+  font-size: 28rpx;}
+.abroad .hotel .middle .type{
+  width: 67%;
+  margin-left: 3%;
+  float: left;}
+.abroad .hotel .middle .type .top{
+  width: 100%;
+  line-height: 45rpx;
+  font-size: 28rpx;}
+.abroad .hotel .middle .type .top text{
+  margin-left: 3%;}  
+.abroad .hotel .middle .type .bottom{
+  width: 100%;
+  font-size: 24rpx;}
+.abroad .hotel .middle .type .bottom .first{
+  width: 30%;
+  float: left;
+  line-height: 50rpx;
+  color: #ACACAC;
+  overflow:hidden;/*超出一行文字自动隐藏*/
+  text-overflow:ellipsis;/*文字隐藏后添加省略号*/
+  white-space:nowrap;/**/} 
+.abroad .hotel .middle .type .bottom .first text{
+  margin-left: 15%;}       
+.abroad .hotel .middle .price{
+  width: 30%;
+  font-size: 36rpx;
+  float: left;
+  line-height: 80rpx;} 
+
+.abroad .hotel .middle .price .money{font-size: 25rpx;}
+.abroad .hotel .middle .price .num{font-size: 39rpx;font-weight: bold;margin-right: 6%;}
+.abroad .hotel .middle .price .rise{font-size: 25rpx;}     
+/*右边的图标*/         
+.abroad .hotel .right{
+  width: 4%;
+  float: right;
+  height: 80rpx;}
+.abroad .hotel .right image{
+  width: 4.3125px;
+  height: 10.3906px;
+  transition: all 0.3s ease-in-out;
+  margin-top: 165%;
+  transform: rotate(90deg);
+}    
+.abroad .hotel .right image.active{
+  transform: rotate(-90deg);
+}
+
+/* .test { height: 0; overflow: hidden; transition: all 0.3s ease-in-out; } 
+.test.active { height: 100rpx; } */
+/*隐藏块*/
+.test{
+  width: 90%;
+  height: 0rpx;
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+  font-size: 28rpx;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  border-radius: 12rpx;}
+.test.active { 
+  height: 80rpx; 
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  line-height: 80rpx;
+  background-color: white;}
+.test .discount{
+  line-height: 80rpx;
+  width: 40%;
+  float: left;}
+.test .discount1{
+  line-height: 80rpx;
+  width: 15%;
+  text-align: center;
+  float: left;
+  height: 80rpx;
+  overflow: hidden;
+  text-overflow:ellipsis;/*文字隐藏后添加省略号*/
+  white-space:nowrap;/*强制不换行*/} 
+.test .discount2{
+  width: 30%;
+  color: #ACACAC;
+  text-align: right;}  
+.test .discount1 button{
+  width: 90%;
+  line-height: 50rpx;
+  font-size: 25rpx;
+  color: white;
+  margin-top: 15rpx;
+  padding: 0;}  
+
+/*酒店设备*/
+.supply{
+  width: 90%;
+  height: 120rpx;
+  background-color: white;
+  margin-top: 30rpx;
+  overflow-x: auto;
+  border-radius: 12rpx;}  
+.supply .last{
+  width: 20%;
+  height: 100%;
+  float: left;
+  font-size: 26rpx;
+  color: gainsboro;}
+.supply .last .one{
+  width: 100%;
+  height: 60%;}
+.supply .last .one image{
+  width: 40%;
+  height: 64%;
+  margin-left: 30%;
+  margin-top: 18%;}
+.supply .last .two{
+  width: 100%;
+  height: 40%;
+  text-align: center;
+  color: #C1C1C1;
+  line-height: 40rpx;
+  font-size: 22rpx;}        
+
+/*温馨提示*/
+.prompt{
+  width: 90%;
+  line-height: 45rpx;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  color: #C1C1C1;
+  font-size: 25rpx;}       

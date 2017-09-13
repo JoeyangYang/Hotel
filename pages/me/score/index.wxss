@@ -1,0 +1,20 @@
+/* pages/me/score/index.wxss */
+.score{background: #f2f2f2;font-family: "微软雅黑";position: relative;}
+.score .bg_box{position:fixed;top:0;left:0;width:99.5%;z-index:100; }
+.score .bg{color: #fff;position: relative;background: #fff;}
+.score .bg .num{width:100%;position: absolute;bottom:54rpx;left:0;text-align: center;}
+.score .bg text{font-size:60rpx;font-weight: bold;}
+.score .bg image{width:100%;height:200rpx;margin-top:0;}
+.score .record{height: 30rpx;padding:44rpx 76rpx;background: #fff;font-size:30rpx;box-shadow: 0px 4px 3px #f2f2f2;}
+.score .scorePub{position: relative;}
+.score .scorePub{display: flex;padding:44rpx 76rpx;background: #fff;margin-top:5px;font-size:24rpx; position: relative;}
+.score .scorePub .bg-activity { height: 0; width: 0; position: absolute; left: 50%; top: 50%; background: #ddd; z-index: 0; transition: all 0.5s ease-out; }
+.score .scorePub .bg-activity.active { height: 100%; width: 100%; left: 0; top: 0;border-radius: 10px; }
+.score .scorePub .block { width: 100%; position: relative; z-index: 1; }
+.score .scorePub .entry{flex-direction: row;}
+.score .scorePub .entry text.price{font-weight: bold;font-size:39rpx;}
+.score .scorePub .entry.lt{width:70%; float: left;}
+.score .scorePub .entry.lt text{display: block;}
+.score .scorePub .entry.lt text.grey{color:#cdcdcd;}
+.score .scorePub .entry.rt{width:30%;text-align: right; float: right;}
+.score .scorePub_box{margin-top:356rpx;}

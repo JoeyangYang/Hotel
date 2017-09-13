@@ -1,0 +1,19 @@
+<!--pages/me/phone_update/index.wxml-->
+<view class="phone_update">
+   <view  class="check">
+      <input type="number" placeholder="输入新的手机号"/>
+      <button class='bg-blue'>发送验证码</button>
+   </view>
+    <input type="number" placeholder="输入验证码" class="code"/>  
+   
+</view><!--phone_update-->
+<view class="bottomBox bg-blue" bindtap="confirm">
+   确认更换
+    </view>
+     <view class="{{className}}" style="width:'{{winWidth}}';height:'{{winHeight}}'">
+        
+    </view>
+     <view class="show {{on}}">
+       <text>更换成功</text>
+       <text>将在{{second}}秒后自动跳转</text>
+    </view>

@@ -1,0 +1,85 @@
+<!--pages/order/detail/index.wxml-->
+<block wx:key="" wx:for="{{hotel}}">
+<view class="order_detail">
+    <view class="bg">
+        <image src="{{imgUrl}}"></image>
+        <view class="abs">
+                <text class="wait">{{item.status}}</text>
+                <text class="ok">您的房间已预定成功，期待您的入住</text>
+        </view><!--abs结束-->    
+    </view>
+    <view class="info">
+     <text class="book">预定信息</text>
+        <view class="del_info">
+            <view class="box">
+                 <text class="lt">酒店</text>
+                 <text class="rt">{{item.hotel_name}}</text>
+            </view>
+             <view class="box">
+                 <text class="lt">地址</text>
+                 <text class="rt">{{item.address}}</text>
+            </view>
+             <view class="box">
+                 <text class="lt">电话</text>
+                 <text class="rt">{{item.order_number}}</text>
+            </view>
+        </view><!--del_info结束-->
+    </view><!--info结束-->
+    <view class="info">
+        <view class="del_info">
+            <view class="box">
+                 <text class="lt">房型</text>
+                 <text class="rt">汉庭酒店万达店</text>
+            </view>
+             <view class="box">
+                 <text class="lt">时间</text>
+                 <text class="rt">{{item.check_in}}至{{item.check_out}}</text>
+            </view>
+             <view class="box">
+                 <text class="lt">早餐</text>
+                 <text class="rt">0872-1234567</text>
+            </view>
+        </view><!--del_info结束-->
+    </view><!--info结束-->
+     <view class="info">
+        <view class="del_info">
+            <view class="box">
+                 <text class="lt">电话</text>
+                 <text class="rt">{{item.user_phone}}</text>
+            </view>
+             <view class="box">
+                 <text class="lt">姓名</text>
+                 <text class="rt">{{item.user_name}}</text>
+            </view>
+        </view><!--del_info结束-->
+    </view><!--info结束-->
+     <view class="info">
+        <view class="del_info">
+            <view class="box">
+                 <text class="lt">积分</text>
+                 <text class="rt">汉庭酒店万达店</text>
+            </view>
+             <view class="box">
+                 <text class="lt">订单号</text>
+                 <text class="rt">{{item.order_number}}</text>
+            </view>
+        </view><!--del_info结束-->
+    </view><!--info结束-->
+    <view class="info">
+        <view class="del_info">
+            <view class="box">
+                 <text class="lt">实付款</text>
+                 <text class="rt">￥{{item.price}}</text>
+            </view>
+        </view><!--del_info结束-->
+    </view><!--info结束-->
+    <view class="tips">
+        温馨提示：请于入住后下午14：00后办理入住，如提前到店，视酒店空房情况安排。
+    </view>
+    
+</view><!--order_detail结束-->
+</block>
+<view class="foot">
+        <navigator url="/pages/me/refund/index">申请退款</navigator>
+        <navigator url="/pages/hotel/detail/index">再次预定</navigator>
+    </view>

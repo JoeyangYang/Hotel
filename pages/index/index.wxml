@@ -1,0 +1,75 @@
+<!--pages/index/index.wxml-->
+<!--大容器-->
+<view class="all">
+  <!--头部-->
+  <view class="header relative">
+     <image src="/img/3.png"></image> 
+    <view class="head1">
+      <!--上-->
+      <view class="top Center">
+        <view class="left">昆明</view>
+        <view class="right">位置</view>
+      </view>
+      <!--中-->
+      <view class="middle border Center">
+        <!--入住日期-->
+        <view class="section" style="display:inline-block;">
+            <picker mode="date" value="{{date}}" start="{{today}}" bindchange="bindDateChange" >
+              <view class="picker">
+                <view class="date">入住日期</view> 
+                <text class="dateTime">{{date}}</text>
+              </view>
+            </picker>
+          </view>
+        <!--统计入住时间-->
+        <view class="night">
+          <em class="em3"></em>
+          <text class="nightNum">{{nightNum}}晚</text>
+          <em class="em4"></em>  
+        </view>
+        <!--退房时间-->
+        <view class="section" style="display:inline-block;">
+            <picker mode="date" value="{{date}}"  bindchange="bindDateChangeEnd" start="{{date}}" >
+              <view class="picker">
+                <view class="date">离店日期</view> 
+                <text class="dateTime">{{dateEnd}}</text>  
+              </view>
+            </picker>
+        </view>
+      </view>
+      <!--下-->
+      <view class="bottom Center">
+        <navigator url='/pages/hotel/index/index?date={{date}}&nightNum={{nightNum}}&dateEnd={{dateEnd}}'>
+          <button class='bg-blue'>查询酒店</button>
+        </navigator>
+      </view>
+    </view>
+  </view>
+  <!--主体-->
+  <view class="main">
+    <view class="main1 relative">
+      <em class="em1"></em>
+      <text class="brand">嘉优隆品牌</text>
+      <em class="em2"></em>
+    </view>
+    <swiper indicator-dots="{{indicatorDots}}"
+    autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <block wx:key="" wx:for="{{datas}}" wx:for-index="index" wx:for-item="val1">
+      <swiper-item bindtap="top">
+        <block wx:key="" wx:for="{{val1}}" wx:for-item="val2">
+          <navigator url="../test/index?id={{val2.id}}" class="nav">
+           <view class="main2">
+               <view class='one'>
+                  <image src="{{val2.image}}"></image>
+               </view>
+               <view class='two'>
+                  {{val2.name}}
+               </view>
+           </view> 
+          </navigator>
+        </block>
+      </swiper-item>
+    </block>
+    </swiper>
+  </view>
+</view>

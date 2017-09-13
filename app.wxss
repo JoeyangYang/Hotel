@@ -1,0 +1,12 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+}
+.bg-blue{background: linear-gradient(#3399ff,#3ab3ff);}
+.color-blue{color: #3ab3ff;}
