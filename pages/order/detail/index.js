@@ -58,57 +58,7 @@ Page({
       }
     });
      },
-   })
-
-    // wx.request({
-    //   header: {
-    //     "Content-Type": "application/x-www-form-urlencoded"
-    //   },
-    //   method: 'POST',
-    //   url: app.globalData.webSite + '/Home/Wechat/orderSelectById',
-    //   data: {
-    //     id: options.id,
-    //   },
-    //   success: function (res) {
-    //     var data = res.data;
-    //     if(data.code=="200"){
-    //       data.data.forEach(function (val, key) {
-    //         if (val.status == '0') {
-    //           data.data[key].status = '待入住';
-    //           that.setData({
-    //             imgUrl: "/img/detail1.jpg",
-    //           });
-    //         }
-    //         if (val.status == '1') {
-    //           data.data[key].status = '已完成';
-    //           that.setData({
-    //             imgUrl: "/img/detail2.jpg",
-    //           });
-    //         }
-    //         if (val.status == '2') {
-    //           data.data[key].status = '退款中';
-    //           that.setData({
-    //             imgUrl: "/img/detail3.jpg",
-    //           });
-    //         }
-    //         if (val.status == '3') {
-    //           data.data[key].status = '已退款';
-    //           that.setData({
-    //             imgUrl: "/img/detail4.jpg",
-    //           });
-    //         }
-    //       });
-    //        that.setData({
-    //          hotel:data.data
-    //        });
-
-    //     }
-        
-    //   }
-    // });
-  
-
-    
+   })   
   },
 
   /**
