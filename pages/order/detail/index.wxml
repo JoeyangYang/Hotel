@@ -5,7 +5,7 @@
         <image src="{{imgUrl}}"></image>
         <view class="abs">
                 <text class="wait">{{item.status}}</text>
-                <text class="ok">您的房间已预定成功，期待您的入住</text>
+                <text class="ok">{{imgText}}</text>
         </view><!--abs结束-->    
     </view>
     <view class="info">
