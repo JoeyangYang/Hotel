@@ -7,14 +7,14 @@ Page({
   data: {
     on: 'on0',
     animation:'animation0',
-    show:'show'
+    show:'show',
+    flag:true,
   },
   //事件处理
   orderNavClick: function(e) {
     var that = this;
     //获取导航index值(1开始)
     var index = e.currentTarget.dataset.active;  
-    console.log(index); 
     var on = 'on' + index;
     var animation='animation'+index;
     that.setData({
@@ -33,15 +33,16 @@ Page({
         },
         success: function (res) {
           var data = res.data;
-          console.log(data);
           //订单状态翻译
           if (data.code == '200') {
             data.data.forEach(function (val, key) {
               if (val.status == '0') {
                 data.data[key].status = '待入住';
+                data.data[key].refund = 'show';
               }
               if (val.status == '1') {
                 data.data[key].status = '已完成';
+                data.data[key].refund = 'show';
               }
               if (val.status == '2') {
                 data.data[key].status = '退款中';
@@ -68,6 +69,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+   
     var that = this;
     var index=options.status;
     var animation = 'animation' + index;
@@ -89,12 +91,15 @@ Page({
             data.data.forEach(function (val, key) {
               if (val.status == '0') {
                 data.data[key].status = '待入住';
+                data.data[key].refund = 'show';
               }
               if (val.status == '1') {
                 data.data[key].status = '已完成';
+                data.data[key].refund = 'show';
               }
               if (val.status == '2') {
                 data.data[key].status = '退款中';
+                
               }
               if (val.status == '3') {
                 data.data[key].status = '已退款';
