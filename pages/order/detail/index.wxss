@@ -18,4 +18,4 @@
 .foot{height:80rpx;border-top:3px solid #d7d7d7;line-height:  80rpx;font-size: 28rpx;position: fixed;bottom: 0;width:100%;}
 .foot navigator{display: inline-block;text-align: center;}
 .foot navigator:first-child{width:30%;background: #fff;}
-.foot navigator:last-child{width:70%;background:#ff8300;color:#fff;}
+.foot navigator:last-child{width:70%;background:#3ab3ff;color:#fff;}
