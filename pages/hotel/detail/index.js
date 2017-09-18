@@ -15,6 +15,28 @@ Page({
     var that = this;
     var index = e.currentTarget.dataset.index;
     var testHandle = that.data.testHandle;
+    var spec = e.currentTarget.dataset.spec;
+    wx.setStorage({
+      key: 'spec',
+      data: {
+        spec: spec
+      }
+    });
+    // wx.getStorage({
+    //   key: 'spec',
+    //   success: function(res) {
+    //     var data = res.data;
+    //     data.member = member;
+    //     data = {
+    //       spec: [],
+    //       member: []
+    //     }
+    //     wx.setStorage({
+    //       key: 'spec',
+    //       data: data
+    //     })
+    //   }
+    // });
     wx.getStorage({
       key: 'singleHotel',
       success: function(res) {
@@ -31,7 +53,7 @@ Page({
           that.setData({
             hotel: hotel,
             testHandle: index
-          });
+          })
         }
       }
     })
@@ -42,13 +64,11 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-
     that.setData({
       date: options.date,
       nightNum: options.nightNum,
       dateEnd: options.dateEnd
     }); 
-
     wx.getStorage({
       key: 'singleHotel',
       success: function(res) {
@@ -72,7 +92,6 @@ Page({
             });
           }
         });
-
         qqmapsdk.getCityList({
           success: function (res) {
             var province = res.result[0];
@@ -81,7 +100,6 @@ Page({
             })
           }
         });
-
       }
     });
   },
@@ -97,9 +115,22 @@ Page({
   clickJump:function(e){
     var that = this;
     var price=e.currentTarget.dataset.price;
-    wx.setStorage({
-      key: 'price',
-      data: price,
+    var spec = e.currentTarget.dataset.spec;
+    // wx.setStorage({
+    //   key: 'price',
+    //   data: {price,spec},
+    // })
+    wx.getStorage({
+      key: 'spec',
+      success: function(res) {
+        var data = res.data;
+        data.member = spec;
+        data.price=price;
+        wx.setStorage({
+          key: 'spec',
+          data: data,
+        })
+      },
     })
   },
 

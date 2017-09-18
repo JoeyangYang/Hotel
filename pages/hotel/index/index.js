@@ -15,7 +15,6 @@ Page({
   bindDateChange: function (e) {
     var that = this;
     var startTime = new Date(e.detail.value).getTime();
-    console.log(startTime);
     that.setData({
       startTime: startTime,
       date: e.detail.value
@@ -27,7 +26,6 @@ Page({
     var starTime = that.data.startTime;
     var endTime = new Date(e.detail.value).getTime();
     var result = ((((endTime - starTime) / 1000) / 60) / 60) / 24;
-    console.log(result);
     that.setData({
       nightNum: result,
       dateEnd: e.detail.value
@@ -98,7 +96,6 @@ Page({
       endTime: endTime
     });
 
-    console.log(options.dateEnd);
     that.setData({
       date: options.date,
       nightNum: options.nightNum,
@@ -159,6 +156,7 @@ Page({
               id: "1",
               name: '嘉优隆酒店1(五华区)',
               data: {
+                id:1,
                 address: '昆明市五华区XXXXXXXXX号',
                 phone: '0871-46275645',
                 price: '199',
@@ -204,6 +202,7 @@ Page({
               id: "2",
               name: '嘉优隆酒店2(五华区)',
               data: {
+                id: 2,
                 address: '昆明市五华区XXXXXXXXX2号',
                 phone: '0871-46275645',
                 price: '199',
@@ -232,6 +231,7 @@ Page({
               id: "3",
               name: '嘉优隆酒店3(五华区)',
               data: {
+                id: 3,
                 address: '昆明市五华区XXXXXXXXX2号',
                 phone: '0871-46275645',
                 price: '199',
@@ -267,6 +267,7 @@ Page({
               id:"1",
               name: '嘉优隆酒店1(盘龙区)',
               data: {
+                id: 4,
                 address: '昆明市盘龙区XXXXXXXXX号',
                 phone: '0871-46275645',
                 price: '199',
@@ -295,6 +296,7 @@ Page({
               id: "2",
               name: '嘉优隆酒店2(盘龙区)',
               data: {
+                id: 5,
                 address: '昆明市盘龙区XXXXXXXXX2号',
                 phone: '0871-46275645',
                 price: '199',
@@ -323,6 +325,7 @@ Page({
               id: "3",
               name: '嘉优隆酒店3(盘龙区)',
               data: {
+                id: 6,
                 address: '昆明市盘龙区XXXXXXXXX2号',
                 phone: '0871-46275645',
                 price: '199',
@@ -358,6 +361,7 @@ Page({
               id: "1",
               name: '嘉优隆酒店1(西山区)',
               data: {
+                id: 7,
                 address: '昆明市西山区XXXXXXXXX号',
                 phone: '0871-46275645',                
                 price: '199',
@@ -386,6 +390,7 @@ Page({
               id: "2",
               name: '嘉优隆酒店2(西山区)',
               data: {
+                id: 8,
                 address: '昆明市西山区XXXXXXXXX2号',
                 phone: '0871-46275645',
                 price: '199',
@@ -414,6 +419,7 @@ Page({
               id: "3",
               name: '嘉优隆酒店3(西山区)',
               data: {
+                id: 9,
                 address: '昆明市西山区XXXXXXXXX2号',
                 phone: '0871-46275645',
                 price: '199',

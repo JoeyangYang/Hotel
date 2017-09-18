@@ -61,7 +61,7 @@
     <view class='main5'>
       <block wx:key="" wx:for="{{hotel.data.homeStyle}}" wx:for-item="item1" wx:for-index="index">
         <view class='block'>
-          <view class='main5_1 {{item1.active}}' data-index="{{index}}" bindtap="testClick">
+          <view class='main5_1 {{item1.active}}' data-index="{{index}}" data-spec='{{item1.spec}}' bindtap="testClick">
           <view class='abroad center'>
             <view class='hotel'>
               <!--酒店图片-->
@@ -107,7 +107,7 @@
               <text>￥{{item3.price}}</text>
             </view>
             <view class='discount1'>
-              <navigator url='/pages/hotel/order/index' data-price='{{item3.price}}' bindtap='clickJump'>
+              <navigator url='/pages/hotel/order/index?date={{date}}&nightNum={{nightNum}}&dateEnd={{dateEnd}}' data-price='{{item3.price}}' data-spec='{{item3.spec}}' bindtap='clickJump'>
                 <button class='bg-blue'>预定</button>
               </navigator>
             </view>
