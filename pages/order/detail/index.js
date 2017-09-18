@@ -26,25 +26,29 @@ Page({
         if (val.status == '0') {
           val.status = '待入住';
           that.setData({
-            imgUrl: "/img/detail1.jpg"
+            imgUrl: "/img/detail1.jpg",
+            imgText:'您的房间已预订成功，期待您的入住'
           });
         }
         if (val.status == '1') {
           val.status = '已完成';
           that.setData({
-            imgUrl: "/img/detail2.jpg"
+            imgUrl: "/img/detail2.jpg",
+            imgText: '感谢您光临嘉优隆精品酒店，期待您的下次入住'
           });
         }
         if (val.status == '2') {
           val.status = '退款中';
           that.setData({
-            imgUrl: "/img/detail3.jpg"
+            imgUrl: "/img/detail3.jpg",
+            imgText: '您的房间退款正在办理中，请您耐心等待'
           });
         }
         if (val.status == '3') {
           val.status = '已退款';
           that.setData({
-            imgUrl: "/img/detail4.jpg"
+            imgUrl: "/img/detail4.jpg",
+            imgText: '您的房间已退款成功，期待您的下次入住'
           });
         }
         signHotel.push(val);
@@ -54,57 +58,7 @@ Page({
       }
     });
      },
-   })
-
-    // wx.request({
-    //   header: {
-    //     "Content-Type": "application/x-www-form-urlencoded"
-    //   },
-    //   method: 'POST',
-    //   url: app.globalData.webSite + '/Home/Wechat/orderSelectById',
-    //   data: {
-    //     id: options.id,
-    //   },
-    //   success: function (res) {
-    //     var data = res.data;
-    //     if(data.code=="200"){
-    //       data.data.forEach(function (val, key) {
-    //         if (val.status == '0') {
-    //           data.data[key].status = '待入住';
-    //           that.setData({
-    //             imgUrl: "/img/detail1.jpg",
-    //           });
-    //         }
-    //         if (val.status == '1') {
-    //           data.data[key].status = '已完成';
-    //           that.setData({
-    //             imgUrl: "/img/detail2.jpg",
-    //           });
-    //         }
-    //         if (val.status == '2') {
-    //           data.data[key].status = '退款中';
-    //           that.setData({
-    //             imgUrl: "/img/detail3.jpg",
-    //           });
-    //         }
-    //         if (val.status == '3') {
-    //           data.data[key].status = '已退款';
-    //           that.setData({
-    //             imgUrl: "/img/detail4.jpg",
-    //           });
-    //         }
-    //       });
-    //        that.setData({
-    //          hotel:data.data
-    //        });
-
-    //     }
-        
-    //   }
-    // });
-  
-
-    
+   })   
   },
 
   /**
