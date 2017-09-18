@@ -11,13 +11,13 @@
           <view class='cus-table-cell'>
             <view class='block'>
               <view class='hotel'>
-              <text>汉庭酒店万达店</text>
+              <text>{{hotelName}}</text>
               </view>
               <view class='time'>
-                <text>8月29日 - 8月30日   共1晚</text>
+                <text>{{date}} —— {{dateEnd}}      共{{nightNum}}晚</text>
               </view>
               <view class='address'>
-                <text>昆明市西山区前兴路万达广场488号</text>
+                <text>{{address}}</text>
               </view>
           </view>
           </view>
@@ -36,7 +36,7 @@
       </view>
       <view class='middle'>
         <view class='left'>入住人</view>
-        <view class='right'>杨永庆</view>
+        <view class='right'>{{userName}}</view>
       </view>
       <view class='bottom'>
         <view class='left'>手机</view>
@@ -107,7 +107,7 @@
       </view>
       <view class='submit'>
         <navigator url='/pages/hotel/order_pay/index?result={{result}}'>
-          <button class='bg-blue'>提交订单</button>
+          <button class='bg-blue' bindtap='submit'>提交订单</button>
         </navigator>
       </view>
     </view>
