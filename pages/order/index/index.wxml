@@ -27,7 +27,7 @@
       </view>
        </navigator>
       <view class="btns">
-      <navigator url="../../me/refund/index" class="refund {{show}}">
+      <navigator url="../../me/refund/index?id={{item.id}}&price={{item.price}}" class="refund {{item.refund}}"> 
             申请退款
       </navigator>
       <navigator url="/pages/hotel/detail/index" class="book">
