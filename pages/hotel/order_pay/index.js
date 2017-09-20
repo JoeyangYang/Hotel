@@ -20,9 +20,6 @@ Page({
   },
 
   switchTab:function(e){
-    // wx.switchTab({
-    //   url: '/pages/me/index/index'
-    // });
     var that = this;
     wx.getStorage({
       key: 'orderList',
@@ -35,28 +32,8 @@ Page({
             for (var i = 0; i < 32; i++) {
               order_number += parseInt(Math.random() * 10)
             }
-
             //生成detail
-            var detail = '';
-            var specData = spec.data;
-            specData.spec.forEach(function (val, key) {
-              detail += val + ' ';
-            });
-            specData.member.forEach(function(val,key) {
-              detail += val + ' ';
-            });
-            // console.log('+++++++++++++++++++++');
-            // console.log('order_number:'+order_number);
-            // console.log('hotel_id:' + res.data.hotel_id);
-            // console.log('hotel_name:' + res.data.hotel_name);
-            // console.log('address:' + res.data.address);
-            // console.log('check_in:' + res.data.check_in);
-            // console.log('check_out:' + res.data.check_out);
-            // console.log('detail:' + detail);
-            // console.log('price:' + res.data.price);
-            // console.log('status:' + 0);
-            // console.log('user_name:' + res.data.user_name);
-            // console.log('user_phone:' + res.data.user_phone);
+            var detail = spec.data;
             wx.request({
               header: {
                 "Content-Type": "application/x-www-form-urlencoded"

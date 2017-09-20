@@ -59,7 +59,7 @@
     </view>
     <!--主体第五块-->
     <view class='main5'>
-      <!-- <block wx:key="" wx:for="{{hotel.data.homeStyle}}" wx:for-item="item1" wx:for-index="index"> -->
+       <block wx:key="" wx:for="{{hotel.homeStyle}}" wx:for-item="item1" wx:for-index="index"> 
         <view class='block'>
           <view class='main5_1 {{item1.active}}' data-index="{{index}}" data-spec='{{item1.spec}}' bindtap="testClick">
           <view class='abroad center'>
@@ -73,18 +73,18 @@
                 <!--酒店类型-->
                 <view class='type'>
                   <view class='top'>
-                    <text>{{hotel.homeStyle.name}}</text>
+                    <text>{{item1.name}}</text>
                   </view>
                   <view class='bottom'>
-                     <view class='first'><text>{{hotel.homeStyle.spec}}</text></view>
-                    <!-- <block wx:key="" wx:for="{{item1.spec}}" wx:for-item="item2">
+                     <view class='first'><text>{{item1.spec}}</text></view>
+                     <!-- <block wx:key="" wx:for="{{item1.spec}}" wx:for-item="item2">
                       <view class='first'><text>{{item2}}</text></view>
-                    </block> -->
+                    </block>  -->
                   </view>
                 </view>
                 <!--酒店价格-->
                 <view class='price'>
-                  <text class='money color-blue'>￥</text><text class='num color-blue'>{{hotel.homeStyle.price}}</text><text class='rise'>起</text>
+                  <text class='money color-blue'>￥</text><text class='num color-blue'>{{item1.price}}</text><text class='rise'>起</text>
                 </view>
               </view>
               <!--图标-->
@@ -96,19 +96,19 @@
         </view>
         <!--隐藏块-->
         <view class='main5_2'>
-          <block wx:key="" wx:for="{{hotel.homeStyle.member}}" wx:for-item="item3">
+          <block wx:key="" wx:for="{{item1.member}}" wx:for-item="item2">
           <view class='test center {{item1.active}}'>
             <view class='discount'>
-              <text>{{item3.name}}</text>
+              <text>{{item2.name}}</text>
             </view>
             <view class='discount1 discount2'>
-              <text>{{item3.spec}}</text>
+              <text>{{item2.spec}}</text>
             </view>
             <view class='discount1'>
-              <text>￥{{item3.price}}</text>
+              <text>￥{{item2.price}}</text>
             </view>
             <view class='discount1'>
-              <navigator url='/pages/hotel/order/index?date={{date}}&nightNum={{nightNum}}&dateEnd={{dateEnd}}' data-price='{{item3.price}}' data-spec='{{item3.spec}}' bindtap='clickJump'>
+              <navigator url='/pages/hotel/order/index?date={{date}}&nightNum={{nightNum}}&dateEnd={{dateEnd}}' data-price='{{item2.price}}' data-spec='{{item2.spec}}' bindtap='clickJump'>
                 <button class='bg-blue'>预定</button>
               </navigator>
             </view>
@@ -116,7 +116,7 @@
           </block>
         </view>
       </view>
-      <!-- </block> -->
+       </block> 
       <!--酒店配备设施块-->
       <view class='tips'>
         <view class='supply center'>

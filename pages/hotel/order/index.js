@@ -55,12 +55,11 @@ Page({
     wx.getStorage({
       key: 'singleHotel',
       success: function(res) {
-        var hotel=res.data;
         that.setData({
-          address:hotel.data.address,
-          hotelName:hotel.name,
-          phone:hotel.data.phone,
-          id:hotel.data.id
+          address: res.data.address,
+          hotelName: res.data.name,
+          phone:res.data.phone,
+          id: res.data.id
         })
       },
     })  
@@ -77,6 +76,7 @@ Page({
       },
     });
   },
+  //提交订单
   submit:function(){
     var that=this;
     var address=that.data.address;

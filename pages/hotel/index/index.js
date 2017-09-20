@@ -122,7 +122,6 @@ Page({
       nightNum: options.nightNum,
       dateEnd: options.dateEnd
     });
-
     var hotelList;
     wx.request({
       header: {
@@ -165,31 +164,6 @@ Page({
   //    });
   //  },
 
-  //listArea点击
-  // listAreaChange: function (e) {
-  //   var that = this;
-  //   var id = e.currentTarget.dataset.id;
-  //   var listArea = that.data.listArea;
-  //   var listHotel;
-  //   //清空
-  //   listArea.forEach(function (val, key) {
-  //     listArea[key].active = '0';
-  //   });
-  //   //改变active
-  //   listArea.forEach(function (val, key) {
-  //     if (val.id == id) {
-  //       listArea[key].active = '1';
-  //       listHotel = val.data;
-  //     }
-  //   });
-  //   wx.setStorage({
-  //     key: 'listHotel',
-  //     data: listHotel
-  //   })
-  //   that.setData({
-  //     listArea: listArea,
-  //   });
-  // },
   listAreaChange:function(e){
     var that = this;
     var id = e.currentTarget.dataset.id;

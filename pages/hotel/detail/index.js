@@ -33,7 +33,7 @@ Page({
             testHandle: '-1'
           });
         }else {
-          hotel.data.homeStyle[index].active = 'active';
+          hotel.homeStyle[index].active = 'active';
           //数据绑定
           that.setData({
             hotel: hotel,
@@ -49,11 +49,13 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    //接收时间
     that.setData({
       date: options.date,
       nightNum: options.nightNum,
       dateEnd: options.dateEnd
-    }); 
+    });
+    //get数据，拿到酒店的数据 
     wx.getStorage({
       key: 'singleHotel',
       success: function(res) {
@@ -61,8 +63,7 @@ Page({
         that.setData({
           hotel: hotel
         });
-        console.log('+++++++++++++++');
-        console.log(hotel);
+        //加载地图
         var address = hotel.address
         qqmapsdk = new QQMapWX({
           key: 'WS7BZ-NDZK4-52HUV-XTWAH-QJPP6-NBFEA',
@@ -97,15 +98,11 @@ Page({
       phoneNumber: phone
     });
   },
-
+  //点击预定
   clickJump:function(e){
     var that = this;
     var price=e.currentTarget.dataset.price;
     var spec = e.currentTarget.dataset.spec;
-    // wx.setStorage({
-    //   key: 'price',
-    //   data: {price,spec},
-    // })
     wx.getStorage({
       key: 'spec',
       success: function(res) {
