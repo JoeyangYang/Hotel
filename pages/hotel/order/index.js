@@ -63,12 +63,7 @@ Page({
           id:hotel.data.id
         })
       },
-    })
-    // wx.getStorage({
-    //   key: 'singleHotel',
-    //   success: function (res) {
-    //     var hotel = res.data;
-    //   }  
+    })  
     var integral = that.data.integral;//拥有积分
     var deductible=integral/10;//可抵扣的金额
     wx.getStorage({
@@ -82,7 +77,6 @@ Page({
       },
     });
   },
-
   submit:function(){
     var that=this;
     var address=that.data.address;

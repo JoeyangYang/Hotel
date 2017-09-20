@@ -189,15 +189,16 @@
   width: 100%;
   font-size: 24rpx;}
 .abroad .hotel .middle .type .bottom .first{
-  width: 30%;
+  width: 80%;
   float: left;
+  text-align: left;
   line-height: 50rpx;
   color: #ACACAC;
   overflow:hidden;/*超出一行文字自动隐藏*/
   text-overflow:ellipsis;/*文字隐藏后添加省略号*/
   white-space:nowrap;/**/} 
 .abroad .hotel .middle .type .bottom .first text{
-  margin-left: 15%;}       
+  margin-left: 4%;}       
 .abroad .hotel .middle .price{
   width: 30%;
   font-size: 36rpx;

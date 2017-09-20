@@ -18,7 +18,7 @@
           <image src='../../../img/dinwei.png'></image>
         </view>
         <view class='content' bindtap="clickMap">
-          <text>{{hotel.data.address}}</text>
+          <text>{{hotel.address}}</text>
         </view>
         <view class='icon'>
           <image src='../../../img/13.png'></image>
@@ -32,7 +32,7 @@
           <image src='../../../img/phone.png' class='img'></image>
         </view>
         <view class='content' bindtap='clickPhone'>
-          <text>{{hotel.data.phone}}</text>
+          <text>{{hotel.phone}}</text>
         </view>
         <view class='icon'>
           <image src='../../../img/13.png'></image>
@@ -59,7 +59,7 @@
     </view>
     <!--主体第五块-->
     <view class='main5'>
-      <block wx:key="" wx:for="{{hotel.data.homeStyle}}" wx:for-item="item1" wx:for-index="index">
+      <!-- <block wx:key="" wx:for="{{hotel.data.homeStyle}}" wx:for-item="item1" wx:for-index="index"> -->
         <view class='block'>
           <view class='main5_1 {{item1.active}}' data-index="{{index}}" data-spec='{{item1.spec}}' bindtap="testClick">
           <view class='abroad center'>
@@ -73,17 +73,18 @@
                 <!--酒店类型-->
                 <view class='type'>
                   <view class='top'>
-                    <text>{{item1.name}}</text>
+                    <text>{{hotel.homeStyle.name}}</text>
                   </view>
                   <view class='bottom'>
-                    <block wx:key="" wx:for="{{item1.spec}}" wx:for-item="item2">
+                     <view class='first'><text>{{hotel.homeStyle.spec}}</text></view>
+                    <!-- <block wx:key="" wx:for="{{item1.spec}}" wx:for-item="item2">
                       <view class='first'><text>{{item2}}</text></view>
-                    </block>
+                    </block> -->
                   </view>
                 </view>
                 <!--酒店价格-->
                 <view class='price'>
-                  <text class='money color-blue'>￥</text><text class='num color-blue'>{{item1.price}}</text><text class='rise'>起</text>
+                  <text class='money color-blue'>￥</text><text class='num color-blue'>{{hotel.homeStyle.price}}</text><text class='rise'>起</text>
                 </view>
               </view>
               <!--图标-->
@@ -95,7 +96,7 @@
         </view>
         <!--隐藏块-->
         <view class='main5_2'>
-          <block wx:key="" wx:for="{{item1.member}}" wx:for-item="item3">
+          <block wx:key="" wx:for="{{hotel.homeStyle.member}}" wx:for-item="item3">
           <view class='test center {{item1.active}}'>
             <view class='discount'>
               <text>{{item3.name}}</text>
@@ -115,7 +116,7 @@
           </block>
         </view>
       </view>
-      </block>
+      <!-- </block> -->
       <!--酒店配备设施块-->
       <view class='tips'>
         <view class='supply center'>

@@ -22,21 +22,6 @@ Page({
         spec: spec
       }
     });
-    // wx.getStorage({
-    //   key: 'spec',
-    //   success: function(res) {
-    //     var data = res.data;
-    //     data.member = member;
-    //     data = {
-    //       spec: [],
-    //       member: []
-    //     }
-    //     wx.setStorage({
-    //       key: 'spec',
-    //       data: data
-    //     })
-    //   }
-    // });
     wx.getStorage({
       key: 'singleHotel',
       success: function(res) {
@@ -73,11 +58,12 @@ Page({
       key: 'singleHotel',
       success: function(res) {
         var hotel = res.data;
-        // console.log(data);
         that.setData({
           hotel: hotel
         });
-        var address = hotel.data.address
+        console.log('+++++++++++++++');
+        console.log(hotel);
+        var address = hotel.address
         qqmapsdk = new QQMapWX({
           key: 'WS7BZ-NDZK4-52HUV-XTWAH-QJPP6-NBFEA',
         });
@@ -103,10 +89,10 @@ Page({
       }
     });
   },
-
+  // 点击拨打电话
   clickPhone:function(e){
     var that=this;
-    var phone = that.data.hotel.data.phone
+    var phone = that.data.hotel.phone
     wx.makePhoneCall({
       phoneNumber: phone
     });
@@ -149,7 +135,6 @@ Page({
           longitude: location.lng
         }
       ],
-
       success: function (res) {
         console.log(1);
         var distance = res.result.elements[0].distance;
@@ -161,7 +146,6 @@ Page({
         console.log(res.message);
       },
     });
-
     wx.getStorage({
       key: 'singleHotel',
       success: function (res) {
@@ -170,9 +154,7 @@ Page({
         that.setData({
           hotel: hotel
         });
-
-        var address = hotel.data.address;
-        
+        var address = hotel.address;
         wx.openLocation({
           latitude: that.data.location.lat,
           longitude: that.data.location.lng,

@@ -55,16 +55,18 @@
       <view class="city {{searchStyle}}">
         <view class="content">
           <view class="condition">
-            <block wx:key="" wx:for="{{listAreaBelong}}" wx:for-item="item" wx:for-index="index">
+            <!-- <block wx:key="" wx:for="{{listAreaBelong}}" wx:for-item="item" wx:for-index="index">
               <view wx:if="{{item.active == 1}}" class="one active" data-id="{{item.id}}" bindtap='clickChange'>{{item.name}}</view>
               <view wx:else class="one" data-id="{{item.id}}" bindtap='listAreaBelongChange'>{{item.name}}</view>
-            </block>
+            </block> -->
+            <view class='one active'>行政区</view>
           </view>
           <view class="detailed">
-            <block wx:key="" wx:for="{{listArea}}" wx:for-item="item">
-              <view wx:if="{{item.active == 1}}" class="area active" data-id="{{item.id}}" bindtap="listAreaChange">{{item.name}}</view>
-              <view wx:else class="area" data-id="{{item.id}}" bindtap="listAreaChange">{{item.name}}</view>
-            </block>
+            <!-- <view class="area" bindtap="listAreaChange">{{region}}</view> -->
+             <block wx:key="" wx:for="{{area}}" wx:for-item="item">
+               <view wx:if="{{item.active == 1}}" class="area active" data-id="{{item.id}}" bindtap="listAreaChange">{{item.fullname}}</view>
+              <view wx:else class="area" data-id="{{item.id}}" bindtap="listAreaChange">{{item.fullname}}</view> 
+            </block> 
           </view>
         </view>
         <view class="bottom">
@@ -79,7 +81,7 @@
   <!--主体-->
   <view class='main'>
     <!--主体第一块-->
-    <block wx:key="" wx:for="{{listAll}}" wx:for-item="item">
+    <block wx:key="" wx:for="{{hotelList}}" wx:for-item="item">
       <navigator data-singlehotel="{{item}}" url='/pages/hotel/detail/index?date={{date}}&nightNum={{nightNum}}&dateEnd={{dateEnd}}' bindtap='addChange'>
         <view class="main1 center">
         <!--图片-->
@@ -92,7 +94,7 @@
           <view  class="distance"><text>距你:XXX米→西山区</text></view>
         </view>
         <!--价格-->
-        <view class="right"><text class='sign color-blue'>￥</text><text class="price color-blue">{{item.data.price}}</text><text class='rise'>起</text></view>
+        <view class="right"><text class='sign color-blue'>￥</text><text class="price color-blue">{{item.price}}</text><text class='rise'>起</text></view>
         </view>
       </navigator>
     </block>
