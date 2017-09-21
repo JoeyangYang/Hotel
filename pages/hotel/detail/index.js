@@ -22,21 +22,6 @@ Page({
         spec: spec
       }
     });
-    // wx.getStorage({
-    //   key: 'spec',
-    //   success: function(res) {
-    //     var data = res.data;
-    //     data.member = member;
-    //     data = {
-    //       spec: [],
-    //       member: []
-    //     }
-    //     wx.setStorage({
-    //       key: 'spec',
-    //       data: data
-    //     })
-    //   }
-    // });
     wx.getStorage({
       key: 'singleHotel',
       success: function(res) {
@@ -48,7 +33,7 @@ Page({
             testHandle: '-1'
           });
         }else {
-          hotel.data.homeStyle[index].active = 'active';
+          hotel.homeStyle[index].active = 'active';
           //数据绑定
           that.setData({
             hotel: hotel,
@@ -64,20 +49,22 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    //接收时间
     that.setData({
       date: options.date,
       nightNum: options.nightNum,
       dateEnd: options.dateEnd
-    }); 
+    });
+    //get数据，拿到酒店的数据 
     wx.getStorage({
       key: 'singleHotel',
       success: function(res) {
         var hotel = res.data;
-        // console.log(data);
         that.setData({
           hotel: hotel
         });
-        var address = hotel.data.address
+        //加载地图
+        var address = hotel.address
         qqmapsdk = new QQMapWX({
           key: 'WS7BZ-NDZK4-52HUV-XTWAH-QJPP6-NBFEA',
         });
@@ -103,23 +90,19 @@ Page({
       }
     });
   },
-
+  // 点击拨打电话
   clickPhone:function(e){
     var that=this;
-    var phone = that.data.hotel.data.phone
+    var phone = that.data.hotel.phone
     wx.makePhoneCall({
       phoneNumber: phone
     });
   },
-
+  //点击预定
   clickJump:function(e){
     var that = this;
     var price=e.currentTarget.dataset.price;
     var spec = e.currentTarget.dataset.spec;
-    // wx.setStorage({
-    //   key: 'price',
-    //   data: {price,spec},
-    // })
     wx.getStorage({
       key: 'spec',
       success: function(res) {
@@ -149,7 +132,6 @@ Page({
           longitude: location.lng
         }
       ],
-
       success: function (res) {
         console.log(1);
         var distance = res.result.elements[0].distance;
@@ -161,7 +143,6 @@ Page({
         console.log(res.message);
       },
     });
-
     wx.getStorage({
       key: 'singleHotel',
       success: function (res) {
@@ -170,9 +151,7 @@ Page({
         that.setData({
           hotel: hotel
         });
-
-        var address = hotel.data.address;
-        
+        var address = hotel.address;
         wx.openLocation({
           latitude: that.data.location.lat,
           longitude: that.data.location.lng,

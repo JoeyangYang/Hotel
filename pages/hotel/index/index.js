@@ -1,5 +1,9 @@
 // pages/hotel/index/index.js
 var data=new Date();
+var app = getApp();
+var qqmapsdk;
+var QQMapWX = require('../../../libs/qqmap-wx-jssdk.min.js');
+
 Page({
 
   /**
@@ -11,7 +15,7 @@ Page({
     display: false,
     searchHandle: '0'
   },
-
+// 点击修改初始时间
   bindDateChange: function (e) {
     var that = this;
     var startTime = new Date(e.detail.value).getTime();
@@ -20,8 +24,8 @@ Page({
       date: e.detail.value
     });
   },
+  // 点击修改结束时间
   bindDateChangeEnd: function (e) {
-
     var that = this;
     var starTime = that.data.startTime;
     var endTime = new Date(e.detail.value).getTime();
@@ -32,13 +36,25 @@ Page({
     })
   },
 
-
-
   tabChange:function(e){
     var that=this;
     var searchHandle = that.data.searchHandle;
     var index = e.currentTarget.dataset.active;
     var listAll = [];
+    var hotelList;
+    // 调用腾讯区域地址
+    qqmapsdk = new QQMapWX({
+      key: 'WS7BZ-NDZK4-52HUV-XTWAH-QJPP6-NBFEA',
+    });
+    qqmapsdk.getDistrictByCityId({
+      id: '530100',
+      success: function(res) {
+        var area = res.result[0];
+        that.setData({
+          area: area
+        })
+      }
+    });
     if(searchHandle == index) {
       that.setData({
         color: '',
@@ -58,7 +74,6 @@ Page({
         searchHandle: index
       });
     }
-
     if (e.currentTarget.dataset.ok) {
       wx.getStorage({
         key: 'listHotel',
@@ -69,13 +84,20 @@ Page({
         },
       })
     }
+    wx.getStorage({
+      key: 'hotelList',
+      success: function(res) {
+        that.setData({
+          hotelList:res.data
+        });
+      },
+    })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var that = this;
-
     //默认入住时间，离店时间
     var y = data.getFullYear();
     var m = data.getMonth() + 1;
@@ -95,439 +117,84 @@ Page({
       startTime: startTime,
       endTime: endTime
     });
-
     that.setData({
       date: options.date,
       nightNum: options.nightNum,
       dateEnd: options.dateEnd
-    });  
-
-    var hotelList = [
-      {
-        id: '1',
-        name: "附近",
-        data: [
-          {
-            id: '1',
-            name: "700米",
-            data: []
-          },
-          {
-            id: '2',
-            name: "600米",
-            data: []
-          },
-          {
-            id: '3',
-            name: "500米",
-            data: []
-          },
-          {
-            id: '4',
-            name: "400米",
-            data: []
-          },
-          {
-            id: '5',
-            name: "300米",
-            data: []
-          },
-          {
-            id: '6',
-            name: "200米",
-            data: []
-          },
-          {
-            id: '7',
-            name: "100米",
-            data: []
-          }
-        ]
+    });
+    var hotelList;
+    wx.request({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
       },
-      {
-      id: '2',
-      name: '行政区',
-      data: [
-        {
-          id: '1',
-          name: '五华区',
-          data: [
-            {
-              id: "1",
-              name: '嘉优隆酒店1(五华区)',
-              data: {
-                id:1,
-                address: '昆明市五华区XXXXXXXXX号',
-                phone: '0871-46275645',
-                price: '199',
-                homeStyle: [
-                  {
-                    price: '258',
-                    name: '主体大床房',
-                    spec: ['20平方','大床','有床'],
-                    member: [
-                      {
-                        name: '会员价',
-                        spec: ['含早'],
-                        price: '258'
-                      },
-                      {
-                        name: '会员价',
-                        spec: ['含早', '免费停车'],
-                        price: '260'
-                      }
-                    ],
-                  },
-                  {
-                    price: '238',
-                    name: '主题中等房',
-                    spec: ['15平方', '中床', '有床'],
-                    member: [
-                      {
-                        name: '会员价',
-                        spec: ['含早'],
-                        price: '258'
-                      },
-                      {
-                        name: '会员价',
-                        spec: ['含早', '免费停车'],
-                        price: '260'
-                      }
-                    ]
-                  }
-                ]
-              }
-            },
-            {
-              id: "2",
-              name: '嘉优隆酒店2(五华区)',
-              data: {
-                id: 2,
-                address: '昆明市五华区XXXXXXXXX2号',
-                phone: '0871-46275645',
-                price: '199',
-                homeStyle: [
-                  {
-                    name: '主体大床房',
-                    price: '288',
-                    spec: ['30平方', '大床', '有床'],
-                    member: [
-                      {
-                        name: '会员价',
-                        spec: ['含早'],
-                        price: '288'
-                      },
-                      {
-                        name: '会员价',
-                        spec: ['含早', '免费停车'],
-                        price: '290'
-                      }
-                    ]
-                  }
-                ]
-              }
-            },
-            {
-              id: "3",
-              name: '嘉优隆酒店3(五华区)',
-              data: {
-                id: 3,
-                address: '昆明市五华区XXXXXXXXX2号',
-                phone: '0871-46275645',
-                price: '199',
-                homeStyle: [
-                  {
-                    name: '主体大床房',
-                    price: '329',
-                    spec: ['50平方', '大床', '有床'],
-                    member: [
-                      {
-                        name: '会员价',
-                        spec: ['含早'],
-                        price: '329'
-                      },
-                      {
-                        name: '会员价',
-                        spec: ['含早', '免费停车'],
-                        price: '330'
-                      }
-                    ]
-                  }
-                ]
-              }
-            }
-          ]
-        },
-
-        {
-          id: '2',
-          name: '盘龙区',
-          data: [
-            {
-              id:"1",
-              name: '嘉优隆酒店1(盘龙区)',
-              data: {
-                id: 4,
-                address: '昆明市盘龙区XXXXXXXXX号',
-                phone: '0871-46275645',
-                price: '199',
-                homeStyle: [
-                  {
-                    name: '主体大床房',
-                    price: '258',
-                    spec: ['20平方', '大床', '有床'],
-                    member: [
-                      {
-                        name: '会员价',
-                        spec: ['含早'],
-                        price: '258'
-                      },
-                      {
-                        name: '会员价',
-                        spec: ['含早', '免费停车'],
-                        price: '260'
-                      }
-                    ]
-                  }
-                ]
-              }
-            },
-            {
-              id: "2",
-              name: '嘉优隆酒店2(盘龙区)',
-              data: {
-                id: 5,
-                address: '昆明市盘龙区XXXXXXXXX2号',
-                phone: '0871-46275645',
-                price: '199',
-                homeStyle: [
-                  {
-                    name: '主体大床房',
-                    price: '288',
-                    spec: ['30平方', '大床', '有床'],
-                    member: [
-                      {
-                        name: '会员价',
-                        spec: ['含早'],
-                        price: '288'
-                      },
-                      {
-                        name: '会员价',
-                        spec: ['含早', '免费停车'],
-                        price: '290'
-                      }
-                    ]
-                  }
-                ]
-              }
-            },
-            {
-              id: "3",
-              name: '嘉优隆酒店3(盘龙区)',
-              data: {
-                id: 6,
-                address: '昆明市盘龙区XXXXXXXXX2号',
-                phone: '0871-46275645',
-                price: '199',
-                homeStyle: [
-                  {
-                    name: '主体大床房',
-                    price: '329',
-                    spec: ['50平方', '大床', '有床'],
-                    member: [
-                      {
-                        name: '会员价',
-                        spec: ['含早'],
-                        price: '329'
-                      },
-                      {
-                        name: '会员价',
-                        spec: ['含早', '免费停车'],
-                        price: '330'
-                      }
-                    ]
-                  }
-                ]
-              }
-            }
-          ]
-        },
-
-        {
-          id: '3',
-          name: '西山区',
-          data: [
-            {
-              id: "1",
-              name: '嘉优隆酒店1(西山区)',
-              data: {
-                id: 7,
-                address: '昆明市西山区XXXXXXXXX号',
-                phone: '0871-46275645',                
-                price: '199',
-                homeStyle: [
-                  {
-                    name: '主体大床房',
-                    price: '258',
-                    spec: ['20平方', '大床', '有床'],
-                    member: [
-                      {
-                        name: '会员价',
-                        spec: ['含早'],
-                        price: '258'
-                      },
-                      {
-                        name: '会员价',
-                        spec: ['含早', '免费停车'],
-                        price: '260'
-                      }
-                    ]
-                  }
-                ]
-              }
-            },
-            {
-              id: "2",
-              name: '嘉优隆酒店2(西山区)',
-              data: {
-                id: 8,
-                address: '昆明市西山区XXXXXXXXX2号',
-                phone: '0871-46275645',
-                price: '199',
-                homeStyle: [
-                  {
-                    name: '主体大床房',
-                    price: '288',
-                    spec: ['30平方', '大床', '有床'],
-                    member: [
-                      {
-                        name: '会员价',
-                        spec: ['含早'],
-                        price: '288'
-                      },
-                      {
-                        name: '会员价',
-                        spec: ['含早', '免费停车'],
-                        price: '290'
-                      }
-                    ]
-                  }
-                ]
-              }
-            },
-            {
-              id: "3",
-              name: '嘉优隆酒店3(西山区)',
-              data: {
-                id: 9,
-                address: '昆明市西山区XXXXXXXXX2号',
-                phone: '0871-46275645',
-                price: '199',
-                homeStyle: [
-                  {
-                    name: '主体大床房',
-                    price: '329',
-                    spec: ['50平方', '大床', '有床'],
-                    member: [
-                      {
-                        name: '会员价',
-                        spec: ['含早'],
-                        price: '329'
-                      },
-                      {
-                        name: '会员价',
-                        spec: ['含早', '免费停车'],
-                        price: '330'
-                      }
-                    ]
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        
-      ]
-    }
-    ];
-
-    var listAll = [];
-    var listAreaBelong = [];
-    var listArea = [];
-
-    hotelList.forEach(function(val1,key1) {
-      //第一次加载，改变第一项active
-      if(key1 == '0'){
-          hotelList[key1].active = '1';
+      method:'POST',
+      url: app.globalData.webSite+'/Home/Wechat/hotelSelectAll',//调用接口地址
+      success: function (res) {
+        hotelList = res.data.data;
+        that.setData({
+          hotelList: hotelList
+        });
       }
-      listAreaBelong.push(val1);
-      val1.data.forEach(function(val2,key2) {
-          if(key1 == '0') {
-            listArea.push(val2);
-          }
-          val2.data.forEach(function(val3,key3) {
-            listAll.push(val3);
-          });
-      });
-    });
-
-    //数据绑定
-    that.setData({
-      listAreaBelong: listAreaBelong,
-      listArea:listArea,
-      listAll: listAll
-    });
+    }) 
   },
 
-  //listAreaBelong点击
-  listAreaBelongChange:function (e){
-     var that = this;
-     var id = e.currentTarget.dataset.id;
-     var listAreaBelong = that.data.listAreaBelong;
-     var listArea;
-     //清空
-     listAreaBelong.forEach(function (val, key) {
-       listAreaBelong[key].active = '0';
-     });
-     //改变active
-     listAreaBelong.forEach(function(val,key) {
-        if(val.id == id) {
-          listAreaBelong[key].active = '1';
-          //根据id生成新listArea
-          listArea = val.data;
-        }
-     });
+  // //listAreaBelong点击
+  // listAreaBelongChange:function (e){
+  //    var that = this;
+  //    var id = e.currentTarget.dataset.id;
+  //    var listAreaBelong = that.data.listAreaBelong;
+  //    var listArea;
+  //    //清空
+  //    listAreaBelong.forEach(function (val, key) {
+  //      listAreaBelong[key].active = '0';
+  //    });
+  //    //改变active
+  //    listAreaBelong.forEach(function(val,key) {
+  //       if(val.id == id) {
+  //         listAreaBelong[key].active = '1';
+  //         //根据id生成新listArea
+  //         listArea = val.data;
+  //       }
+  //    });
 
-     //数据绑定
-     that.setData({
-       listAreaBelong: listAreaBelong,
-       listArea: listArea
-     });
-   },
+  //    //数据绑定
+  //    that.setData({
+  //      listAreaBelong: listAreaBelong,
+  //      listArea: listArea
+  //    });
+  //  },
 
-  //listArea点击
-  listAreaChange: function (e) {
+  listAreaChange:function(e){
     var that = this;
     var id = e.currentTarget.dataset.id;
-    var listArea = that.data.listArea;
-    var listHotel;
-    //清空
-    listArea.forEach(function (val, key) {
-      listArea[key].active = '0';
+    var area = that.data.area;
+    var areas;
+    var hotelList;
+    area.forEach(function(val,key){
+      area[key].active = '0';
     });
-    //改变active
-    listArea.forEach(function (val, key) {
+    area.forEach(function (val, key) {
       if (val.id == id) {
-        listArea[key].active = '1';
-        listHotel = val.data;
+        area[key].active = '1';
       }
     });
-    wx.setStorage({
-      key: 'listHotel',
-      data: listHotel
-    })
+    wx.request({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      method: 'POST',
+      data: { area: id},
+      url: app.globalData.webSite + '/Home/Wechat/hotelSelectByArea',//调用接口地址
+      success:function(res){
+        hotelList=res.data.data;
+        wx.setStorage({
+          key: 'hotelList',
+          data: hotelList,
+        })
+      }
+    });
     that.setData({
-      listArea: listArea,
+      area: area
     });
   },
 
