@@ -162,7 +162,7 @@ Page({
               ],
               success: function (res) {
                 var far = res.result.elements[0].distance/1000;
-                distance = far.toFixed(2)
+                distance = far.toFixed(2)//四舍五入的方法 参数代表保留小数位数
                 that.setData({
                   distance: distance
                 });  

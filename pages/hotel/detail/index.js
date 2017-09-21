@@ -73,20 +73,9 @@ Page({
         qqmapsdk.geocoder({
           address: address,
           success: function (res) {
-            console.log(res);
-            //console.log(res.result.location);
-            //console.log(res);
             that.setData({
               location: res.result.location,
             });
-          }
-        });
-        qqmapsdk.getCityList({
-          success: function (res) {
-            var province = res.result[0];
-            that.setData({
-              province: province,
-            })
           }
         });
       }
