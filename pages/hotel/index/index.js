@@ -13,7 +13,8 @@ Page({
     flag: "true",
     nightNum: '1',
     display: false,
-    searchHandle: '0'
+    searchHandle: '0',
+    webSite: app.globalData.webSite
   },
 // 点击修改初始时间
   bindDateChange: function (e) {
@@ -134,8 +135,51 @@ Page({
         that.setData({
           hotelList: hotelList
         });
+        var address;
+        hotelList.forEach(function(val,key){
+          address=val.address
+        });
+        //调用腾讯地图
+        qqmapsdk = new QQMapWX({
+          key: 'WS7BZ-NDZK4-52HUV-XTWAH-QJPP6-NBFEA',
+        });
+        qqmapsdk.geocoder({
+          address: address,
+          success: function (res) {
+            that.setData({
+              location: res.result.location,
+            });
+            //计算距离
+            var location = that.data.location;
+            var distance;//距离
+            qqmapsdk.calculateDistance({
+              mode: 'driving',
+              to: [
+                {
+                  latitude: location.lat,
+                  longitude: location.lng
+                },
+              ],
+              success: function (res) {
+                var far = res.result.elements[0].distance/1000;
+                distance = far.toFixed(2)//四舍五入的方法 参数代表保留小数位数
+                that.setData({
+                  distance: distance
+                });  
+              },
+              fail: function (res) {
+                that.setData({
+                  distance: '超过10'
+                });
+              },
+            });
+
+          }
+        });
+        
+
       }
-    }) 
+    });
   },
 
   // //listAreaBelong点击

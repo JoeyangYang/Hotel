@@ -67,7 +67,7 @@
       <view class='details center'>
         <view class='p {{active}}'>
           <view class='left'>
-            <text>2017-9-2  (1间)</text>
+            <text>{{date}}  (1间)</text>
           </view>
           <view class='middle'>
             

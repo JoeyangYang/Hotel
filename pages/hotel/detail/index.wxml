@@ -15,7 +15,7 @@
     <view class='main2'>
       <view class='address center'>
         <view class='pic'>
-          <image src='../../../img/dinwei.png'></image>
+          <image src='../../../img/dinwei.png' class='picIcon'></image>
         </view>
         <view class='content' bindtap="clickMap">
           <text>{{hotel.address}}</text>
@@ -66,7 +66,7 @@
             <view class='hotel'>
               <!--酒店图片-->
               <view class='left'>
-                <image src='../../../img/16.png'></image>
+                <image src='{{webSite}}{{item1.image}}'></image>
               </view>
               <!--内容-->
               <view class='middle'>
@@ -108,9 +108,9 @@
               <text>￥{{item2.price}}</text>
             </view>
             <view class='discount1'>
-              <navigator url='/pages/hotel/order/index?date={{date}}&nightNum={{nightNum}}&dateEnd={{dateEnd}}' data-price='{{item2.price}}' data-spec='{{item2.spec}}' bindtap='clickJump'>
-                <button class='bg-blue'>预定</button>
-              </navigator>
+              <!-- <navigator url='/pages/hotel/order/index?date={{date}}&nightNum={{nightNum}}&dateEnd={{dateEnd}}' > -->
+                <button class='bg-blue' data-price='{{item2.price}}' data-spec='{{item2.spec}}' bindtap='clickJump'>预定</button>
+              <!-- </navigator> -->
             </view>
           </view>
           </block>

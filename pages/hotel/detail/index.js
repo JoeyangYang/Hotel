@@ -1,13 +1,15 @@
 // pages/hotel/detail/index.js
 var qqmapsdk;
 var QQMapWX = require('../../../libs/qqmap-wx-jssdk.min.js');
+var app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    testHandle: '-1'
+    testHandle: '-1',
+    webSite: app.globalData.webSite
   },
 
   //点击事件
@@ -71,20 +73,9 @@ Page({
         qqmapsdk.geocoder({
           address: address,
           success: function (res) {
-            console.log(res);
-            //console.log(res.result.location);
-            //console.log(res);
             that.setData({
               location: res.result.location,
             });
-          }
-        });
-        qqmapsdk.getCityList({
-          success: function (res) {
-            var province = res.result[0];
-            that.setData({
-              province: province,
-            })
           }
         });
       }
@@ -112,18 +103,24 @@ Page({
         wx.setStorage({
           key: 'spec',
           data: data,
-        })
+          success:function(res1){
+            var date = that.data.date;
+            var nightNum = that.data.nightNum;
+            var dateEnd = that.data.dateEnd;
+            wx.navigateTo({
+              url: '/pages/hotel/order/index?date=' + date + '&nightNum=' + nightNum + '&dateEnd=' + dateEnd
+            })
+          }
+        });
       },
-    })
+    });
   },
 
 
 //点击调用地图
   clickMap: function () {
     var that = this;
-    //console.log(that);
     var location = that.data.location;
-    //console.log(that.data.location);
     qqmapsdk.calculateDistance({
       mode: 'driving',
       to: [
@@ -133,21 +130,16 @@ Page({
         }
       ],
       success: function (res) {
-        console.log(1);
         var distance = res.result.elements[0].distance;
         that.setData({
           distance: distance
         });
-      },
-      fail: function (res) {
-        console.log(res.message);
       },
     });
     wx.getStorage({
       key: 'singleHotel',
       success: function (res) {
         var hotel = res.data;
-        // console.log(data);
         that.setData({
           hotel: hotel
         });

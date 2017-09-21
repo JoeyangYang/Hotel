@@ -257,14 +257,20 @@
   height: 50rpx;
   line-height: 50rpx;
   font-size: 28rpx;
-  margin-top: 15rpx;}
+  margin-top: 15rpx;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;}
 /*距离*/
 .main1 .middle .distance{
   width: 100%;
   height: 50rpx;
   line-height: 35rpx;
   font-size: 24rpx;
-  color: gray;}    
+  color: gray;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;}    
 /*酒店价格*/
 .main1 .right{
   width: 30%;
