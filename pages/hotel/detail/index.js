@@ -1,13 +1,15 @@
 // pages/hotel/detail/index.js
 var qqmapsdk;
 var QQMapWX = require('../../../libs/qqmap-wx-jssdk.min.js');
+var app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    testHandle: '-1'
+    testHandle: '-1',
+    webSite: app.globalData.webSite
   },
 
   //点击事件
@@ -112,9 +114,19 @@ Page({
         wx.setStorage({
           key: 'spec',
           data: data,
-        })
+          success:function(res1){
+            console.log('//////////////////////');
+            console.log(that);
+            var date = that.data.date;
+            var nightNum = that.data.nightNum;
+            var dateEnd = that.data.dateEnd;
+            wx.navigateTo({
+              url: '/pages/hotel/order/index?date=' + date + '&nightNum=' + nightNum + '&dateEnd=' + dateEnd
+            })
+          }
+        });
       },
-    })
+    });
   },
 
 

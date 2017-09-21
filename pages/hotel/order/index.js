@@ -68,6 +68,8 @@ Page({
     wx.getStorage({
       key: 'spec',
       success: function(res) {
+        console.log('3333333333333333333333333333333333');
+        console.log(res);
         that.setData({
           price: res.data.price,
           deductible: deductible,

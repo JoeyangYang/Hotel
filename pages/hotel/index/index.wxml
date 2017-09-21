@@ -86,12 +86,12 @@
         <view class="main1 center">
         <!--图片-->
         <view class="left">
-          <image src="../../../img/11.png"></image>
+          <image src="{{webSite}}{{item.image}}"></image>
         </view>
         <!--酒店详情-->
         <view class="middle">
           <view  class="hotel"><text>{{item.name}}</text></view>
-          <view  class="distance"><text>距你:XXX米→西山区</text></view>
+          <view  class="distance"><text>距你:{{distance}}公里→{{item.name}}</text></view>
         </view>
         <!--价格-->
         <view class="right"><text class='sign color-blue'>￥</text><text class="price color-blue">{{item.price}}</text><text class='rise'>起</text></view>
