@@ -38,7 +38,6 @@ Page({
     });
     wx.getUserInfo({
       success: function (res) {
-        console.log(res);
         var userInfo = res.userInfo
         var nickName = userInfo.nickName
         var avatarUrl = userInfo.avatarUrl
@@ -68,8 +67,6 @@ Page({
     wx.getStorage({
       key: 'spec',
       success: function(res) {
-        console.log('3333333333333333333333333333333333');
-        console.log(res);
         that.setData({
           price: res.data.price,
           deductible: deductible,

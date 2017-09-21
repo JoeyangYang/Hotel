@@ -104,8 +104,6 @@ Page({
           key: 'spec',
           data: data,
           success:function(res1){
-            console.log('//////////////////////');
-            console.log(that);
             var date = that.data.date;
             var nightNum = that.data.nightNum;
             var dateEnd = that.data.dateEnd;
@@ -122,9 +120,7 @@ Page({
 //点击调用地图
   clickMap: function () {
     var that = this;
-    //console.log(that);
     var location = that.data.location;
-    //console.log(that.data.location);
     qqmapsdk.calculateDistance({
       mode: 'driving',
       to: [
@@ -134,21 +130,16 @@ Page({
         }
       ],
       success: function (res) {
-        console.log(1);
         var distance = res.result.elements[0].distance;
         that.setData({
           distance: distance
         });
-      },
-      fail: function (res) {
-        console.log(res.message);
       },
     });
     wx.getStorage({
       key: 'singleHotel',
       success: function (res) {
         var hotel = res.data;
-        // console.log(data);
         that.setData({
           hotel: hotel
         });
