@@ -1,4 +1,5 @@
 // pages/me/refund/index.js
+var app = getApp();
 Page({
 
   /**
@@ -7,37 +8,70 @@ Page({
   data: {
     second: 3,
     className: 'model',
-    on: 'on1' 
+    on: 'on1', 
+    refund_reson:''
+  },
+  bindInput:function(e){
+    var value=e.detail.value;
+    this.setData({
+      refund_reson:value
+    });
   },
   //申请退款
-  refund: function (e) {
+  refund: function () {
     var that = this;
-    that.setData({
-      className: 'model1',
-      on: 'on'
-    });
-    var num = that.data.second;
-    var timer = setInterval(function () {
-      num--;
-      that.setData({
-        second: num
-      });
-      if (num == 0) {
-        clearInterval(timer);
-        wx.switchTab({
-          url: '/pages/me/index/index'
-        });
-        // wx.reLaunch({
-        //   url: '/pages/order/index/index',
-        // })
-      }
-    }, 1000);
+    var refund_reson=that.data.refund_reson;
+    /////////////////////
+    var id=that.data.id;
+    var status = 2;
+     wx.request({
+       header: {
+         "Content-Type": "application/x-www-form-urlencoded"
+       },
+       method: 'POST',
+       url: app.globalData.webSite + '/Home/Wechat/orderStatusUpdate',
+       data:{
+         status:status,
+         id:id,
+         refund_reson:refund_reson
+       },
+       success:function(res){
+       var data=res.data;
+         if(data.code == '200'){
+           that.setData({
+             className:'model1',
+             on:'on',
+           });
+           var num = that.data.second;
+           var timer = setInterval(function () {
+             num--;
+             that.setData({
+               second: num
+             });
+             if (num == 0) {
+               clearInterval(timer);
+               wx.switchTab({
+                 url: '/pages/me/index/index'
+               });
+             }
+           }, 1000);
+         }else{
+         }
+       },
+      
+     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var that=this;
+    that.setData({
+      price:options.price,
+      id:options.id
+    });
+
+   
   },
 
   /**
@@ -51,7 +85,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    
   },
 
   /**

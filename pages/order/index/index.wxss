@@ -22,7 +22,7 @@
 .order_index .detail .content view.rc{width:30%;text-align: center;height:130rpx;line-height: 130rpx;color:#000;font-weight: bold;}
 .order_index .detail .btns{margin-top:22rpx;text-align: right;margin-right:50rpx;margin-bottom: 10rpx;}
 .order_index .detail .btns navigator{display: inline-block;text-align: center;line-height:8rpx;padding:24rpx 25rpx;box-shadow: 1px 1px 5px #888888;font-size:24rpx;}
-.order_index .detail .btns navigator.refund{background: none;color:#d7d7d7;margin-right:30rpx;border:1px solid #d7d7d7;border-radius: 8rpx;}
+.order_index .detail .btns navigator.refund{background: none;color:#d7d7d7;margin-right:30rpx;border:1px solid #d7d7d7;border-radius: 8rpx; display: none;}
 .order_index .detail .btns navigator.book{background:linear-gradient(#3399ff,#3ab3ff);color:#fff;border-radius: 8rpx;border:1px solid #3ab3ff;}
-.order_index .detail .btns .show{display: inline-block;}
-.order_index .detail .btns .show1{display: none;}
+.order_index .detail .btns .show{display: inline-block !important;}
+.order_index .detail .btns .none{display: none;}
