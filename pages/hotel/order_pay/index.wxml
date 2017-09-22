@@ -6,7 +6,7 @@
     <view class='main1'>
       <image src='../../../img/jiesuan.png'></image>
       <view class='block'>
-        <text>￥{{result}}</text>
+        <text>￥{{price}}</text>
       </view>
     </view>
     <!--主体第二块-->

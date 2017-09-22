@@ -1,27 +1,20 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/login/index",
+    
+    "pages/register/index",
     "pages/hotel/detail/index",
-    
     "pages/hotel/order/index",
-    
     "pages/hotel/order_pay/index",
     "pages/me/index/index",
-    
     "pages/hotel/index/index",
     "pages/me/score/index",
-   
-    
     "pages/order/index/index",
     "pages/order/detail/index",
     "pages/me/refund/index",
-   
     "pages/me/score_rule/index",
     "pages/me/phone_update/index"
-    
-    
-  
-  
   ],
   "window":{
     "backgroundTextStyle":"light",

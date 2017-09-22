@@ -106,9 +106,7 @@
         <text>￥{{result}}</text>
       </view>
       <view class='submit'>
-        <navigator url='/pages/hotel/order_pay/index?result={{result}}'>
-          <button class='bg-blue' bindtap='submit'>提交订单</button>
-        </navigator>
+        <button class='bg-blue' bindtap='submit'>提交订单</button>
       </view>
     </view>
   </view>

@@ -14,9 +14,18 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    that.setData({
-      result: options.result
-    });
+    var price;
+    // that.setData({
+    //   result: options.result
+    // });
+    wx.getStorage({
+      key: 'orderList',
+      success: function (res) {
+        that.setData({
+          price: res.data.price
+        })
+      }
+    })
   },
 
   switchTab:function(e){
