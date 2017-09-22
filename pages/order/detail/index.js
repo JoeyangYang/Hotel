@@ -40,7 +40,7 @@ Page({
                 val.status = '已完成';
                 that.setData({
                   imgUrl: "/img/detail2.jpg",
-                  imgText: '您的房间已办理完成，我们期待您的再次入住'
+                  imgText: '感谢您光临嘉优隆精品酒店,期待您的下次入住'
                 });
               }
               if (val.status == '2') {
