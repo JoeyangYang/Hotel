@@ -14,53 +14,61 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-   var that=this;
-   wx.getStorage({
-     key: 'hotelList',
-     success: function(res) {
-       var signHotel=[];
-       var hotel=res.data.data;
-    hotel.forEach(function(val,key){
-      
-      if(val.id==options.id){
-        if (val.status == '0') {
-          val.status = '待入住';
-          that.setData({
-            imgUrl: "/img/detail1.jpg",
-            imgText:'您的房间已预订成功，期待您的入住'
-          });
-        }
-        if (val.status == '1') {
-          val.status = '已完成';
-          that.setData({
-            imgUrl: "/img/detail2.jpg",
-            imgText: '感谢您光临嘉优隆精品酒店，期待您的下次入住'
-          });
-        }
-        if (val.status == '2') {
-          val.status = '退款中';
-          that.setData({
-            imgUrl: "/img/detail3.jpg",
-            imgText: '您的房间退款正在办理中，请您耐心等待'
-          });
-        }
-        if (val.status == '3') {
-          val.status = '已退款';
-          that.setData({
-            imgUrl: "/img/detail4.jpg",
-            imgText: '您的房间已退款成功，期待您的下次入住'
-          });
-        }
-        signHotel.push(val);
-        that.setData({
-          hotel: signHotel
-        });
-      }
-    });
-     },
-   })   
-  },
+    var that = this;
+    wx.request({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      method: 'POST',
+      url: app.globalData.webSite + '/Home/Wechat/orderSelectById',
+      data: {
+        id: options.id
+      },
+      success: function (res) {
+        var data = res.data;
+        if (data.code == '200') {
+          data.data.forEach(function (val, key) {
+            if (val.id == options.id) {
+              if (val.status == '0') {
+                val.status = '待入住';
+                that.setData({
+                  imgUrl: "/img/detail1.jpg",
+                  imgText: '您的房间已预约成功，我们期待您的入住'
+                });
+              }
+              if (val.status == '1') {
+                val.status = '已完成';
+                that.setData({
+                  imgUrl: "/img/detail2.jpg",
+                  imgText: '您的房间已办理完成，我们期待您的再次入住'
+                });
+              }
+              if (val.status == '2') {
+                val.status = '退款中';
+                that.setData({
+                  imgUrl: "/img/detail3.jpg",
+                  imgText: '我们正在飞速的为您处理退款，请稍后'
+                });
+              }
+              if (val.status == '3') {
+                val.status = '已退款';
+                that.setData({
+                  imgUrl: "/img/detail4.jpg",
+                  imgText: '您的退款已经完成，给您带来的不便我们深感歉意',
+                });
+              }
 
+
+            }
+          });
+          that.setData({
+            hotel: data.data
+          });
+        }
+
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
