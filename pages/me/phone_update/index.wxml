@@ -13,7 +13,9 @@
      <view class="{{className}}" style="width:'{{winWidth}}';height:'{{winHeight}}'">
         
     </view>
-     <view class="show {{on}}">
-       <text>更换成功</text>
-       <text>将在{{second}}秒后自动跳转</text>
-    </view>
+     <view class='shows'>
+        <view class="show {{on}}">
+          <text>更换成功</text>
+          <text>将在{{second}}秒后自动跳转</text>
+        </view>
+     </view>

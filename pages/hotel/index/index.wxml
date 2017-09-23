@@ -82,7 +82,7 @@
   <view class='main'>
     <!--主体第一块-->
     <block wx:key="" wx:for="{{hotelList}}" wx:for-item="item">
-      <navigator data-singlehotel="{{item}}" url='/pages/hotel/detail/index?date={{date}}&nightNum={{nightNum}}&dateEnd={{dateEnd}}' bindtap='addChange'>
+      <view data-singlehotel="{{item}}" bindtap='addChange'>
         <view class="main1 center">
         <!--图片-->
         <view class="left">
@@ -96,7 +96,7 @@
         <!--价格-->
         <view class="right"><text class='sign color-blue'>￥</text><text class="price color-blue">{{item.price}}</text><text class='rise'>起</text></view>
         </view>
-      </navigator>
+      </view>
     </block>
   </view>
 </view>

@@ -247,7 +247,15 @@ Page({
     var singleHotel = e.currentTarget.dataset.singlehotel;
     wx.setStorage({
       key: 'singleHotel',
-      data: singleHotel
+      data: singleHotel,
+      success:function(res){
+        var date = that.data.date;
+        var nightNum = that.data.nightNum;
+        var dateEnd = that.data.dateEnd;
+        wx.navigateTo({
+          url: '/pages/hotel/detail/index?date=' + date + '&nightNum=' + nightNum + '&dateEnd=' + dateEnd
+        })
+      }  
     });
   },
 

@@ -8,10 +8,10 @@
         确认申请
     </view>
 </view><!--refund-->
- <view class="{{className}}" style="width:'{{winWidth}}';height:'{{winHeight}}'">
+ <view class="{{className}}"  >
         
     </view>
-     <view class="show {{on}}">
+     <view class="show {{on}}" style="width:{{width}}px;height:{{height}}px;left:{{left}}px">
        <text>申请成功</text>
        <text>将在{{second}}秒后自动跳转</text>
     </view>
