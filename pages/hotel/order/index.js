@@ -90,6 +90,11 @@ Page({
     wx.setStorage({
       key: 'orderList',
       data: {user_phone, address, hotel_name, check_in, check_out, price, user_name, integral, hotel_id},
+      success:function(res){
+        wx.navigateTo({
+          url: '/pages/hotel/order_pay/index'
+        })
+      }
     })
   },
 
