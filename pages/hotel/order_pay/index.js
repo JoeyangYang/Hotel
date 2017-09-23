@@ -40,9 +40,16 @@ Page({
             var order_number = '';
             for (var i = 0; i < 32; i++) {
               order_number += parseInt(Math.random() * 10)
-            }
+            };
             //生成detail
-            var detail = spec.data;
+            var member=spec.data.member;
+            var price = spec.data.price;
+            var spec = spec.data.spec;
+            var data = {member,price,spec}
+            console.log(data);
+            var detail = JSON.stringify(data);
+            console.log('=========================================');
+            console.log(detail);
             wx.request({
               header: {
                 "Content-Type": "application/x-www-form-urlencoded"

@@ -24,7 +24,7 @@ App({
                   that.globalData.userInfo = res.userInfo;
                 }
               });
-              
+              console.log(that);
             }
           })
 

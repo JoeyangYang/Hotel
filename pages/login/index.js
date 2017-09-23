@@ -52,6 +52,7 @@ Page({
   confirm: function (e) {
     var that = this;
     var name = app.globalData.userInfo.nickName;
+    var open_id=app.globalData.openId;
     wx.request({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
@@ -59,9 +60,10 @@ Page({
       url: app.globalData.webSite + '/Home/Wechat/userAdd',//调用接口地址
       data: {
         name: name,
+        open_id: open_id,
         phone: '14525879815'
       },
-      method: 'GET',
+      method: 'POST',
       success: function (res) {
         console.log('============================');
         console.log(res);
