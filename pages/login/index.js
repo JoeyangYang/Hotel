@@ -61,7 +61,7 @@ Page({
       data: {
         name: name,
         open_id: open_id,
-        phone: '14525879815'
+        phone: '18164626080'
       },
       method: 'POST',
       success: function (res) {
