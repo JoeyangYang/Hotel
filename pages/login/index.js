@@ -10,8 +10,33 @@ Page({
   data: {
     second: 3,
     className: 'model',
-    on: 'on1'
+    on: 'on1',
+    phone:''
 
+  },
+  //输入手机号触发事件
+  mobileInput: function (e) {
+    var that = this;
+    var phone;  
+    var length;
+    that.setData({
+      phone: e.detail.value,
+      length: e.detail.cursor
+    });
+  },
+  //点击获取验证码
+  prove:function(){
+    var that = this;
+    var Prompt;
+    if(that.data.length == 11){
+      that.setData({
+        prompt:''
+      })
+    }else{
+      that.setData({
+        prompt: '手机号位数不对,无法获取验证码'
+      })
+    }
   },
   //点击登录
   // submit: function (e) {
@@ -53,6 +78,7 @@ Page({
     var that = this;
     var name = app.globalData.userInfo.nickName;
     var open_id=app.globalData.openId;
+    var phone=that.data.phone;//接受电话号码
     wx.request({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
@@ -61,12 +87,10 @@ Page({
       data: {
         name: name,
         open_id: open_id,
-        phone: '18164626080'
+        phone: phone
       },
       method: 'POST',
       success: function (res) {
-        console.log('============================');
-        console.log(res);
         that.setData({
           className: 'model1',
           on: 'on'

@@ -3,20 +3,20 @@
   <view class='containerd'>
     <view class='box'>
       <view class='inputs'>
-        <input type='number' placeholder='请输入手机号' class='phone' placeholder-class='color'></input>
+        <input type='number' placeholder='请输入当前微信所绑定的手机号' name='mobile' bindinput='mobileInput' class='phone' placeholder-class='color'></input>
       </view>
       <view class='inputs'>
         <input type='number' placeholder='请输入验证码' class='code' placeholder-class='color'></input>
-        <button class='codes'>获取验证码</button>
+        <button class='codes' bindtap='prove'>获取验证码</button>
       </view>
       <view id='border' class='inputs' bindtap='submit'>
         <button>登录</button>
       </view>
-      <view id='border' class='inputs' bindtap="confirm">
-        <button>注册</button>
+      <view id='border' class='inputs'>
+        <button bindtap="confirm">注册</button>
       </view>
       <view id='border' class='inputs' style='text-align: center;'>
-        <text>还没有注册账号，请先注册账号！</text>
+        <text>{{prompt}}</text>
       </view>
     </view>
   </view>
