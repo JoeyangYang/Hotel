@@ -20,7 +20,8 @@
 .me_index .score navigator text.myScore{padding:28rpx 45rpx;}
 .me_index .score navigator:first-child{border-bottom:1px solid #f2f2f2;padding:28rpx 65rpx;}
 .me_index .score navigator text.ft{position: absolute;right:57rpx;}
-.me_index .phone{background: #fff;margin-top:20rpx;height:80rpx;line-height: 80rpx;margin-bottom:147rpx;}
+.me_index .phone{background: #fff;margin-top:20rpx;height:80rpx;line-height: 80rpx;}
+.me_index .logout{margin-bottom:147rpx;}
 .me_index .phone navigator{padding:0rpx 62rpx;}/***/
 /*phone_update*/
 .phone_update{}

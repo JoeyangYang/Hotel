@@ -6,6 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    width: "300",
+    height: "100",
     second: 3,
     className: 'model',
     on: 'on1', 
@@ -66,9 +68,21 @@ Page({
    */
   onLoad: function (options) {
     var that=this;
+    //获取设备信息
+    wx.getSystemInfo({
+      success: function (res) {
+        that.setData({
+          windowWidth: res.windowWidth
+        });
+      },
+    })
+    var elementWidth = that.data.width;
+    var windowWidth = that.data.windowWidth;
+    var left = (windowWidth - elementWidth) / 2;
     that.setData({
-      price:options.price,
-      id:options.id
+      price: options.price,
+      id: options.id,
+      left: left
     });
 
    
