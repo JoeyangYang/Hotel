@@ -44,8 +44,11 @@ Page({
     var name = app.globalData.userInfo.nickName;
     var open_id = app.globalData.openId;
     var phone = that.data.phone;//接收电话号码
-    var prompt = that.data.prompt;
-    if (prompt == 11) {
+    var prompt;
+    var length = that.data.length;
+    // console.log(length);
+    // console.log('==================');
+    if (length == 11) {
       wx.request({
         header: {
           "Content-Type": "application/x-www-form-urlencoded"
