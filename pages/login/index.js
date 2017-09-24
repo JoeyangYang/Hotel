@@ -59,23 +59,31 @@ Page({
         },
         method: 'POST',
         success: function (res) {
-          that.setData({
-            className: 'model1',
-            on: 'on'
-          });
-          var num = that.data.second;
-          var timer = setInterval(function () {
-            num--;
+          if(res.data.code == '200'){
+            //更新globalData
+            app.globalData.loginStatus = true;
+            app.globalData.userInfo.phone = res.data.data.phone;
+            app.globalData.userInfo.score = res.data.data.score;
             that.setData({
-              second: num
+              className: 'model1',
+              on: 'on'
             });
-            if (num == 0) {
-              clearInterval(timer);
-              wx.navigateBack({
-                delta: 1
-              })
-            }
-          }, 1000);
+            var num = that.data.second;
+            var timer = setInterval(function () {
+              num--;
+              that.setData({
+                second: num
+              });
+              if (num == 0) {
+                clearInterval(timer);
+                wx.navigateBack({
+                  delta: 1
+                })
+              }
+            }, 1000);
+          }else {
+            console.log('注册失败！！！！！！！');
+          }
         }
       });
     }else{

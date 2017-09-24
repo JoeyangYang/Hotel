@@ -32,11 +32,15 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    var integral;
+    var phone=app.globalData.userInfo.phone;
+    console.log(phone);
     that.setData({
-      // integral:app.globalData.userInfo.score,
+      integral:app.globalData.userInfo.score,
       date:options.date,
       dateEnd:options.dateEnd,
-      nightNum:options.nightNum
+      nightNum:options.nightNum,
+      phone:phone
     });
     wx.getUserInfo({
       success: function (res) {
@@ -58,7 +62,6 @@ Page({
         that.setData({
           address: res.data.address,
           hotelName: res.data.name,
-          phone:res.data.phone,
           id: res.data.id
         })
       },
@@ -87,7 +90,7 @@ Page({
     var user_name = that.data.userName;
     var integral = that.data.integral;
     var hotel_id = that.data.id;
-    var user_phone='18787312252'
+    var user_phone=that.data.phone;
     wx.setStorage({
       key: 'orderList',
       data: {user_phone, address, hotel_name, check_in, check_out, price, user_name, integral, hotel_id},
