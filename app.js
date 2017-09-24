@@ -2,12 +2,6 @@
 App({
   onLaunch: function() {
     var that = this;
-    wx.request({
-      url: 'http://www.jago.com:8090/jiayoulong/Home/Wechat/hotelSelectAll',
-      success: function(res) {
-        console.log(res);
-      }
-    })
     // 登录
     wx.login({
       success: function(res) {
