@@ -107,9 +107,16 @@ Page({
             var date = that.data.date;
             var nightNum = that.data.nightNum;
             var dateEnd = that.data.dateEnd;
-            wx.navigateTo({
-              url: '/pages/hotel/order/index?date=' + date + '&nightNum=' + nightNum + '&dateEnd=' + dateEnd
-            })
+            if (app.globalData.loginStatus==true){
+              wx.navigateTo({
+                url: '/pages/hotel/order/index?date=' + date + '&nightNum=' + nightNum + '&dateEnd=' + dateEnd
+              })
+            }else{
+              wx.navigateTo({
+                url: '/pages/index/index'
+              })
+            }
+            
           }
         });
       },

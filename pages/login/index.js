@@ -10,49 +10,40 @@ Page({
   data: {
     second: 3,
     className: 'model',
-    on: 'on1'
+    on: 'on1',
+    phone:''
 
   },
-  //点击登录
-  // submit: function (e) {
-  //   var that = this;
-  //   var name = app.globalData.userInfo.nickName;
-  //   wx.request({
-  //     header: {
-  //       "Content-Type": "application/x-www-form-urlencoded"
-  //     },
-  //     url: app.globalData.webSite + '/Home/Wechat/userAdd',//调用接口地址
-  //     data: {
-  //       name: name,
-  //       phone: '14525879815'
-  //     },
-  //     method: 'GET',
-  //     success: function (res) {
-  //       that.setData({
-  //         className: 'model1',
-  //         on: 'on'
-  //       });
-  //       var num = that.data.second;
-  //       var timer = setInterval(function () {
-  //         num--;
-  //         that.setData({
-  //           second: num
-  //         });
-  //         if (num == 0) {
-  //           clearInterval(timer);
-  //           wx.reLaunch({
-  //             url: '/pages/me/index/index',
-  //           })
-  //         }
-  //       }, 1000);
-  //     }
-  //   });
-  // },
-  //点击注册
+  //输入手机号触发事件
+  mobileInput: function (e) {
+    var that = this;
+    var phone;  
+    var length;
+    that.setData({
+      phone: e.detail.value,
+      length: e.detail.cursor
+    });
+  },
+  //点击获取验证码
+  prove:function(){
+    var that = this;
+    var Prompt;
+    if(that.data.length == 11){
+      that.setData({
+        prompt:''
+      })
+    }else{
+      that.setData({
+        prompt: '手机号位数不对,无法获取验证码'
+      })
+    }
+  },
+  
   confirm: function (e) {
     var that = this;
     var name = app.globalData.userInfo.nickName;
     var open_id=app.globalData.openId;
+    var phone=that.data.phone;//接收电话号码
     wx.request({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
@@ -61,12 +52,10 @@ Page({
       data: {
         name: name,
         open_id: open_id,
-        phone: '18164626080'
+        phone: phone
       },
       method: 'POST',
       success: function (res) {
-        console.log('============================');
-        console.log(res);
         that.setData({
           className: 'model1',
           on: 'on'
@@ -80,7 +69,7 @@ Page({
           if (num == 0) {
             clearInterval(timer);
             wx.reLaunch({
-              url: '/pages/me/index/index',
+              url: '/pages/hotel/detail/index',
             })
           }
         }, 1000);
@@ -93,7 +82,6 @@ Page({
   onLoad: function (options) {
     wx.getSystemInfo({
       success: function (res) {
-        console.log(res)
         winHeight = res.windowHeight;
         winWidth = res.windowWidth;
       }
