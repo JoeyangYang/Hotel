@@ -40,7 +40,7 @@
       </view>
       <view class='bottom'>
         <view class='left'>手机</view>
-        <view class='right'>18787312252</view>
+        <view class='right'>{{phone}}</view>
       </view>
     </view>
     <!--主体第三块-->
