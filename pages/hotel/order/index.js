@@ -1,4 +1,5 @@
 // pages/hotel/order/index.js
+var app = getApp();
 Page({
 
   /**
@@ -32,6 +33,7 @@ Page({
   onLoad: function (options) {
     var that = this;
     that.setData({
+      // integral:app.globalData.userInfo.score,
       date:options.date,
       dateEnd:options.dateEnd,
       nightNum:options.nightNum
@@ -45,7 +47,6 @@ Page({
         var province = userInfo.province
         var city = userInfo.city
         var country = userInfo.country
-
         that.setData({
           userName: nickName
         });
