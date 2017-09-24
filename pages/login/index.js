@@ -46,8 +46,6 @@ Page({
     var phone = that.data.phone;//接收电话号码
     var prompt;
     var length = that.data.length;
-    // console.log(length);
-    // console.log('==================');
     if (length == 11) {
       wx.request({
         header: {
@@ -73,8 +71,8 @@ Page({
             });
             if (num == 0) {
               clearInterval(timer);
-              wx.reLaunch({
-                url: '/pages/hotel/detail/index',
+              wx.navigateBack({
+                delta: 1
               })
             }
           }, 1000);
