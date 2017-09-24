@@ -18,10 +18,12 @@ Page({
     var index = e.currentTarget.dataset.index;
     var testHandle = that.data.testHandle;
     var spec = e.currentTarget.dataset.spec;
+    var theme = e.currentTarget.dataset.name;
     wx.setStorage({
       key: 'spec',
       data: {
-        spec: spec
+        spec: spec,
+        theme:theme
       }
     });
     wx.getStorage({
