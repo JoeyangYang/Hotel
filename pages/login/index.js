@@ -38,47 +38,12 @@ Page({
       })
     }
   },
-  //点击登录
-  // submit: function (e) {
-  //   var that = this;
-  //   var name = app.globalData.userInfo.nickName;
-  //   wx.request({
-  //     header: {
-  //       "Content-Type": "application/x-www-form-urlencoded"
-  //     },
-  //     url: app.globalData.webSite + '/Home/Wechat/userAdd',//调用接口地址
-  //     data: {
-  //       name: name,
-  //       phone: '14525879815'
-  //     },
-  //     method: 'GET',
-  //     success: function (res) {
-  //       that.setData({
-  //         className: 'model1',
-  //         on: 'on'
-  //       });
-  //       var num = that.data.second;
-  //       var timer = setInterval(function () {
-  //         num--;
-  //         that.setData({
-  //           second: num
-  //         });
-  //         if (num == 0) {
-  //           clearInterval(timer);
-  //           wx.reLaunch({
-  //             url: '/pages/me/index/index',
-  //           })
-  //         }
-  //       }, 1000);
-  //     }
-  //   });
-  // },
-  //点击注册
+  
   confirm: function (e) {
     var that = this;
     var name = app.globalData.userInfo.nickName;
     var open_id=app.globalData.openId;
-    var phone=that.data.phone;//接受电话号码
+    var phone=that.data.phone;//接收电话号码
     wx.request({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
@@ -104,7 +69,7 @@ Page({
           if (num == 0) {
             clearInterval(timer);
             wx.reLaunch({
-              url: '/pages/me/index/index',
+              url: '/pages/hotel/detail/index',
             })
           }
         }, 1000);
@@ -117,7 +82,6 @@ Page({
   onLoad: function (options) {
     wx.getSystemInfo({
       success: function (res) {
-        console.log(res)
         winHeight = res.windowHeight;
         winWidth = res.windowWidth;
       }

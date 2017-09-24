@@ -9,9 +9,9 @@
         <input type='number' placeholder='请输入验证码' class='code' placeholder-class='color'></input>
         <button class='codes' bindtap='prove'>获取验证码</button>
       </view>
-      <view id='border' class='inputs' bindtap='submit'>
+      <!-- <view id='border' class='inputs' bindtap='submit'>
         <button>登录</button>
-      </view>
+      </view> -->
       <view id='border' class='inputs'>
         <button bindtap="confirm">注册</button>
       </view>
@@ -24,7 +24,7 @@
 <view class="{{className}}" style="width:'{{winWidth}}';height:'{{winHeight}}'"></view>
 <view class='shows'>
   <view class="show {{on}}">
-    <text>登录成功</text>
+    <text>注册成功</text>
     <text>将在{{second}}秒后自动跳转</text>
   </view>
 </view>
