@@ -29,7 +29,7 @@
     "borderStyle": "black",
     "position": "bottom",
     "list": [
-      {
+      { 
         "pagePath": "pages/index/index",
         "iconPath": "img/预定.png",
         "selectedIconPath": "img/预定2.png",

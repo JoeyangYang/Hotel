@@ -32,14 +32,18 @@
        </view><!--orderList结束-->
     </view><!--order结束-->
     <view class="score">
-        <navigator url="../score/index">
-            <text>我的积分</text>
-            <text class="ft">2333</text>
-        </navigator>
-        <navigator url="../score_rule/index">
-            <text class='myScore'>积分规则</text>
-            <text class="ft">1分抵1元</text>
-        </navigator>
+      <!-- <navigator url="../score/index" >  -->
+              <view class='nav'>
+                  <text>我的积分</text>
+                  <text class="ft">2333</text>
+              </view>
+          <!-- </navigator>  -->
+         <navigator url="../score_rule/index"> 
+                <view class='nav'>
+                    <text class='myScore'>积分规则</text>
+                    <text class="ft">10分抵1元</text>
+                  </view> 
+          </navigator> 
      </view><!--score结束-->
      <view class="phone">
          <navigator url="../phone_update/index">

@@ -62,10 +62,13 @@ Page({
             }
           });
           that.setData({
-            hotel: data.data
+            hotel: data.data,
+            price: data.data[0].price
           });
         }
-
+        console.log("detail");
+       console.log(that.data.hotel[0]);
+       console.log(that.data.hotel[0].detail);
       }
     })
   },
