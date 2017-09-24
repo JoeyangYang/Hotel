@@ -107,13 +107,13 @@ Page({
             var date = that.data.date;
             var nightNum = that.data.nightNum;
             var dateEnd = that.data.dateEnd;
-            if (app.globalData.loginStatus==true){
+            if (app.globalData.loginStatus == true){
               wx.navigateTo({
                 url: '/pages/hotel/order/index?date=' + date + '&nightNum=' + nightNum + '&dateEnd=' + dateEnd
               })
             }else{
               wx.navigateTo({
-                url: '/pages/index/index'
+                url: '/pages/login/index'
               })
             }
             
