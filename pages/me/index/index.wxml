@@ -9,7 +9,7 @@
     </view><!--userImg结束-->
     <view class="order">
        <view class="myOrder">
-          <navigator url="../../order/index/index?status=0"><text>我的订单</text><text class="rt">全部订单></text></navigator>
+          <navigator url="../../order/index/index?status=0" bindtap='clickJudge'><text>我的订单</text><text class="rt">全部订单></text></navigator>
           <!-- <navigator class="rt">全部订单</navigator> -->
        </view>
        <view class="orderList">

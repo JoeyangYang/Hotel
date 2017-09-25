@@ -8,6 +8,13 @@ Page({
   data: {
   
   },
+  clickJudge:function(){
+    if (app.globalData.loginStatus == false) {
+      wx.navigateTo({
+        url: '/pages/login/index'
+      })
+    };
+  },
 
   /**
    * 生命周期函数--监听页面加载
