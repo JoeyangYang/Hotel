@@ -18,8 +18,8 @@
     <view class="tips">
         （注：礼品卡作为1号店特殊商品不设置购买积分，即购买礼品卡时不奖励任何积分，但使用礼品卡购买其他1号店商品时可以获得相应的购物积分。）
     </view>
-   <navigator url="/pages/hotel/detail/index" >
+    <!-- <navigator url="/pages/hotel/detail/index" >
             <view class="foot bg-blue">立即预定</view>
-      </navigator>
+    </navigator>  -->
   
 </view><!--score_rule结束-->

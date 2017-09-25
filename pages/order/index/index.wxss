@@ -15,14 +15,18 @@
 .order_index .detail view.box{padding:24rpx 50rpx;font-weight: bold;}
 .order_index .detail  view.box text{display: inline-block;margin-right:14rpx;}
 .order_index .detail  view.box text.rt{position: absolute;top:24rpx;right:50rpx;}
-.order_index .detail .content{margin:24rpx 50rpx;margin-top:0;color: #d7d7d7;display: flex;height:130rpx;border-bottom: 1px solid #d7d7d7;border-top:1px solid #d7d7d7;margin-right:0;padding:10px 0;}
+.order_index .detail .content{margin:24rpx 50rpx;margin-top:0;color:#999;display: flex;height:130rpx;border-bottom: 1px solid #d7d7d7;border-top:1px solid #d7d7d7;margin-right:0;padding:10px 0;}
 .order_index .detail .content view{flex-direction: row;}
 .order_index .detail .content view.lc{width:70%;}
 .order_index .detail .content view.lc text{display: block;margin-bottom: 10rpx;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
 .order_index .detail .content view.rc{width:30%;text-align: center;height:130rpx;line-height: 130rpx;color:#000;font-weight: bold;}
 .order_index .detail .btns{margin-top:22rpx;text-align: right;margin-right:50rpx;margin-bottom: 10rpx;}
 .order_index .detail .btns navigator{display: inline-block;text-align: center;line-height:8rpx;padding:24rpx 25rpx;box-shadow: 1px 1px 5px #888888;font-size:24rpx;}
-.order_index .detail .btns navigator.refund{background: none;color:#d7d7d7;margin-right:30rpx;border:1px solid #d7d7d7;border-radius: 8rpx; display: none;}
+.order_index .detail .btns navigator.refund{background: none;color:#999;margin-right:30rpx;border:1px solid #d7d7d7;border-radius: 8rpx; display: none;}
 .order_index .detail .btns navigator.book{background:linear-gradient(#3399ff,#3ab3ff);color:#fff;border-radius: 8rpx;border:1px solid #3ab3ff;}
 .order_index .detail .btns .show{display: inline-block !important;}
 .order_index .detail .btns .none{display: none;}
+.empty_box{display: none;}
+.empty_box1{display: block;text-align: center;}
+.empty_box1 image{width:150rpx;height:150rpx;}
+.empty_box1 view{margin-top:30rpx;color:#999;font-size:32rpx;}

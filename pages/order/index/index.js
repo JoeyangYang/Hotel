@@ -9,6 +9,7 @@ Page({
     animation:'animation0',
     show:'show',
     flag:true,
+    flag:"empty_box"
   },
   //事件处理
   orderNavClick: function(e) {
@@ -52,9 +53,14 @@ Page({
               }
             });
             
-           
+            that.setData({
+              flag: "empty_box"
+            });
           }else{
             data.data=[];
+            that.setData({
+              flag:"empty_box1"
+            });
           }
           //set数据
           that.setData({
@@ -62,9 +68,6 @@ Page({
           });
         }
       })
-      console.log(111111);
-      console.log(that.data.hotelList);
-      console.log(that.data.hotelList.detail);
   },
 
   /**
@@ -109,6 +112,7 @@ Page({
             
           }else{
            data.data=[];
+
           }
           //set数据
           that.setData({
@@ -118,9 +122,16 @@ Page({
           });
         }
       })
-    
+    wx.getSystemInfo({
+      success: function(res) {
+        var height=res.windowHeight/8;
+        that.setData({
+          height:height
+        });
+      },
+    })
   },
-
+  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

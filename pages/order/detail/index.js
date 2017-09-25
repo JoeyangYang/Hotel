@@ -10,7 +10,11 @@ Page({
    imgUrl: "/img/detail1.jpg",
    foot:"foot"
   },
-
+ jump:function(){
+   wx.switchTab({
+     url: '../../index/index',
+   })
+ },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -69,9 +73,6 @@ Page({
             price: data.data[0].price
           });
         }
-        console.log("detail");
-       console.log(that.data.hotel[0]);
-       console.log(that.data.hotel[0].detail);
       }
     })
   },

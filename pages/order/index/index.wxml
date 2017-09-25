@@ -39,3 +39,7 @@
      
     </block>
 </view><!--order_index结束-->
+<view class='{{flag}}' style='margin-top:{{height}}px'>
+ <image src='../../../img/empty.png'></image>
+ <view bindtap="goIndex">暂无订单,快去下单吧！</view>
+</view>
