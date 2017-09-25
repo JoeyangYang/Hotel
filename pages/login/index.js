@@ -12,9 +12,10 @@ Page({
     className: 'model',
     on: 'on1',
     phone:'',
-    seconds:"30",//时间
+    seconds:"60",//时间
     showBtn:"codes",
-    showBtn1:'none'
+    showBtn1:'none',
+    check:''
   },
   //输入手机号触发事件
   mobileInput: function (e) {
@@ -73,7 +74,7 @@ Page({
           that.setData({
             showBtn: "codes",
             showBtn1: "none",
-            seconds:'30'
+            seconds:'90'
           });
         }
       }, 1000);
@@ -91,8 +92,17 @@ Page({
     var phone = that.data.phone;//接收电话号码
     var prompt;
     var length = that.data.length;
+    var randomNum = that.data.randomNum;
+    var check = that.data.check;
+    //判断手机号位数
     if (length == 11) {
-      if (that.data.randomNum == that.data.check){
+      //判断验证码是否正确
+      if (check == '' || randomNum != check){
+        that.setData({
+          prompt: '验证码有误,请重新输入'
+        });
+      }else{
+        //
         wx.request({
           header: {
             "Content-Type": "application/x-www-form-urlencoded"
@@ -134,10 +144,7 @@ Page({
             }
           }
         });
-      }else{
-        that.setData({
-          prompt:'验证码有误,请重新输入'
-        })
+        //
       }
     }else{
       that.setData({
