@@ -8,6 +8,7 @@ Page({
   data: {
     
    imgUrl: "/img/detail1.jpg",
+   foot:"foot"
   },
 
   /**
@@ -47,7 +48,8 @@ Page({
                 val.status = '退款中';
                 that.setData({
                   imgUrl: "/img/detail3.jpg",
-                  imgText: '我们正在飞速的为您处理退款，请稍后'
+                  imgText: '我们正在飞速的为您处理退款，请稍后',
+                  foot:"btns"
                 });
               }
               if (val.status == '3') {
@@ -55,6 +57,7 @@ Page({
                 that.setData({
                   imgUrl: "/img/detail4.jpg",
                   imgText: '您的退款已经完成，给您带来的不便我们深感歉意',
+                  foot:"btns"
                 });
               }
 
@@ -62,10 +65,13 @@ Page({
             }
           });
           that.setData({
-            hotel: data.data
+            hotel: data.data,
+            price: data.data[0].price
           });
         }
-
+        console.log("detail");
+       console.log(that.data.hotel[0]);
+       console.log(that.data.hotel[0].detail);
       }
     })
   },

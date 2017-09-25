@@ -9,18 +9,18 @@
 .me_index .userImg image view{font-weight: blod;}
 .me_index .order{height:225rpx;margin-top:150rpx;}
 .me_index .order .myOrder{position: relative;margin-bottom:5px;background: #fff;}
-.me_index .order .myOrder navigator{display: inline-block;width:100%;box-sizing:border-box;margin: auto;padding:28rpx 65rpx;}/***/
-.me_index .order .myOrder navigator text.rt{position: absolute;right:57rpx;color:#cccccc;}
+.me_index .order .myOrder .all{display: inline-block;width:100%;box-sizing:border-box;margin: auto;padding:28rpx 65rpx;}/***/
+.me_index .order .myOrder .all text.rt{position: absolute;right:57rpx;color:#cccccc;}
 .me_index .order .orderList{margin-top:20rpx;padding:30rpx 58rpx;background: #fff;}/***/
 .me_index .order .orderList .pubOrder{display: inline-block;width:24.4%;text-align: center;}
 .me_index .order .orderList .pubOrder image{width:50rpx;height:44rpx;}
 .me_index .order .orderList .pubOrder text{display: block;}
 .me_index .score{background: #fff;margin-top:60rpx;}/***/
-.me_index .score navigator{position: relative;display:inline-block;width:100%;box-sizing:border-box;margin: auto;padding:28rpx 20rpx;}/***/
-.me_index .score navigator text.myScore{padding:28rpx 45rpx;}
-.me_index .score navigator:first-child{border-bottom:1px solid #f2f2f2;padding:28rpx 65rpx;}
-.me_index .score navigator text.ft{position: absolute;right:57rpx;}
+.me_index .score .nav{position: relative;display:inline-block;width:100%;box-sizing:border-box;margin: auto;padding:28rpx 20rpx;}/***/
+.me_index .score .nav text.myScore{padding:28rpx 0rpx;}
+.me_index .score .nav:first-child{border-bottom:1px solid #f2f2f2;padding:28rpx 65rpx;}
+.me_index .score .nav text.ft{position: absolute;right:57rpx;}
 .me_index .phone{background: #fff;margin-top:20rpx;height:80rpx;line-height: 80rpx;margin-bottom:147rpx;}
-.me_index .phone navigator{padding:0rpx 62rpx;}/***/
+.me_index .phone text{padding:0rpx 62rpx;}/***/
 /*phone_update*/
 .phone_update{}

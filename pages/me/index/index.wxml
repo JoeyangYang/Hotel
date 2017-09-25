@@ -9,41 +9,45 @@
     </view><!--userImg结束-->
     <view class="order">
        <view class="myOrder">
-          <navigator url="../../order/index/index?status=0" bindtap='clickJudge'><text>我的订单</text><text class="rt">全部订单></text></navigator>
+          <view class='all' data-url='../../order/index/index?status=0' bindtap='clickJudge'><text>我的订单</text><text class="rt">全部订单></text></view>
           <!-- <navigator class="rt">全部订单</navigator> -->
        </view>
        <view class="orderList">
-                <navigator class="pubOrder" url="../../order/index/index?status=1">
+                <view class="pubOrder" data-url='../../order/index/index?status=1' bindtap='clickJudge'>
                     <image src="../../../img/check_in.png"></image>
                     <text>待入住</text>
-                </navigator>
-                  <navigator class="pubOrder" url="../../order/index/index?status=2">
+                </view>
+                <view class="pubOrder" data-url='../../order/index/index?status=2' bindtap='clickJudge'>
                     <image src="../../../img/check_out.png"></image>
                     <text>已完成</text>
-                </navigator>
-                <navigator class="pubOrder" url="../../order/index/index?status=3">
+                </view>
+                <view class="pubOrder" data-url='../../order/index/index?status=3' bindtap='clickJudge'>
                     <image src="../../../img/money.png"></image>
                     <text>退款中</text>
-                </navigator>
-                <navigator class="pubOrder" url="../../order/index/index?status=4">
+                </view>
+                <view class="pubOrder" data-url='../../order/index/index?status=4' bindtap='clickJudge'>
                     <image src="../../../img/money2.png"></image>
                     <text>已退款</text>
-                </navigator>
+                </view>
        </view><!--orderList结束-->
     </view><!--order结束-->
     <view class="score">
-        <navigator url="../score/index">
-            <text>我的积分</text>
-            <text class="ft">2333</text>
-        </navigator>
-        <navigator url="../score_rule/index">
-            <text class='myScore'>积分规则</text>
-            <text class="ft">1分抵1元</text>
-        </navigator>
+      <!-- <navigator url="../score/index" >  -->
+              <view class='nav'>
+                  <text>我的积分</text>
+                  <text class="ft">{{score}}</text>
+              </view>
+          <!-- </navigator>  -->
+          <navigator url="../score_rule/index">
+                <view class='nav' bindtap='clickJudge'>
+                    <text class='myScore'>积分规则</text>
+                    <text class="ft">10分抵1元</text>
+                  </view> 
+          </navigator>   
      </view><!--score结束-->
-     <view class="phone">
-         <navigator url="../phone_update/index">
+     <view class="phone" data-url='../phone_update/index' bindtap='clickJudge'>
+         <!-- <navigator url=""> -->
             <text>更换手机号</text>
-        </navigator>
+        <!-- </navigator> -->
      </view><!--phone结束-->   
 </view><!--me_index结束-->
