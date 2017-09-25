@@ -43,6 +43,22 @@ App({
                       console.log(that);
                     }
                   });
+
+                  //登录验证(JS)
+                  var loginConfirm = function (url) {
+                    console.log(url);
+                    if (that.globalData.loginStatus == false){
+                      wx.navigateTo({
+                        url: '/pages/login/index'
+                      })
+                    }else{
+                      wx.navigateTo({
+                        url: url
+                      })
+                    }
+                    
+                  }
+                  that.globalData.loginConfirm = loginConfirm;
                 }
               });
             }

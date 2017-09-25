@@ -79,7 +79,7 @@
     
 </view><!--order_detail结束-->
 </block>
-<view class="foot">
+<view class="{{foot}}">
         <navigator url="/pages/me/refund/index?price={{price}}">申请退款</navigator>
         <navigator url="/pages/hotel/detail/index">再次预定</navigator>
     </view>

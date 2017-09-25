@@ -6,14 +6,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    
   },
-  clickJudge:function(){
-    if (app.globalData.loginStatus == false) {
-      wx.navigateTo({
-        url: '/pages/login/index'
-      })
-    };
+  clickJudge:function(e){
+    //获取url
+    var that = this;
+    
+    var url = e.currentTarget.dataset.url;
+    //登录验证
+    var loginConfirm = app.globalData.loginConfirm;
+    loginConfirm(url);
   },
 
   /**
@@ -21,6 +23,8 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    var score = app.globalData.userInfo.score;
+
     if (app.globalData.loginStatus == false) {
       wx.navigateTo({
         url: '/pages/login/index'
@@ -38,7 +42,8 @@ Page({
         console.log(res);
         that.setData({
           userImage: avatarUrl,
-          userName: nickName
+          userName: nickName,
+          score:score
         });
       }
     })
