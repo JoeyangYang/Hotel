@@ -29,7 +29,7 @@
         <view class="del_info">
             <view class="box">
                  <text class="lt">主题</text>
-                 <text class="rt">汉庭酒店万达店</text>
+                 <text class="rt">{{item.theme}}</text>
             </view>
              <view class="box">
                  <text class="lt">时间</text>
@@ -80,6 +80,8 @@
 </view><!--order_detail结束-->
 </block>
 <view class="{{foot}}">
-        <navigator url="/pages/me/refund/index?price={{price}}">申请退款</navigator>
-        <navigator url="/pages/hotel/detail/index">再次预定</navigator>
+        <view>
+             <navigator url="/pages/me/refund/index?price={{price}}">申请退款</navigator>
+        </view>
+        <view  bindtap='jump'>再次预定</view>
     </view>

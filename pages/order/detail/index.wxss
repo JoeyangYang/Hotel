@@ -16,9 +16,9 @@
 .order_detail .info .box text{white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
 .order_detail .tips{padding:15rpx 76rpx;color:#cdcdcd;font-size:24rpx;}
 .foot{height:80rpx;border-top:3px solid #d7d7d7;line-height:  80rpx;font-size: 28rpx;position: fixed;bottom: 0;width:100%;}
-.foot navigator{display: inline-block;text-align: center;}
-.foot navigator:first-child{width:30%;background: #fff;}
-.foot navigator:last-child{width:70%;background:#3ab3ff;color:#fff;}
+.foot view{display: inline-block;text-align: center;}
+.foot view:first-child{width:30%;background: #fff;}
+.foot view:last-child{width:70%;background:#3ab3ff;color:#fff;}
 .btns{height:80rpx;border-top:3px solid #d7d7d7;line-height:  80rpx;font-size: 28rpx;position: fixed;bottom: 0;width:100%;}
-.btns navigator:first-child{width:30%;background: #fff;display: none}
-.btns navigator:last-child{width:100%;background:#3ab3ff;color:#fff;display: flex;justify-content: center;align-items: center;}
+.btns view:first-child{width:30%;background: #fff;display: none}
+.btns view:last-child{width:100%;background:#3ab3ff;color:#fff;display: flex;justify-content: center;align-items: center;}
