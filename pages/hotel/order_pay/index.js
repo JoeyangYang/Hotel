@@ -33,9 +33,12 @@ Page({
     wx.getStorage({
       key: 'orderList',
       success: function(res) {
+        var  now_score= res.data.now_score;
         wx.getStorage({
           key: 'spec',
           success: function (spec) {
+            console.log('-----------------------------');
+            console.log(spec);
             //生成order_number
             var order_number = '';
             for (var i = 0; i < 32; i++) {
@@ -43,13 +46,9 @@ Page({
             };
             //生成detail
             var member=spec.data.member;
-            var price = spec.data.price;
-            var spec = spec.data.spec;
-            var data = {member,price,spec}
-            console.log(data);
-            var detail = JSON.stringify(data);
-            console.log('=========================================');
-            console.log(detail);
+            var price=spec.data.price;
+            var spec=spec.data.spec;
+            var detail = member + ',' + spec;
             wx.request({
               header: {
                 "Content-Type": "application/x-www-form-urlencoded"
@@ -57,25 +56,30 @@ Page({
               url: app.globalData.webSite + '/Home/Wechat/orderAdd',
               method: 'POST',
               data: {
-                order_number: order_number,
-                hotel_id: res.data.hotel_id,
-                hotel_name: res.data.hotel_name,
-                address: res.data.address,
-                check_in: res.data.check_in,
-                check_out: res.data.check_out,
-                detail: detail,
-                price: res.data.price,
-                status: 0,
-                user_name: res.data.user_name,
-                user_phone: res.data.user_phone,
+                order_number: order_number,     //订单号
+                hotel_id: res.data.hotel_id,    //酒店id
+                hotel_name: res.data.hotel_name,//酒店名称
+                hotel_phone: res.data.hotel_phone,   //酒店电话
+                theme: res.data.theme,        //酒店房间类型
+                address: res.data.address,      //酒店地址
+                check_in: res.data.check_in,    //入住时间
+                check_out: res.data.check_out,  //离宿时间
+                detail: detail,                 //酒店详情
+                cost_price: res.data.cost_price,//酒店原价格
+                price: res.data.price,          //酒店实际价格
+                used_score: res.data.used_score,//会员积分
+                now_score: now_score,  //剩余积分
+                status: 0,                      //状态
+                user_name: res.data.user_name,  //入住人姓名
+                user_phone: res.data.user_phone,//入住人电话  
               },
               success: function (res) {
-                // console.log(res.data);
                 var code = res.data.code;
                 if(code==200){
+                  app.globalData.userInfo.score = now_score;
                    wx.switchTab({
-                   url: '/pages/me/index/index'
-                });
+                    url: '/pages/me/index/index'
+                  });
                 }
               }
             })

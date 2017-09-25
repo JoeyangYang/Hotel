@@ -2,8 +2,6 @@
   "pages":[
     "pages/index/index",
     "pages/login/index",
-    
-    "pages/register/index",
     "pages/hotel/detail/index",
     "pages/hotel/order/index",
     "pages/hotel/order_pay/index",

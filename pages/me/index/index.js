@@ -14,6 +14,11 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    if (app.globalData.loginStatus == false) {
+      wx.navigateTo({
+        url: '/pages/login/index'
+      })
+    };
     wx.getUserInfo({
       success: function (res) {
         var userInfo = res.userInfo
@@ -23,9 +28,7 @@ Page({
         var province = userInfo.province
         var city = userInfo.city
         var country = userInfo.country
-
         console.log(res);
-
         that.setData({
           userImage: avatarUrl,
           userName: nickName

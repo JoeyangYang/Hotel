@@ -61,7 +61,7 @@
     <view class='main5'>
        <block wx:key="" wx:for="{{hotel.homeStyle}}" wx:for-item="item1" wx:for-index="index"> 
         <view class='block'>
-          <view class='main5_1 {{item1.active}}' data-index="{{index}}" data-spec='{{item1.spec}}' bindtap="testClick">
+          <view class='main5_1 {{item1.active}}' data-index="{{index}}" data-name='{{item1.name}}'  data-spec='{{item1.spec}}' bindtap="testClick">
           <view class='abroad center'>
             <view class='hotel'>
               <!--酒店图片-->
