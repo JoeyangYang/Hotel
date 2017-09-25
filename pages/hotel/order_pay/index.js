@@ -80,6 +80,18 @@ Page({
                    wx.switchTab({
                     url: '/pages/me/index/index'
                   });
+                  wx.request({
+                    header: {
+                      "Content-Type": "application/x-www-form-urlencoded"
+                    },
+                    url: app.globalData.webSite + '/Home/Admin/sendPhoneMessage',
+                    data: {
+                      send_model: 'order_remind',
+                    },
+                    method: 'POST',
+                    success: function (res){
+                    }
+                  });
                 }
               }
             })
