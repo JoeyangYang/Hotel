@@ -72,7 +72,8 @@ Page({
           clearInterval(timer);
           that.setData({
             showBtn: "codes",
-            showBtn1: "none"
+            showBtn1: "none",
+            seconds:'30'
           });
         }
       }, 1000);
