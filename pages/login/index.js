@@ -62,13 +62,13 @@ Page({
         showBtn1:"codes"
       });
       //重新获取验证码定时器
-      var num = that.data.seconds;
+      var nums = that.data.seconds;
       var timer = setInterval(function (){
-        num--;
+        nums--;
         that.setData({
-          second: num
+          seconds: nums
         });
-        if (num == 0) {
+        if (nums == 0) {
           clearInterval(timer);
           that.setData({
             showBtn: "codes",
