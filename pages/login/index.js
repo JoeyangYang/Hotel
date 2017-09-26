@@ -15,7 +15,9 @@ Page({
     seconds:"60",//时间
     showBtn:"codes",
     showBtn1:'none',
-    check:''
+    check:'',
+    numConfirm:'000000',
+    digital:'',
   },
   //输入手机号触发事件
   mobileInput: function (e) {
@@ -30,10 +32,16 @@ Page({
   //输入验证码触发事件，获取input框的值
   getValidation:function(e){
     var that = this;
-    console.log(e);
     that.setData({
       check: e.detail.value
     });
+  },
+  //输入数字验证码触发事件，获取input的值
+  numConfirm:function(e){
+    var that = this;
+    that.setData({
+      digital: e.detail.value
+    })
   },
   //点击获取验证码
   prove:function(){
@@ -57,7 +65,12 @@ Page({
           });
         }
       });
+      var numConfirm = '';
+      for (var i = 0; i <6; i++) {
+        numConfirm += parseInt(Math.random() * 10);
+      };
       that.setData({
+        numConfirm: numConfirm,
         prompt:'',
         showBtn:"none",
         showBtn1:"codes"
@@ -74,7 +87,7 @@ Page({
           that.setData({
             showBtn: "codes",
             showBtn1: "none",
-            seconds:'90'
+            seconds:'60'
           });
         }
       }, 1000);
@@ -84,6 +97,7 @@ Page({
       })
     }
   },
+
   //点击注册
   confirm: function (e) {
     var that = this;
@@ -92,17 +106,22 @@ Page({
     var phone = that.data.phone;//接收电话号码
     var prompt;
     var length = that.data.length;
-    var randomNum = that.data.randomNum;
-    var check = that.data.check;
+    var randomNum = that.data.randomNum;//短信验证码
+    var check = that.data.check;//手动输入短信验证码
+    var digital = that.data.digital//手动输入的数字验证码
+    var numConfirm = that.data.numConfirm//随机生成的数字验证码
     //判断手机号位数
     if (length == 11) {
       //判断验证码是否正确
-      if (check == '' || randomNum != check){
+      if (check == '' || randomNum != check || digital != numConfirm || digital == ''){
         that.setData({
-          prompt: '验证码有误,请重新输入'
+          prompt: '手机短信验证码有误或数字验证码有误,请重新输入'
         });
       }else{
         //
+        // that.setData({
+        //   prompt: '进入注册'
+        // });
         wx.request({
           header: {
             "Content-Type": "application/x-www-form-urlencoded"
