@@ -55,13 +55,13 @@ page{
 }
 /*验证码按钮*/
 .containerd .box .inputs .codes{
-  width: 33%;
+  width: 34%;
   height: 80%;
   line-height: 64rpx;
   float: right;
   margin-top: 1.5%;
   margin-right: 1%;
-  font-size: 25rpx;
+  font-size: 24rpx;
   box-sizing: border-box;
   letter-spacing: 3rpx;
 }
