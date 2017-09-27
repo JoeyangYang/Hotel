@@ -40,7 +40,6 @@ Page({
           success: function (spec) {
             //生成detail
             var member = spec.data.member;
-            var price = spec.data.price;
             var spec = spec.data.spec;
             var detail = member + ',' + spec;
             
@@ -52,7 +51,7 @@ Page({
               body: '云南悦途酒店管理有限公司-嘉优隆酒店预定',
               openid: app.globalData.openId,
               out_trade_no: app.globalData.outTradeNo(),
-              total_fee: price*100,
+              total_fee: orderList.data.price*100,
               spbill_create_ip: '127.0.0.1',
               notify_url: app.globalData.webSite + '/Home/Admin/wecahtPayBack',
               trade_type: 'JSAPI'

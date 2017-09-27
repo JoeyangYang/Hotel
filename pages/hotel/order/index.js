@@ -14,7 +14,7 @@ Page({
     var that = this;
     var price = parseFloat(that.data.price);
     var deductible = that.data.deductible;//积分抵扣金额
-    var result = price - that.data.deductible; 
+    var result = (price*100 - deductible*100)/100; 
     // var now_score = that.data.now_score - used_score;
     if (e.detail.value == true){
       //积分抵用金额与酒店实际价格做比较
