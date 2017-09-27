@@ -92,7 +92,7 @@ Page({
           var data = res.data;
           //订单状态翻译
           if (data.code == '200') {
-            data.data.forEach(function (val, key) {
+            data.data.forEach(function (val , key) {
               if (val.status == '0') {
                 data.data[key].status = '待入住';
                 data.data[key].refund = 'show';
@@ -179,5 +179,13 @@ Page({
    */
   onShareAppMessage: function () {
   
-  }
+  },
+ 
+   //点击跳转到首页
+   jumpIndex:function(){
+    wx.switchTab({
+      url: '../../index/index',
+    })
+   }
+  
 })
