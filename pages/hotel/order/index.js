@@ -14,7 +14,7 @@ Page({
     var that = this;
     var price = parseFloat(that.data.price);
     var deductible = that.data.deductible;//积分抵扣金额
-    var result = price - that.data.deductible; 
+    var result = (price*100 - deductible*100)/100; 
     // var now_score = that.data.now_score - used_score;
     if (e.detail.value == true){
       //积分抵用金额与酒店实际价格做比较
@@ -32,6 +32,7 @@ Page({
             result: result,
           });
         }
+        //积分抵用情况
         var used_score = parseFloat(price * 10);
         that.setData({
           now_score: that.data.integral - used_score,
@@ -51,10 +52,18 @@ Page({
             result: result,
           });
         }
-        that.setData({
-          now_score: '0',
-          used_score: that.data.integral,
-        })
+        //判断用户拥有积分是否为0,积分抵用情况
+        if (parseFloat(app.globalData.userInfo.score) == 0){
+          that.setData({
+            now_score: price,
+            used_score: that.data.integral,
+          })
+        }else{
+          that.setData({
+            now_score: '0',
+            used_score: that.data.integral,
+          })
+        }
       }
       // if(result<=0){
       //   that.setData({

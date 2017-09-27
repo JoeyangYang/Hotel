@@ -47,45 +47,45 @@ Page({
   },
   switchTab:function(e){
     var that = this;
-    if (that.data.checked == true){
-      wx.getStorage({
-        key: 'orderList',
-        success: function (orderList) {
-          var now_score = orderList.data.now_score;
-          wx.getStorage({
-            key: 'spec',
-            success: function (spec) {
-              //生成detail
-              var member = spec.data.member;
-              var price = spec.data.price;
-              var spec = spec.data.spec;
-              var detail = member + ',' + spec;
 
-              //微信支付参数生成方法---------------------
-              var payArr = {
-                appid: app.globalData.appid,
-                mch_id: '1488832592',
-                nonce_str: app.globalData.randomString(),
-                body: '云南悦途酒店管理有限公司-嘉优隆酒店预定',
-                openid: app.globalData.openId,
-                out_trade_no: app.globalData.outTradeNo(),
-                total_fee: price * 100,
-                spbill_create_ip: '127.0.0.1',
-                notify_url: app.globalData.webSite + '/Home/Admin/wecahtPayBack',
-                trade_type: 'JSAPI'
-              }
-              //生成sign (签名)-------------------------
-              var sign = 'appid=' + payArr.appid +
-                '&body=' + payArr.body +
-                '&mch_id=' + payArr.mch_id +
-                '&nonce_str=' + payArr.nonce_str +
-                '&notify_url=' + payArr.notify_url +
-                '&openid=' + payArr.openid +
-                '&out_trade_no=' + payArr.out_trade_no +
-                '&spbill_create_ip=' + payArr.spbill_create_ip +
-                '&total_fee=' + payArr.total_fee +
-                '&trade_type=' + payArr.trade_type +
-                '&key=' + 'G1524ghj861473f42h5s7211cr5FG261';
+    wx.getStorage({
+      key: 'orderList',
+      success: function(orderList) {
+        var  now_score= orderList.data.now_score;
+        wx.getStorage({
+          key: 'spec',
+          success: function (spec) {
+            //生成detail
+            var member = spec.data.member;
+            var spec = spec.data.spec;
+            var detail = member + ',' + spec;
+            
+            //微信支付参数生成方法---------------------
+            var payArr = {
+              appid: app.globalData.appid,
+              mch_id: '1488832592',
+              nonce_str: app.globalData.randomString(),
+              body: '云南悦途酒店管理有限公司-嘉优隆酒店预定',
+              openid: app.globalData.openId,
+              out_trade_no: app.globalData.outTradeNo(),
+              total_fee: orderList.data.price*100,
+              spbill_create_ip: '127.0.0.1',
+              notify_url: app.globalData.webSite + '/Home/Admin/wecahtPayBack',
+              trade_type: 'JSAPI'
+            }
+            //生成sign (签名)-------------------------
+            var sign = 'appid=' + payArr.appid +
+              '&body=' + payArr.body +
+              '&mch_id=' + payArr.mch_id +
+              '&nonce_str=' + payArr.nonce_str +
+              '&notify_url=' + payArr.notify_url +
+              '&openid=' + payArr.openid +
+              '&out_trade_no=' + payArr.out_trade_no +
+              '&spbill_create_ip=' + payArr.spbill_create_ip +
+              '&total_fee=' + payArr.total_fee +
+              '&trade_type=' + payArr.trade_type +
+              '&key=' + 'G1524ghj861473f42h5s7211cr5FG261';
+
 
               //统一下单--------------------------------
               wx.request({
