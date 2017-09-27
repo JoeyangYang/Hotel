@@ -44,7 +44,6 @@ Page({
   },
   //点击获取验证码
   prove: function () {
-    console.log("发送验证码");
     var that = this;
     var prompt;
     var phone = that.data.phone;
@@ -86,9 +85,9 @@ Page({
         if (nums == 0) {
           clearInterval(timer);
           that.setData({
-            showBtn: "codes",
-            showBtn1: "none",
-            seconds: '60'
+            seconds: '60',
+            flag:true,
+            hid:false
           });
         }
       }, 1000);
@@ -118,24 +117,41 @@ confirm:function(e){
       }
     })
    }else{
-    app.globalData.userInfo.phone = that.data.phone;
-     that.setData({
-       className: 'model1',
-       on: 'on'
-     });
-     var num = that.data.second;
-     var timer = setInterval(function () {
-       num--;
-       that.setData({
-         second: num
-       });
-       if (num == 0) {
-         clearInterval(timer);
-         wx.reLaunch({
-           url: '/pages/me/index/index',
-         })
-       }
-     }, 1000);
+    wx.request({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      url: app.globalData.webSite + '/Home/Wechat/userPhoneUpdate',
+      data: {
+        old_phone: app.globalData.userInfo.phone,
+        new_phone:that.data.phone,
+      },
+      method: 'POST',
+      success: function (res) {
+        app.globalData.userInfo.phone = that.data.phone;
+        that.setData({
+          className: 'model1',
+          on: 'on'
+        });
+        var num = that.data.second;
+        var timer = setInterval(function () {
+          num--;
+          that.setData({
+            second: num
+          });
+          if (num == 0) {
+            clearInterval(timer);
+            wx.reLaunch({
+              url: '/pages/me/index/index',
+            })
+          }
+        }, 1000);
+      }
+
+    })
+  
+     
+     
    }
 },
   /**

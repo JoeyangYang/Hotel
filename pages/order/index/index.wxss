@@ -21,9 +21,10 @@
 .order_index .detail .content view.lc text{display: block;margin-bottom: 10rpx;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
 .order_index .detail .content view.rc{width:30%;text-align: center;height:130rpx;line-height: 130rpx;color:#000;font-weight: bold;}
 .order_index .detail .btns{margin-top:22rpx;text-align: right;margin-right:50rpx;margin-bottom: 10rpx;}
-.order_index .detail .btns navigator{display: inline-block;text-align: center;line-height:8rpx;padding:24rpx 25rpx;box-shadow: 1px 1px 5px #888888;font-size:24rpx;}
-.order_index .detail .btns navigator.refund{background: none;color:#999;margin-right:30rpx;border:1px solid #d7d7d7;border-radius: 8rpx; display: none;}
-.order_index .detail .btns navigator.book{background:linear-gradient(#3399ff,#3ab3ff);color:#fff;border-radius: 8rpx;border:1px solid #3ab3ff;}
+.order_index .detail .btns .jump{display: inline-block;text-align: center;line-height:8rpx;box-shadow: 1px 1px 5px #888888;font-size:24rpx;}
+.order_index .detail .btns .jump:first-child{margin-right:30rpx;}
+.order_index .detail .btns .jump .refund{background: none;color:#999;border:1px solid #d7d7d7;border-radius: 8rpx; display: none;padding:24rpx 25rpx;}
+.order_index .detail .btns .jump .book{background:linear-gradient(#3399ff,#3ab3ff);color:#fff;border-radius: 8rpx;border:1px solid #3ab3ff;padding:24rpx 25rpx;}
 .order_index .detail .btns .show{display: inline-block !important;}
 .order_index .detail .btns .none{display: none;}
 .empty_box{display: none;}

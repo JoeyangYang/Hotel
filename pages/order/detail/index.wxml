@@ -33,7 +33,7 @@
             </view>
              <view class="box">
                  <text class="lt">时间</text>
-                 <text class="rt">{{item.check_in}}至{{item.check_out}}</text>
+                 <text class="rt">{{item.check_in}} 至 {{item.check_out}}</text>
             </view>
              <view class="box">
                  <text class="lt">详情</text>
@@ -56,11 +56,11 @@
      <view class="info">
         <view class="del_info">
             <view class="box">
-                 <text class="lt">积分</text>
-                 <text class="rt">汉庭酒店万达店</text>
+                 <text class="lt">使用积分</text>
+                 <text class="rt">{{item.used_score}}</text>
             </view>
              <view class="box">
-                 <text class="lt">订单号</text>
+                 <text class="lt">商户单号</text>
                  <text class="rt">{{item.order_number}}</text>
             </view>
         </view><!--del_info结束-->

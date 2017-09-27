@@ -26,15 +26,19 @@
         <view class="rc">￥{{item.price}}</view>
       </view>
        </navigator>
-      <view class="btns">
-      <navigator url="../../me/refund/index?id={{item.id}}&price={{item.price}}" class="refund {{item.refund}}"> 
-            申请退款
-      </navigator>
-      <navigator url="/pages/hotel/detail/index" class="book">
-            立即预定
-      </navigator>
-        
-      </view>
+        <view class="btns">
+            <view  class="jump"  > 
+            <navigator url="../../me/refund/index?id={{item.id}}&price={{item.price}}">
+             <view class="refund {{item.refund}}" > 申请退款</view>  
+            </navigator>
+                 
+            </view>
+        <view url="/pages/index/index" class="jump">
+            <view class="book" bindtap='jumpIndex'>
+              立即预定
+            </view>  
+        </view> 
+        </view>
       </view><!--detail结束-->
      
     </block>

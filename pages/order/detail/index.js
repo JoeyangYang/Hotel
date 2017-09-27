@@ -1,5 +1,6 @@
 // pages/order/detail/index.js
 var app = getApp();
+
 Page({
 
   /**
@@ -72,6 +73,8 @@ Page({
             hotel: data.data,
             price: data.data[0].price
           });
+          console.log("hotel");
+          console.log(that.data.hotel);
         }
       }
     })
