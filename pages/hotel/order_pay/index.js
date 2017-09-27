@@ -47,8 +47,6 @@ Page({
   },
   switchTab:function(e){
     var that = this;
-    console.log("checked");
-    console.log(that.data.checked);
     if (that.data.checked == true){
       wx.getStorage({
         key: 'orderList',
@@ -234,8 +232,6 @@ Page({
           });
         }
       });
-    }else{
-      console.log("支付失败");
     }
    
   },
