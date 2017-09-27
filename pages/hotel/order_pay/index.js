@@ -1,6 +1,5 @@
 // pages/hotel/order_pay/index.js
 var app = getApp();
-var MD5 = require('../../../libs/crypto/md5.js');
 Page({
 
   /**
@@ -34,13 +33,18 @@ Page({
     var that = this;
     wx.getStorage({
       key: 'orderList',
-      success: function(res) {
-        var  now_score= res.data.now_score;
+      success: function(orderList) {
+        var  now_score= orderList.data.now_score;
         wx.getStorage({
           key: 'spec',
           success: function (spec) {
-            console.log('pay!!!!!!!!!!!!!!!!!!!!!!!!!');
-            //微信支付参数生成方法
+            //生成detail
+            var member = spec.data.member;
+            var price = spec.data.price;
+            var spec = spec.data.spec;
+            var detail = member + ',' + spec;
+            
+            //微信支付参数生成方法---------------------
             var payArr = {
               appid: app.globalData.appid,
               mch_id: '1488832592',
@@ -48,12 +52,12 @@ Page({
               body: '云南悦途酒店管理有限公司-嘉优隆酒店预定',
               openid: app.globalData.openId,
               out_trade_no: app.globalData.outTradeNo(),
-              total_fee: 1,
+              total_fee: price*100,
               spbill_create_ip: '127.0.0.1',
               notify_url: app.globalData.webSite + '/Home/Admin/wecahtPayBack',
               trade_type: 'JSAPI'
             }
-            //生成sign (签名)
+            //生成sign (签名)-------------------------
             var sign = 'appid=' + payArr.appid +
               '&body=' + payArr.body +
               '&mch_id=' + payArr.mch_id +
@@ -66,17 +70,15 @@ Page({
               '&trade_type=' + payArr.trade_type +
               '&key=' + 'G1524ghj861473f42h5s7211cr5FG261';
 
-            console.log('拼接Key');
-            console.log(sign);
-
-            //统一下单
+            //统一下单--------------------------------
             wx.request({
               url: app.globalData.webSite + '/Home/Admin/keyMD5',
               data: {sign: sign},
               success: function(res) {
                 payArr.sign = res.data.toUpperCase();
 
-                console.log(payArr);
+                // console.log('payArr---------------');
+                // console.log(payArr);
 
                 wx.request({
                   header: {
@@ -101,101 +103,121 @@ Page({
                   success: function (res) {
                       var xmlData = res.data;
 
-                      //XML解析单条数据
+                      //XML解析单条数据------------------------------
                       var xmlStr1 = '<prepay_id>';
                       var xmlStr2 = '</prepay_id>';
-
                       xmlData = xmlData.split(xmlStr1);
                       xmlData = xmlData[1].split(xmlStr2);
                       xmlData = xmlData[0].split('<![CDATA[');
                       xmlData = xmlData[1].split(']]>');
                       var prepay_id = xmlData[0]; //最后数据(值)
 
-                      //发起微信支付
-                      var timestamp = Date.parse(new Date()); //当前时间戳
-                      wx.requestPayment({
-                        timeStamp: timestamp.toString(),
-                        nonceStr: payArr.nonce_str,
+                      //发起微信支付----------------------------
+                      //当前时间戳
+                      var timestamp = Date.parse(new Date());
+
+                      //调起微信支付的签名
+                      var wechatPayArr = {
+                        appId: payArr.appid,
+                        nonceStr: app.globalData.randomString(),
                         package: 'prepay_id=' + prepay_id,
                         signType: 'MD5',
-                        paySign: payArr.sign,
+                        timeStamp: timestamp.toString()
+                      }
+
+                      // console.log('wechatPayArr---------------');
+                      // console.log(wechatPayArr);
+
+                      var paySign = 'appId=' + wechatPayArr.appId +
+                        '&nonceStr=' + wechatPayArr.nonceStr +
+                        '&package=' + wechatPayArr.package +
+                        '&signType=' + wechatPayArr.signType +
+                        '&timeStamp=' + wechatPayArr.timeStamp +
+                        '&key=' + 'G1524ghj861473f42h5s7211cr5FG261';
+
+                      //后台加密
+                      wx.request({
+                        url: app.globalData.webSite + '/Home/Admin/keyMD5',
+                        data: { sign: paySign },
                         success: function(res) {
-                            console.log('{{{{{{{{{{{{{{{{{{{{{{');
-                            console.log(res);
-                            console.log('}}}}}}}}}}}}}}}}}}}}}}');
-                        },
-                        fail: function() {
-                          console.log('------------------------');
-                          console.log(res);
-                          console.log('++++++++++++++++++++++++');
+                          wechatPayArr.paySign = res.data.toUpperCase();
+
+                          //发起支付
+                          wx.requestPayment({
+                            timeStamp: wechatPayArr.timeStamp,
+                            nonceStr: wechatPayArr.nonceStr,
+                            package: wechatPayArr.package,
+                            signType: wechatPayArr.signType,
+                            paySign: wechatPayArr.paySign,
+                            success: function (pay) {
+                              console.log(pay);
+                              //支付成功后------------------------------------
+                              //生成order_number
+                              var order_number = '';
+                              for (var i = 0; i < 32; i++) {
+                                order_number += parseInt(Math.random() * 10)
+                              };
+                              
+                              wx.request({
+                                header: {
+                                  "Content-Type": "application/x-www-form-urlencoded"
+                                },
+                                url: app.globalData.webSite + '/Home/Wechat/orderAdd',
+                                method: 'POST',
+                                data: {
+                                  order_number: payArr.out_trade_no,     //订单号
+                                  hotel_id: orderList.data.hotel_id,    //酒店id
+                                  hotel_name: orderList.data.hotel_name,//酒店名称
+                                  hotel_phone: orderList.data.hotel_phone,   //酒店电话
+                                  theme: orderList.data.theme,        //酒店房间类型
+                                  address: orderList.data.address,      //酒店地址
+                                  check_in: orderList.data.check_in,    //入住时间
+                                  check_out: orderList.data.check_out,  //离宿时间
+                                  detail: detail,                 //酒店详情
+                                  cost_price: orderList.data.cost_price,//酒店原价格
+                                  price: orderList.data.price,          //酒店实际价格
+                                  used_score: orderList.data.used_score,//会员积分
+                                  now_score: now_score,  //剩余积分
+                                  status: 0,                      //状态
+                                  user_name: orderList.data.user_name,  //入住人姓名
+                                  user_phone: orderList.data.user_phone,//入住人电话  
+                                },
+                                success: function (res) {
+                                  var code = res.data.code;
+                                  if (code == 200) {
+                                    app.globalData.userInfo.score = now_score;
+                                    wx.switchTab({
+                                      url: '/pages/me/index/index'
+                                    });
+                                    wx.request({
+                                      header: {
+                                        "Content-Type": "application/x-www-form-urlencoded"
+                                      },
+                                      url: app.globalData.webSite + '/Home/Admin/sendPhoneMessage',
+                                      data: {
+                                        send_model: 'order_remind',
+                                      },
+                                      method: 'POST',
+                                      success: function (res) {
+                                      }
+                                    });
+                                  }
+                                }
+                              })
+                            },
+                            fail: function (res) {
+                              console.log('支付失败------------------------');
+                              console.log(res);
+                            }
+                          });
                         }
-                      });
+                      })
+
                   }
                 });
               }
             })
 
-           
-
-
-            // console.log('-----------------------------');
-            // console.log(spec);
-            // //生成order_number
-            // var order_number = '';
-            // for (var i = 0; i < 32; i++) {
-            //   order_number += parseInt(Math.random() * 10)
-            // };
-            // //生成detail
-            // var member=spec.data.member;
-            // var price=spec.data.price;
-            // var spec=spec.data.spec;
-            // var detail = member + ',' + spec;
-            // wx.request({
-            //   header: {
-            //     "Content-Type": "application/x-www-form-urlencoded"
-            //   },
-            //   url: app.globalData.webSite + '/Home/Wechat/orderAdd',
-            //   method: 'POST',
-            //   data: {
-            //     order_number: order_number,     //订单号
-            //     hotel_id: res.data.hotel_id,    //酒店id
-            //     hotel_name: res.data.hotel_name,//酒店名称
-            //     hotel_phone: res.data.hotel_phone,   //酒店电话
-            //     theme: res.data.theme,        //酒店房间类型
-            //     address: res.data.address,      //酒店地址
-            //     check_in: res.data.check_in,    //入住时间
-            //     check_out: res.data.check_out,  //离宿时间
-            //     detail: detail,                 //酒店详情
-            //     cost_price: res.data.cost_price,//酒店原价格
-            //     price: res.data.price,          //酒店实际价格
-            //     used_score: res.data.used_score,//会员积分
-            //     now_score: now_score,  //剩余积分
-            //     status: 0,                      //状态
-            //     user_name: res.data.user_name,  //入住人姓名
-            //     user_phone: res.data.user_phone,//入住人电话  
-            //   },
-            //   success: function (res) {
-            //     var code = res.data.code;
-            //     if(code==200){
-            //       app.globalData.userInfo.score = now_score;
-            //        wx.switchTab({
-            //         url: '/pages/me/index/index'
-            //       });
-            //       wx.request({
-            //         header: {
-            //           "Content-Type": "application/x-www-form-urlencoded"
-            //         },
-            //         url: app.globalData.webSite + '/Home/Admin/sendPhoneMessage',
-            //         data: {
-            //           send_model: 'order_remind',
-            //         },
-            //         method: 'POST',
-            //         success: function (res){
-            //         }
-            //       });
-            //     }
-            //   }
-            // })
           }
         });
       }
