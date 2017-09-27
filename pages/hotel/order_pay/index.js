@@ -124,7 +124,6 @@ Page({
                         signType: 'MD5',
                         timeStamp: timestamp.toString()
                       }
-
                       // console.log('wechatPayArr---------------');
                       // console.log(wechatPayArr);
 
@@ -152,12 +151,6 @@ Page({
                             success: function (pay) {
                               console.log(pay);
                               //支付成功后------------------------------------
-                              //生成order_number
-                              var order_number = '';
-                              for (var i = 0; i < 32; i++) {
-                                order_number += parseInt(Math.random() * 10)
-                              };
-                              
                               wx.request({
                                 header: {
                                   "Content-Type": "application/x-www-form-urlencoded"

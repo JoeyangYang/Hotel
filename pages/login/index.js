@@ -1,4 +1,4 @@
-// pages/me/phone_update/index.js
+ // pages/me/phone_update/index.js
 var winWidth = 0;
 var winHeight = 0;
 var app = getApp();
@@ -106,10 +106,10 @@ Page({
     var phone = that.data.phone;//接收电话号码
     var prompt;
     var length = that.data.length;
-    var randomNum = that.data.randomNum;//短信验证码
-    var check = that.data.check;//手动输入短信验证码
-    var digital = that.data.digital//手动输入的数字验证码
-    var numConfirm = that.data.numConfirm//随机生成的数字验证码
+    var randomNum = that.data.randomNum;  //短信验证码
+    var check = that.data.check;          //手动输入短信验证码
+    var digital = that.data.digital       //手动输入的数字验证码
+    var numConfirm = that.data.numConfirm //随机生成的数字验证码
     //判断手机号位数
     if (length == 11) {
       //判断验证码是否正确
@@ -150,9 +150,10 @@ Page({
                   second: num
                 });
                 if (num == 0) {
+                  //返回上一页
                   clearInterval(timer);
                   wx.navigateBack({
-                    delta: 1
+                    delta: 1 //返回页数
                   })
                 }
               }, 1000);
