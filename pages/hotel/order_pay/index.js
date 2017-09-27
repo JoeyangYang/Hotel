@@ -28,79 +28,96 @@ Page({
       }
     })
   },
-
+  clickChecked: function () {
+    var that = this;
+    that.setData({
+      checked: true,
+      active: 'active'
+    });
+    // var checked;
+    // if(checked==false){
+    //   that.setData({
+    //     active:''
+    //   });
+    // }else{
+    //   that.setData({
+    //     active: 'active'
+    //   });
+    // }
+  },
   switchTab:function(e){
     var that = this;
-    wx.getStorage({
-      key: 'orderList',
-      success: function(orderList) {
-        var  now_score= orderList.data.now_score;
-        wx.getStorage({
-          key: 'spec',
-          success: function (spec) {
-            //生成detail
-            var member = spec.data.member;
-            var price = spec.data.price;
-            var spec = spec.data.spec;
-            var detail = member + ',' + spec;
-            
-            //微信支付参数生成方法---------------------
-            var payArr = {
-              appid: app.globalData.appid,
-              mch_id: '1488832592',
-              nonce_str: app.globalData.randomString(),
-              body: '云南悦途酒店管理有限公司-嘉优隆酒店预定',
-              openid: app.globalData.openId,
-              out_trade_no: app.globalData.outTradeNo(),
-              total_fee: price*100,
-              spbill_create_ip: '127.0.0.1',
-              notify_url: app.globalData.webSite + '/Home/Admin/wecahtPayBack',
-              trade_type: 'JSAPI'
-            }
-            //生成sign (签名)-------------------------
-            var sign = 'appid=' + payArr.appid +
-              '&body=' + payArr.body +
-              '&mch_id=' + payArr.mch_id +
-              '&nonce_str=' + payArr.nonce_str +
-              '&notify_url=' + payArr.notify_url +
-              '&openid=' + payArr.openid +
-              '&out_trade_no=' + payArr.out_trade_no +
-              '&spbill_create_ip=' + payArr.spbill_create_ip +
-              '&total_fee=' + payArr.total_fee +
-              '&trade_type=' + payArr.trade_type +
-              '&key=' + 'G1524ghj861473f42h5s7211cr5FG261';
+    if (that.data.checked == true){
+      wx.getStorage({
+        key: 'orderList',
+        success: function (orderList) {
+          var now_score = orderList.data.now_score;
+          wx.getStorage({
+            key: 'spec',
+            success: function (spec) {
+              //生成detail
+              var member = spec.data.member;
+              var price = spec.data.price;
+              var spec = spec.data.spec;
+              var detail = member + ',' + spec;
 
-            //统一下单--------------------------------
-            wx.request({
-              url: app.globalData.webSite + '/Home/Admin/keyMD5',
-              data: {sign: sign},
-              success: function(res) {
-                payArr.sign = res.data.toUpperCase();
+              //微信支付参数生成方法---------------------
+              var payArr = {
+                appid: app.globalData.appid,
+                mch_id: '1488832592',
+                nonce_str: app.globalData.randomString(),
+                body: '云南悦途酒店管理有限公司-嘉优隆酒店预定',
+                openid: app.globalData.openId,
+                out_trade_no: app.globalData.outTradeNo(),
+                total_fee: price * 100,
+                spbill_create_ip: '127.0.0.1',
+                notify_url: app.globalData.webSite + '/Home/Admin/wecahtPayBack',
+                trade_type: 'JSAPI'
+              }
+              //生成sign (签名)-------------------------
+              var sign = 'appid=' + payArr.appid +
+                '&body=' + payArr.body +
+                '&mch_id=' + payArr.mch_id +
+                '&nonce_str=' + payArr.nonce_str +
+                '&notify_url=' + payArr.notify_url +
+                '&openid=' + payArr.openid +
+                '&out_trade_no=' + payArr.out_trade_no +
+                '&spbill_create_ip=' + payArr.spbill_create_ip +
+                '&total_fee=' + payArr.total_fee +
+                '&trade_type=' + payArr.trade_type +
+                '&key=' + 'G1524ghj861473f42h5s7211cr5FG261';
 
-                // console.log('payArr---------------');
-                // console.log(payArr);
+              //统一下单--------------------------------
+              wx.request({
+                url: app.globalData.webSite + '/Home/Admin/keyMD5',
+                data: { sign: sign },
+                success: function (res) {
+                  payArr.sign = res.data.toUpperCase();
 
-                wx.request({
-                  header: {
-                    "Content-Type": "application/x-www-form-urlencoded"
-                  },
-                  method: 'POST',
-                  url: 'https://api.mch.weixin.qq.com/pay/unifiedorder',
-                  data: "<xml>" +
-                  "<appid><![CDATA[" + payArr.appid + "]]></appid>" +
-                  "<body><![CDATA[" + payArr.body + "]]></body>" +
-                  "<mch_id><![CDATA[" + payArr.mch_id + "]]></mch_id>" +
-                  "<nonce_str><![CDATA[" + payArr.nonce_str + "]]></nonce_str>" +
-                  "<notify_url><![CDATA[" + payArr.notify_url + "]]></notify_url>" +
-                  "<openid><![CDATA[" + payArr.openid + "]]></openid>" +
-                  "<out_trade_no><![CDATA[" + payArr.out_trade_no + "]]></out_trade_no>" +
+                  // console.log('payArr---------------');
+                  // console.log(payArr);
 
-                  "<spbill_create_ip><![CDATA[" + payArr.spbill_create_ip + "]]></spbill_create_ip>" +
-                  "<total_fee><![CDATA[" + payArr.total_fee + "]]></total_fee>" +
-                  "<trade_type><![CDATA[" + payArr.trade_type + "]]></trade_type>" +
-                  "<sign><![CDATA[" + payArr.sign + "]]></sign>" +
-                  "</xml>",
-                  success: function (res) {
+                  wx.request({
+                    header: {
+                      "Content-Type": "application/x-www-form-urlencoded"
+                    },
+                    method: 'POST',
+                    url: 'https://api.mch.weixin.qq.com/pay/unifiedorder',
+                    data: "<xml>" +
+                    "<appid><![CDATA[" + payArr.appid + "]]></appid>" +
+                    "<body><![CDATA[" + payArr.body + "]]></body>" +
+                    "<mch_id><![CDATA[" + payArr.mch_id + "]]></mch_id>" +
+                    "<nonce_str><![CDATA[" + payArr.nonce_str + "]]></nonce_str>" +
+                    "<notify_url><![CDATA[" + payArr.notify_url + "]]></notify_url>" +
+                    "<openid><![CDATA[" + payArr.openid + "]]></openid>" +
+                    "<out_trade_no><![CDATA[" + payArr.out_trade_no + "]]></out_trade_no>" +
+
+                    "<spbill_create_ip><![CDATA[" + payArr.spbill_create_ip + "]]></spbill_create_ip>" +
+                    "<total_fee><![CDATA[" + payArr.total_fee + "]]></total_fee>" +
+                    "<trade_type><![CDATA[" + payArr.trade_type + "]]></trade_type>" +
+                    "<sign><![CDATA[" + payArr.sign + "]]></sign>" +
+                    "</xml>",
+                    success: function (res) {
                       var xmlData = res.data;
 
                       //XML解析单条数据------------------------------
@@ -138,7 +155,7 @@ Page({
                       wx.request({
                         url: app.globalData.webSite + '/Home/Admin/keyMD5',
                         data: { sign: paySign },
-                        success: function(res) {
+                        success: function (res) {
                           wechatPayArr.paySign = res.data.toUpperCase();
 
                           //发起支付
@@ -206,30 +223,20 @@ Page({
                         }
                       })
 
-                  }
-                });
-              }
-            })
+                    }
+                  });
+                }
+              })
 
-          }
-        });
-      }
-    });
-  },
-
-  clickChecked:function(){
-    var that=this;
-    var checked;
-    if(checked==false){
-      that.setData({
-        active:''
-      });
-    }else{
-      that.setData({
-        active: 'active'
+            }
+          });
+        }
       });
     }
+   
   },
+
+  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
