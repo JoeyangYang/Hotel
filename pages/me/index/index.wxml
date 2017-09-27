@@ -39,7 +39,7 @@
               </view>
           <!-- </navigator>  -->
           <navigator url="../score_rule/index">
-                <view class='nav' bindtap='clickJudge'>
+                <view class='nav'>
                     <text class='myScore'>积分规则</text>
                     <text class="ft">10分抵1元</text>
                   </view> 

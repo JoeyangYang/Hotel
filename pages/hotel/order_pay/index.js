@@ -28,9 +28,26 @@ Page({
       }
     })
   },
-
+  clickChecked: function () {
+    var that = this;
+    that.setData({
+      checked: true,
+      active: 'active'
+    });
+    // var checked;
+    // if(checked==false){
+    //   that.setData({
+    //     active:''
+    //   });
+    // }else{
+    //   that.setData({
+    //     active: 'active'
+    //   });
+    // }
+  },
   switchTab:function(e){
     var that = this;
+
     wx.getStorage({
       key: 'orderList',
       success: function(orderList) {
@@ -69,37 +86,38 @@ Page({
               '&trade_type=' + payArr.trade_type +
               '&key=' + 'G1524ghj861473f42h5s7211cr5FG261';
 
-            //统一下单--------------------------------
-            wx.request({
-              url: app.globalData.webSite + '/Home/Admin/keyMD5',
-              data: {sign: sign},
-              success: function(res) {
-                payArr.sign = res.data.toUpperCase();
 
-                // console.log('payArr---------------');
-                // console.log(payArr);
+              //统一下单--------------------------------
+              wx.request({
+                url: app.globalData.webSite + '/Home/Admin/keyMD5',
+                data: { sign: sign },
+                success: function (res) {
+                  payArr.sign = res.data.toUpperCase();
 
-                wx.request({
-                  header: {
-                    "Content-Type": "application/x-www-form-urlencoded"
-                  },
-                  method: 'POST',
-                  url: 'https://api.mch.weixin.qq.com/pay/unifiedorder',
-                  data: "<xml>" +
-                  "<appid><![CDATA[" + payArr.appid + "]]></appid>" +
-                  "<body><![CDATA[" + payArr.body + "]]></body>" +
-                  "<mch_id><![CDATA[" + payArr.mch_id + "]]></mch_id>" +
-                  "<nonce_str><![CDATA[" + payArr.nonce_str + "]]></nonce_str>" +
-                  "<notify_url><![CDATA[" + payArr.notify_url + "]]></notify_url>" +
-                  "<openid><![CDATA[" + payArr.openid + "]]></openid>" +
-                  "<out_trade_no><![CDATA[" + payArr.out_trade_no + "]]></out_trade_no>" +
+                  // console.log('payArr---------------');
+                  // console.log(payArr);
 
-                  "<spbill_create_ip><![CDATA[" + payArr.spbill_create_ip + "]]></spbill_create_ip>" +
-                  "<total_fee><![CDATA[" + payArr.total_fee + "]]></total_fee>" +
-                  "<trade_type><![CDATA[" + payArr.trade_type + "]]></trade_type>" +
-                  "<sign><![CDATA[" + payArr.sign + "]]></sign>" +
-                  "</xml>",
-                  success: function (res) {
+                  wx.request({
+                    header: {
+                      "Content-Type": "application/x-www-form-urlencoded"
+                    },
+                    method: 'POST',
+                    url: 'https://api.mch.weixin.qq.com/pay/unifiedorder',
+                    data: "<xml>" +
+                    "<appid><![CDATA[" + payArr.appid + "]]></appid>" +
+                    "<body><![CDATA[" + payArr.body + "]]></body>" +
+                    "<mch_id><![CDATA[" + payArr.mch_id + "]]></mch_id>" +
+                    "<nonce_str><![CDATA[" + payArr.nonce_str + "]]></nonce_str>" +
+                    "<notify_url><![CDATA[" + payArr.notify_url + "]]></notify_url>" +
+                    "<openid><![CDATA[" + payArr.openid + "]]></openid>" +
+                    "<out_trade_no><![CDATA[" + payArr.out_trade_no + "]]></out_trade_no>" +
+
+                    "<spbill_create_ip><![CDATA[" + payArr.spbill_create_ip + "]]></spbill_create_ip>" +
+                    "<total_fee><![CDATA[" + payArr.total_fee + "]]></total_fee>" +
+                    "<trade_type><![CDATA[" + payArr.trade_type + "]]></trade_type>" +
+                    "<sign><![CDATA[" + payArr.sign + "]]></sign>" +
+                    "</xml>",
+                    success: function (res) {
                       var xmlData = res.data;
 
                       //XML解析单条数据------------------------------
@@ -137,7 +155,7 @@ Page({
                       wx.request({
                         url: app.globalData.webSite + '/Home/Admin/keyMD5',
                         data: { sign: paySign },
-                        success: function(res) {
+                        success: function (res) {
                           wechatPayArr.paySign = res.data.toUpperCase();
 
                           //发起支付
@@ -205,30 +223,20 @@ Page({
                         }
                       })
 
-                  }
-                });
-              }
-            })
+                    }
+                  });
+                }
+              })
 
-          }
-        });
-      }
-    });
-  },
-
-  clickChecked:function(){
-    var that=this;
-    var checked;
-    if(checked==false){
-      that.setData({
-        active:''
-      });
-    }else{
-      that.setData({
-        active: 'active'
+            }
+          });
+        }
       });
     }
+   
   },
+
+  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

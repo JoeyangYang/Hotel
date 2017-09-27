@@ -16,7 +16,7 @@
       </view>
       <view class='left1'>微信支付</view>
       <view class='right'>
-        <radio bindtap='clickChecked'></radio>
+        <radio bindtap='clickChecked' checked='{{checked}}'></radio>
       </view>
     </view>
     <!--主体第三块-->
