@@ -15,19 +15,19 @@ Page({
       [
         {
           id: '1',
-          image: '../../img/hotel3.png',
-          name: '汉庭酒店'
+          image: '../../img/hotel9.png',
+          name: '嘉优隆精品酒店'
         },
-        {
-          id: '2',
-          image: '../../img/hotel2.png',
-          name: '汉庭酒店'
-        },
-        {
-          id: '3',
-          image: '../../img/hotel4.png',
-          name: '汉庭酒店'
-        }
+        // {
+        //   id: '2',
+        //   image: '../../img/hotel2.png',
+        //   name: '汉庭酒店'
+        // },
+        // {
+        //   id: '3',
+        //   image: '../../img/hotel4.png',
+        //   name: '汉庭酒店'
+        // }
       ]
       
     ],
