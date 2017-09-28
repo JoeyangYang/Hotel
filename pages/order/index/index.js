@@ -111,10 +111,14 @@ Page({
                 data.data[key].status = '已退款';
               }
             });
-            
+            that.setData({
+              flag: "empty_box"
+            });
           }else{
            data.data=[];
-
+           that.setData({
+             flag: "empty_box1"
+           });
           }
           //set数据
           that.setData({
