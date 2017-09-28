@@ -30,7 +30,8 @@ Page({
         method: 'POST',
         url: app.globalData.webSite + '/Home/Wechat/orderSelectByStatus',
         data: {
-          status: index
+          status: index,
+          phone: app.globalData.userInfo.phone,
         },
         success: function (res) {
           var data = res.data;
