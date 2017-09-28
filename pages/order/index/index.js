@@ -130,7 +130,9 @@ Page({
       })
     wx.getSystemInfo({
       success: function(res) {
-        var height=res.windowHeight/8;
+        console.log(res);
+        var height=res.windowHeight/2;
+        console.log(height);
         that.setData({
           height:height
         });
