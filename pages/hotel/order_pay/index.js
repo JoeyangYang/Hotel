@@ -28,6 +28,7 @@ Page({
       }
     })
   },
+  //点击付款提交订单
   clickChecked: function () {
     var that = this;
     that.setData({
