@@ -11,18 +11,18 @@ Page({
     second: 3,
     className: 'model',
     on: 'on1', 
-    refund_reson:''
+    refund_reason:''
   },
   bindInput:function(e){
     var value=e.detail.value;
     this.setData({
-      refund_reson:value
+      refund_reason:value
     });
   },
   //申请退款
   refund: function () {
     var that = this;
-    var refund_reson=that.data.refund_reson;
+    var refund_reason=that.data.refund_reason;
     /////////////////////
     var id=that.data.id;
     var status = 2;
@@ -35,7 +35,7 @@ Page({
        data:{
          status:status,
          id:id,
-         refund_reson:refund_reson
+         refund_reason:refund_reason
        },
        success:function(res){
        var data=res.data;
