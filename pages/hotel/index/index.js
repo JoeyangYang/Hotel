@@ -75,6 +75,7 @@ Page({
         searchHandle: index
       });
     }
+    
     if (e.currentTarget.dataset.ok) {
       wx.getStorage({
         key: 'listHotel',
