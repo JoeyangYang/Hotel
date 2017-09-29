@@ -7,13 +7,14 @@ Page({
    */
   data: {
     active: '',
-    used_score:'0'
+    used_score:'0',
+    deductible:'0'
   },
 
   switchChange: function (e) {
     var that = this;
     var price = parseFloat(that.data.price);
-    var deductible = that.data.deductible;//积分抵扣金额
+    var deductible = that.data.deductibles;//积分抵扣金额
     var result = (price*100 - deductible*100)/100; 
     // var now_score = that.data.now_score - used_score;
     if (e.detail.value == true){
@@ -24,7 +25,7 @@ Page({
           that.setData({
             result: "0.01",
             active: 'active',
-            deductible: price,
+            deductible: price - 0.01,
           });
         } else {
           that.setData({
@@ -85,6 +86,7 @@ Page({
             active: '',
             result: price,
             used_score: '0',
+            deductible: '0',
             now_score: parseFloat(that.data.integral) + parseFloat(res.data.price),
           });
         }
@@ -144,7 +146,7 @@ Page({
           theme:res.data.theme,
           price: res.data.price,
           now_score: integral - that.data.used_score + parseFloat(res.data.price),
-          deductible: deductible,
+          deductibles: deductible,
           result:res.data.price,
         });
       },

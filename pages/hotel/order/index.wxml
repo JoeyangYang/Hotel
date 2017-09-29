@@ -47,7 +47,8 @@
     <view class='main3'>
       <view class='main3_1'>
         <view class='left'>
-          <text>可用 {{integral}} 积分抵用 {{deductible}} 元</text>
+          <text>可用 {{integral}} 积分抵用 {{deductibles}} 元</text>
+          <view><text>可抵用{{deductible}} 元 (至少支付0.01元)</text></view>
         </view>
         <view class='right'>
           <switch bindchange="switchChange"/>
