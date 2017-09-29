@@ -25,7 +25,7 @@ Page({
           that.setData({
             result: "0.01",
             active: 'active',
-            deductible: price - 0.01,
+            deductible: parseFloat(price - 0.01),
           });
         } else {
           that.setData({
@@ -36,8 +36,8 @@ Page({
         //积分抵用情况
         var used_score = parseFloat(price * 10);
         that.setData({
-          now_score: that.data.integral - used_score + 0.1,
-          used_score: used_score - 0.1,
+          now_score: that.data.integral - used_score + parseFloat(0.1) + parseFloat(0.01),
+          used_score: used_score - parseFloat(0.1),
         })
       }else{
         //判断实际价格是否小于0
