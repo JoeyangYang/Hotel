@@ -42,7 +42,7 @@
   margin-top: 3rpx;}        
 /*主体第二块*/
 .main2{
-  margin-top: 40rpx;
+  margin-top: 25rpx;
   width: 100%;
   background-color: white;
   font-size: 28rpx;}
@@ -91,26 +91,32 @@
 /*主体第三块*/
 .main3{
   width: 100%;
-  margin-top: 40rpx;
+  margin-top: 25rpx;
   background-color: white;
-  font-size: 28rpx;}
+  font-size: 28rpx;
+  height: 160rpx;}
 .main3_1{
-  width: 95%;
+  width: 100%;
   margin-left: 5%;
   line-height: 80rpx;}
 .main3_1 .left{
-  width: 70%;
-  display: inline-block;}
+  width: 72%;
+  height: 160rpx;
+  float: left;
+  background-color: white;}
 .main3_1 .right{
-  width: 30%;
-  display: inline-block;}
+  width: 28%;
+  height: 160rpx;
+  float: right;
+  line-height: 160rpx;
+  background-color: white;}
 .main3_1 .right switch{
-  margin-left: 35%;
-  margin-top: -8%;}   
+  margin-left: 18%;}   
 /*主体第四块*/
 .main4{
   width: 100%;
-  margin-top: 40rpx;}
+  margin-top: 40rpx;
+  clear: both;}
 .prompt{
   width: 90%;
   color: #CCCCCC;
