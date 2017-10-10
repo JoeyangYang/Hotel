@@ -16,6 +16,7 @@ Page({
     var price = parseFloat(that.data.price);
     var deductible = that.data.deductibles;//积分抵扣金额
     var result = (price*100 - deductible*100)/100; 
+    var remainder = that.data.remainder
     // var now_score = that.data.now_score - used_score;
     if (e.detail.value == true){
       //积分抵用金额与酒店实际价格做比较
@@ -43,9 +44,9 @@ Page({
         //判断实际价格是否小于0
         if (result <= 0) {
           that.setData({
-            result: "0.01",
+            result: "0.01",//总额
             active: 'active',
-            deductible: price,
+            deductible: price,//抵扣金额
           });
         } else {
           that.setData({
@@ -61,23 +62,11 @@ Page({
           })
         }else{
           that.setData({
-            now_score: '0',
-            used_score: that.data.integral,
+            now_score: parseFloat('0' + remainder),//抵用后剩余的积分
+            used_score: parseFloat(deductible * 10),////抵扣的积分////////////////////////////
           })
         }
-      }
-      // if(result<=0){
-      //   that.setData({
-      //     result:"0",
-      //     active: 'active',
-      //     deductible:price,
-      //   });
-      // }else{
-      //   that.setData({
-      //     active: 'active',
-      //     result: result,
-      //   });
-      // }  
+      }/*结束 */
     }else {
       wx.getStorage({
         key: 'spec',
@@ -136,7 +125,18 @@ Page({
       },
     })  
     var integral = parseFloat(app.globalData.userInfo.score);//拥有积分
-    var deductible=integral/10;//可抵扣的金额
+    /**取整 */
+    var integralArr = String(integral).split('.');
+    var deductible = integralArr[0]/10;//可抵扣的金额
+    if (integralArr[1].length == 1){
+      that.setData({
+        remainder: integralArr[1]/10
+      })
+    }else{
+      that.setData({
+        remainder: integralArr[1]/100
+      })
+    }
     // var used_score = deductible*10;//抵扣的积分
     var theme;//房间类型
     wx.getStorage({
@@ -168,9 +168,6 @@ Page({
     var theme=that.data.theme;//酒店房间类型
     var cost_price = that.data.cost_price;//酒店原价格
     var now_score = that.data.now_score;//剩余积分
-    console.log('--------------------------');
-        console.log(now_score);
-        console.log(used_score);
     wx.setStorage({
       key: 'orderList',
       data: { user_phone, hotel_phone, address, hotel_name, check_in, check_out, price, user_name, used_score, hotel_id, theme, cost_price, now_score},
