@@ -100,6 +100,6 @@ App({
     userInfo: null,
     openId: '',
     loginStatus: false,
-    webSite: 'http://hyu3181730001.my3w.com'
+    webSite: 'http://www.jiayoulong.com/'
   }
 })
