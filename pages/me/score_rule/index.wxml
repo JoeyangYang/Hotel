@@ -15,10 +15,6 @@
         <text>9、该政策如出现歧义，最终解释权归嘉优隆酒店所有。</text>
     </view><!--content结束-->
     <view class="tips">
-        （注：在酒店内消费可获取积分及可用积分抵扣的住宿费、酒店内的餐饮、酒店内的代售商品等。。）
+        
     </view>
-    <!-- <navigator url="/pages/hotel/detail/index" >
-            <view class="foot bg-blue">立即预定</view>
-    </navigator>  -->
-  
 </view><!--score_rule结束-->
