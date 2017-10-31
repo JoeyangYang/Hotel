@@ -4,10 +4,11 @@
 .cus-table-cell { display: table-cell; vertical-align: middle; }
 .main .block { padding-left: 5%; }
 .all{
-  width: 100%;
+  width: 99.5%;
   height: auto;
   font-family: 微软雅黑;
-  background-color: #F1F1F1;}
+  background-color: #F1F1F1;
+  }
 
 .score { height: 0; overflow: hidden; }
 .score.active { height: 38px; }
@@ -90,7 +91,7 @@
   display: inline-block;}
 /*主体第三块*/
 .main3{
-  width: 100%;
+  width: 95%;
   margin-top: 25rpx;
   background-color: white;
   font-size: 28rpx;
@@ -105,7 +106,7 @@
   float: left;
   background-color: white;}
 .main3_1 .right{
-  width: 28%;
+  width: 27%;
   height: 160rpx;
   float: right;
   line-height: 160rpx;

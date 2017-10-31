@@ -96,10 +96,10 @@ App({
   },
 
   globalData: {
-    appid: '',
+    appid: 'wx4cf1ee506aff078f',
     userInfo: null,
     openId: '',
     loginStatus: false,
-    webSite: ''
+    webSite: 'http://www.jiayoulong.com/'
   }
 })

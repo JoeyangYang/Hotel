@@ -119,7 +119,7 @@
        </block> 
       <!--酒店配备设施块-->
       <view class='tips'>
-        <view class='supply center'>
+        <!-- <view class='supply center'>
           <view class='last'>
             <view class='one'> <image src='../../../img/wifi.png'></image> </view>
             <view class='two'> <text>免费wifi</text> </view>
@@ -140,7 +140,7 @@
             <view class='one'> <image src='../../../img/xiangzi.png'></image> </view>
             <view class='two'> <text>行李寄存</text> </view>
           </view>
-        </view>
+        </view> -->
         <!--温馨提示-->
         <view class='prompt center'>
           <text>温馨提示：请于入住日下午14：00后办理入住，如提前到店，视酒店空房情况安排。</text>
