@@ -5,7 +5,7 @@
   <view class='main'>
     <!--主体第一块-->
     <view class='main1'>
-      <image src='../../../img/11.png'></image>
+      <image src='{{webSite}}{{hotel.image}}'></image>
       <view class='main1_1'></view>
       <view class='hotel'>
         <text>{{hotel.name}}</text>

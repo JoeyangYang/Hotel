@@ -128,6 +128,7 @@ Page({
     /**取整 */
     var integralArr = String(integral).split('.');
     var deductible = integralArr[0]/10;//可抵扣的金额
+
     if (integralArr != '0'){
       if (integralArr[1].length == 1){
         that.setData({

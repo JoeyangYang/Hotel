@@ -100,6 +100,6 @@ App({
     userInfo: null,
     openId: '',
     loginStatus: false,
-    webSite: 'http://www.jiayoulong.com/'
+    webSite: 'https://www.jiayoulong.com/'
   }
 })
