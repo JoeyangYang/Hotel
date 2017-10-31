@@ -128,23 +128,23 @@ Page({
     /**取整 */
     var integralArr = String(integral).split('.');
     var deductible = integralArr[0]/10;//可抵扣的金额
-    if (integralArr != '0') {
-      if (integralArr[1].length == 1) {
+
+    if (integralArr != '0'){
+      if (integralArr[1].length == 1){
         that.setData({
-          remainder: integralArr[1] / 10
+          remainder: integralArr[1]/10
         })
-      } else {
+      }else{
         that.setData({
-          remainder: integralArr[1] / 100
+          remainder: integralArr[1]/100
         })
       }
-      var used_score = deductible * 10;//抵扣的积分
-    } else {
+      var used_score = deductible*10;//抵扣的积分
+    }else{
       that.setData({
-        remainder: '0'
+        remainder:'0'
       })
     }
-    // var used_score = deductible*10;//抵扣的积分
     var theme;//房间类型
     wx.getStorage({
       key: 'spec',
