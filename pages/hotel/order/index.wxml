@@ -24,7 +24,9 @@
         </view>
       </view>
     </view>
-
+    <view class='showImg'>
+        <image src='{{image}}'></image>
+    </view>
     <!--主体第二块-->
     <view class='main2'>
       <view class='top'>
