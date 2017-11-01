@@ -4,10 +4,11 @@
 .cus-table-cell { display: table-cell; vertical-align: middle; }
 .main .block { padding-left: 5%; }
 .all{
-  width: 99.5%;
+  width: 99.9%;
   height: auto;
   font-family: 微软雅黑;
   background-color: #F1F1F1;
+  
   }
 
 .score { height: 0; overflow: hidden; }
