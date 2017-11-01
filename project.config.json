@@ -9,7 +9,7 @@
 	"compileType": "weapp",
 	"libVersion": "1.5.4",
 	"appid": "wx4cf1ee506aff078f",
-	"projectname": "hotel",
+	"projectname": "Hotel",
 	"condition": {
 		"weapp": {
 			"current": -1,
