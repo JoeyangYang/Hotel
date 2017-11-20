@@ -23,6 +23,26 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+
+    //登录状态验证
+    wx.request({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      method: 'POST',
+      url: app.globalData.webSite + '/Home/Wechat/userLoginStatusConfirm',
+      data: { open_id: app.globalData.openId },
+      success: function (res) {
+        var data = res.data;
+        if (data.code == '200') {
+          app.globalData.loginStatus = true;
+          app.globalData.userInfo.score = data.data.score;
+          app.globalData.userInfo.phone = data.data.phone;
+        }
+        console.log(app);
+      }
+    });
+
     var score = app.globalData.userInfo.score;
 
     if (app.globalData.loginStatus == false) {
