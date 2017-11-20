@@ -96,6 +96,7 @@ Page({
     var that = this;
     var price=e.currentTarget.dataset.price;
     var spec = e.currentTarget.dataset.spec;
+    var img = e.currentTarget.dataset.img;
     wx.getStorage({
       key: 'spec',
       success: function(res) {
@@ -111,7 +112,7 @@ Page({
             var dateEnd = that.data.dateEnd;
             if (app.globalData.loginStatus == true){
               wx.navigateTo({
-                url: '/pages/hotel/order/index?date=' + date + '&nightNum=' + nightNum + '&dateEnd=' + dateEnd
+                url: '/pages/hotel/order/index?date=' + date + '&nightNum=' + nightNum + '&dateEnd=' + dateEnd+'&img='+img
               })
             }else{
               wx.navigateTo({

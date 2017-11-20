@@ -109,7 +109,7 @@
             </view>
             <view class='discount1'>
               <!-- <navigator url='/pages/hotel/order/index?date={{date}}&nightNum={{nightNum}}&dateEnd={{dateEnd}}' > -->
-                <button class='bg-blue' data-price='{{item2.price}}' data-spec='{{item2.spec}}'  bindtap='clickJump'>预定</button>
+                <button class='bg-blue' data-price='{{item2.price}}' data-spec='{{item2.spec}}'  bindtap='clickJump' data-img="{{item1.image}}">预定</button>
               <!-- </navigator> -->
             </view>
           </view>

@@ -94,7 +94,8 @@ Page({
       date:options.date,
       dateEnd:options.dateEnd,
       nightNum:options.nightNum,
-      phone:phone
+      phone:phone,
+      image: app.globalData.webSite + options.img,
     });
     wx.getUserInfo({
       success: function (res) {
@@ -113,13 +114,10 @@ Page({
     wx.getStorage({
       key: 'singleHotel',
       success: function(res) {
-        console.log("cccccccccccccc");
-        console.log(res.data);
-        console.log(app.globalData.webSite);
         var hotel_phone;
         var cost_price;
         that.setData({
-          image: app.globalData.webSite+res.data.image,
+          
           address: res.data.address,
           hotelName: res.data.name,
           id: res.data.id,
