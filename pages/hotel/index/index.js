@@ -100,7 +100,6 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-
     //登录状态验证
     wx.request({
       header: {
