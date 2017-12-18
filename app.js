@@ -94,9 +94,8 @@ App({
     }
     that.globalData.outTradeNo = outTradeNo;
   },
-
   globalData: {
-    appid: 'appId:wx4cf1ee506aff078f',
+    appid: 'wx4cf1ee506aff078f',
     userInfo: null,
     openId: '',
     loginStatus: false,

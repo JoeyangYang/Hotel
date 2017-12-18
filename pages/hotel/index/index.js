@@ -100,6 +100,25 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    //登录状态验证
+    wx.request({
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      method: 'POST',
+      url: app.globalData.webSite + '/Home/Wechat/userLoginStatusConfirm',
+      data: { open_id: app.globalData.openId },
+      success: function (res) {
+        var data = res.data;
+        if (data.code == '200') {
+          app.globalData.loginStatus = true;
+          app.globalData.userInfo.score = data.data.score;
+          app.globalData.userInfo.phone = data.data.phone;
+        }
+        console.log(app);
+      }
+    });
+
     //默认入住时间，离店时间
     var y = data.getFullYear();
     var m = data.getMonth() + 1;

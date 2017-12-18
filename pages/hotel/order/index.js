@@ -94,7 +94,8 @@ Page({
       date:options.date,
       dateEnd:options.dateEnd,
       nightNum:options.nightNum,
-      phone:phone
+      phone:phone,
+      image: app.globalData.webSite + options.img,
     });
     wx.getUserInfo({
       success: function (res) {
@@ -116,6 +117,7 @@ Page({
         var hotel_phone;
         var cost_price;
         that.setData({
+          
           address: res.data.address,
           hotelName: res.data.name,
           id: res.data.id,
@@ -128,6 +130,7 @@ Page({
     /**取整 */
     var integralArr = String(integral).split('.');
     var deductible = integralArr[0]/10;//可抵扣的金额
+
     if (integralArr != '0'){
       if (integralArr[1].length == 1){
         that.setData({
@@ -188,8 +191,7 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-  
+  onReady: function (e) {
   },
 
   /**
